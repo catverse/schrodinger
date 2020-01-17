@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DA73DE1423D1B49400E48E24"
-               BuildableName = "Schrodinger.mac.app"
+               BuildableName = "Schrodinger.app"
                BlueprintName = "macApp"
                ReferencedContainer = "container:Schrodinger.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA73DE1423D1B49400E48E24"
-            BuildableName = "Schrodinger.mac.app"
+            BuildableName = "Schrodinger.app"
             BlueprintName = "macApp"
             ReferencedContainer = "container:Schrodinger.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA73DE1423D1B49400E48E24"
-            BuildableName = "Schrodinger.mac.app"
+            BuildableName = "Schrodinger.app"
             BlueprintName = "macApp"
             ReferencedContainer = "container:Schrodinger.xcodeproj">
          </BuildableReference>

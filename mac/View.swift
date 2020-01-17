@@ -6,25 +6,36 @@ final class View: SKView {
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        if let scene = GKScene(fileNamed: "GameScene") {
-            
+//        if let scene = GKScene(fileNamed: "GameScene") {
+
             // Get the SKScene from the loaded GKScene
-            if let sceneNode = scene.rootNode as! GameScene? {
+//            if let sceneNode = scene.rootNode as! GameScene? {
+//
+//                // Copy gameplay related content over to the scene
+//                sceneNode.entities = scene.entities
+//                sceneNode.graphs = scene.graphs
+//
+//                // Set the scale mode to scale to fit the window
+//                sceneNode.scaleMode = .aspectFill
+//
+//                // Present the scene
+//                presentScene(sceneNode)
+//
+//                ignoresSiblingOrder = true
+//
+//                showsFPS = true
+//                showsNodeCount = true
+//            }
+//        }
+        
+        if let scene = GKScene(fileNamed: "Home") {
+            if let node = scene.rootNode as? Home {
+                                presentScene(node)
                 
-                // Copy gameplay related content over to the scene
-                sceneNode.entities = scene.entities
-                sceneNode.graphs = scene.graphs
+                                ignoresSiblingOrder = true
                 
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
-                
-                // Present the scene
-                presentScene(sceneNode)
-                
-                ignoresSiblingOrder = true
-                
-                showsFPS = true
-                showsNodeCount = true
+                                showsFPS = true
+                                showsNodeCount = true
             }
         }
     }

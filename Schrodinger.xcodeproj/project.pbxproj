@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA5D13F023D236A6008E78D1 /* Home.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA5D13EF23D236A6008E78D1 /* Home.sks */; };
+		DA5D13F223D25D47008E78D1 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D13F123D25D47008E78D1 /* Home.swift */; };
 		DA628FA523D1BF0500F240AC /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA628FA423D1BF0500F240AC /* Window.swift */; };
 		DA628FA723D1C39E00F240AC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA628FA623D1C39E00F240AC /* View.swift */; };
 		DA73DE3723D1B6AE00E48E24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73DE2F23D1B6AE00E48E24 /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA5D13EF23D236A6008E78D1 /* Home.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Home.sks; sourceTree = "<group>"; };
+		DA5D13F123D25D47008E78D1 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		DA628FA423D1BF0500F240AC /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		DA628FA623D1C39E00F240AC /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		DA73DE2B23D1B68B00E48E24 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -32,7 +36,7 @@
 		DA73DE3423D1B6AE00E48E24 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		DA73DE3523D1B6AE00E48E24 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA73DE3623D1B6AE00E48E24 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		DA73DE3E23D1B70900E48E24 /* Schrodinger.mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schrodinger.mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA73DE3E23D1B70900E48E24 /* Schrodinger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schrodinger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA73DE3F23D1B78E00E48E24 /* libSchrodinger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSchrodinger.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA73DE4123D1B7F700E48E24 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DA73DE4423D1B8BC00E48E24 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -64,7 +68,7 @@
 				DA73DE2B23D1B68B00E48E24 /* .gitignore */,
 				DA73DE2D23D1B69F00E48E24 /* LICENSE */,
 				DA73DE3F23D1B78E00E48E24 /* libSchrodinger.a */,
-				DA73DE3E23D1B70900E48E24 /* Schrodinger.mac.app */,
+				DA73DE3E23D1B70900E48E24 /* Schrodinger.app */,
 				DA73DE2C23D1B69F00E48E24 /* README.md */,
 				DA73DE4023D1B7C000E48E24 /* Library */,
 				DA73DE2E23D1B6AE00E48E24 /* mac */,
@@ -79,8 +83,10 @@
 				DA73DE3523D1B6AE00E48E24 /* Info.plist */,
 				DA73DE3623D1B6AE00E48E24 /* Actions.sks */,
 				DA73DE3223D1B6AE00E48E24 /* GameScene.sks */,
+				DA5D13EF23D236A6008E78D1 /* Home.sks */,
 				DA73DE4623D1B9C400E48E24 /* App.swift */,
 				DA73DE3423D1B6AE00E48E24 /* GameScene.swift */,
+				DA5D13F123D25D47008E78D1 /* Home.swift */,
 				DA628FA623D1C39E00F240AC /* View.swift */,
 				DA73DE2F23D1B6AE00E48E24 /* ViewController.swift */,
 				DA628FA423D1BF0500F240AC /* Window.swift */,
@@ -149,7 +155,7 @@
 			);
 			name = macApp;
 			productName = macApp;
-			productReference = DA73DE3E23D1B70900E48E24 /* Schrodinger.mac.app */;
+			productReference = DA73DE3E23D1B70900E48E24 /* Schrodinger.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -194,6 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5D13F023D236A6008E78D1 /* Home.sks in Resources */,
 				DA73DE3923D1B6AE00E48E24 /* GameScene.sks in Resources */,
 				DA73DE3823D1B6AE00E48E24 /* Assets.xcassets in Resources */,
 				DA73DE3D23D1B6AE00E48E24 /* Actions.sks in Resources */,
@@ -219,6 +226,7 @@
 				DA73DE4723D1B9C400E48E24 /* App.swift in Sources */,
 				DA628FA723D1C39E00F240AC /* View.swift in Sources */,
 				DA73DE3723D1B6AE00E48E24 /* ViewController.swift in Sources */,
+				DA5D13F223D25D47008E78D1 /* Home.swift in Sources */,
 				DA628FA523D1BF0500F240AC /* Window.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,7 +444,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = Schrodinger.mac;
-				PRODUCT_NAME = Schrodinger.mac;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)mac";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -499,7 +507,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = Schrodinger.mac;
-				PRODUCT_NAME = Schrodinger.mac;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)mac";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
