@@ -6,4 +6,8 @@ import AppKit
         super.init()
         delegate = self
     }
+    
+    func applicationWillFinishLaunching(_: Notification) {
+        Window().makeKeyAndOrderFront(nil)
+    }
 }
