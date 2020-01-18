@@ -1,4 +1,5 @@
-import AppKit
+import SpriteKit
+import GameplayKit
 
 final class Window: NSWindow {
     init() {
@@ -16,13 +17,18 @@ final class Window: NSWindow {
         isReleasedWhenClosed = false
         isMovableByWindowBackground = false
         
-        let view = View()
+        let view = SKView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.presentScene(GKScene(fileNamed: "Home")!.rootNode as? SKScene)
+        view.ignoresSiblingOrder = true
+        view.showsFPS = true
+        view.showsNodeCount = true
         contentView!.addSubview(view)
         
-        view.topAnchor.constraint(equalTo: contentView!.topAnchor, constant: 38).isActive = true
-        view.bottomAnchor.constraint(equalTo: contentView!.bottomAnchor).isActive = true
-        view.leftAnchor.constraint(equalTo: contentView!.leftAnchor).isActive = true
-        view.rightAnchor.constraint(equalTo: contentView!.rightAnchor).isActive = true
+        view.centerYAnchor.constraint(equalTo: contentView!.centerYAnchor, constant: 24).isActive = true
+        view.centerXAnchor.constraint(equalTo: contentView!.centerXAnchor).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 900).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 600).isActive = true
     }
     
     override func close() {
