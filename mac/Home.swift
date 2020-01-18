@@ -7,7 +7,7 @@ final class Home: SKScene {
     private let playerSpeed = CGFloat(100)
     
     override func sceneDidLoad() {
-        player = childNode(withName: "player") as? SKSpriteNode
+        player = childNode(withName: "Player") as? SKSpriteNode
     }
     
     override func update(_ currentTime: TimeInterval) {
