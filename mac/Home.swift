@@ -4,7 +4,15 @@ final class Home: SKScene {
     private weak var player: SKSpriteNode!
     private var key = Key.none
     private var time = TimeInterval(0)
-    private let playerSpeed = CGFloat(100)
+    private let playerSpeed = CGFloat(150)
+    
+    override func didMove(to: SKView) {
+        physicsBody = .init(edgeLoopFrom: {
+            $0.addLines(between: _loop.map { .init(x: $0.0, y: $0.1) })
+            return $0
+        } (CGMutablePath()) as CGPath)
+        physicsBody!.friction = 0
+    }
     
     override func sceneDidLoad() {
         player = childNode(withName: "Player") as? SKSpriteNode
@@ -27,4 +35,9 @@ final class Home: SKScene {
     override func keyDown(with: NSEvent) {
         key = Key(rawValue: with.keyCode) ?? .none
     }
+    
+    private let _loop = [
+        (-3103, 3008),
+        (-2496, 3008),
+        (-2496, 2848)] as [((CGFloat, CGFloat))]
 }

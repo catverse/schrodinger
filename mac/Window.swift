@@ -23,6 +23,7 @@ final class Window: NSWindow {
         view.ignoresSiblingOrder = true
         view.showsFPS = true
         view.showsNodeCount = true
+        view.showsPhysics = true
         contentView!.addSubview(view)
         
         view.centerYAnchor.constraint(equalTo: contentView!.centerYAnchor, constant: 24).isActive = true
