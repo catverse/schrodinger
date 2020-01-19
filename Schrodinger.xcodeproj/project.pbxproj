@@ -16,6 +16,7 @@
 		DA73DE4523D1B8BC00E48E24 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA73DE4423D1B8BC00E48E24 /* GameKit.framework */; };
 		DA73DE4723D1B9C400E48E24 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73DE4623D1B9C400E48E24 /* App.swift */; };
 		DA91510123D3023500B67B92 /* Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA91510023D3023500B67B92 /* Tiles.sks */; };
+		DAF522F023D464A200BB0EDA /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF522EF23D464A200BB0EDA /* Key.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		DA73DE4423D1B8BC00E48E24 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DA73DE4623D1B9C400E48E24 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		DA91510023D3023500B67B92 /* Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tiles.sks; sourceTree = "<group>"; };
+		DAF522EF23D464A200BB0EDA /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				DA91510023D3023500B67B92 /* Tiles.sks */,
 				DA73DE4623D1B9C400E48E24 /* App.swift */,
 				DA5D13F123D25D47008E78D1 /* Home.swift */,
+				DAF522EF23D464A200BB0EDA /* Key.swift */,
 				DA628FA423D1BF0500F240AC /* Window.swift */,
 				DA73DE3123D1B6AE00E48E24 /* Assets.xcassets */,
 			);
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA73DE4723D1B9C400E48E24 /* App.swift in Sources */,
+				DAF522F023D464A200BB0EDA /* Key.swift in Sources */,
 				DA5D13F223D25D47008E78D1 /* Home.swift in Sources */,
 				DA628FA523D1BF0500F240AC /* Window.swift in Sources */,
 			);
