@@ -22,8 +22,4 @@ final class Window: NSWindow {
     override func close() {
         NSApp.terminate(nil)
     }
-    
-    override func keyDown(with: NSEvent) {
-        (contentView as! Game).player.component(ofType: Control.self)!.direction = Key(rawValue: with.keyCode) ?? .none
-    }
 }
