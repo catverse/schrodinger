@@ -1,11 +1,10 @@
-import SpriteKit
-import GameplayKit
+import AppKit
 
 final class Window: NSWindow {
     init() {
-        super.init(contentRect: .init(x: 0, y: 0, width: 900, height: 638), styleMask: [.borderless, .miniaturizable, .resizable, .closable, .titled, .unifiedTitleAndToolbar, .fullSizeContentView], backing: .buffered, defer: false)
+        super.init(contentRect: .init(x: 0, y: 0, width: 900, height: 600), styleMask: [.borderless, .miniaturizable, .resizable, .closable, .titled, .unifiedTitleAndToolbar, .fullSizeContentView], backing: .buffered, defer: false)
         center()
-        minSize = .init(width: 900, height: 638)
+        minSize = .init(width: 900, height: 600)
         appearance = NSAppearance(named: .darkAqua)
         backgroundColor = .black
         titlebarAppearsTransparent = true
@@ -16,23 +15,15 @@ final class Window: NSWindow {
         collectionBehavior = .fullScreenNone
         isReleasedWhenClosed = false
         isMovableByWindowBackground = false
-        
-        let view = SKView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.presentScene(GKScene(fileNamed: "Home")!.rootNode as? SKScene)
-        view.ignoresSiblingOrder = true
-        view.showsFPS = true
-        view.showsNodeCount = true
-        view.showsPhysics = true
-        contentView!.addSubview(view)
-        
-        view.centerYAnchor.constraint(equalTo: contentView!.centerYAnchor, constant: 24).isActive = true
-        view.centerXAnchor.constraint(equalTo: contentView!.centerXAnchor).isActive = true
-        view.widthAnchor.constraint(equalToConstant: 900).isActive = true
-        view.heightAnchor.constraint(equalToConstant: 600).isActive = true
+        contentView = Game()
+        (contentView as! Game).home()
     }
     
     override func close() {
         NSApp.terminate(nil)
+    }
+    
+    override func keyDown(with: NSEvent) {
+        (contentView as! Game).player.component(ofType: Control.self)!.direction = Key(rawValue: with.keyCode) ?? .none
     }
 }
