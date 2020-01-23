@@ -29,8 +29,12 @@ final class Game: SKView, SKSceneDelegate {
     
     private func scene(_ scene: GKScene) {
         time = 0
+        let camera = SKCameraNode()
+        camera.constraints = [.distance(.init(upperLimit: 100), to: player.component(ofType: Sprite.self)!.node)]
+        (scene.rootNode as? SKScene)!.addChild(camera)
+        (scene.rootNode as? SKScene)!.camera = camera
         (scene.rootNode as? SKScene)!.delegate = self
-        presentScene(scene.rootNode as? SKScene)
         (scene.rootNode as? SKScene)!.addChild(player.component(ofType: Sprite.self)!.node)
+        presentScene(scene.rootNode as? SKScene)
     }
 }
