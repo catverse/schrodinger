@@ -18,7 +18,7 @@ final class Control: GKComponent {
     override func update(deltaTime: TimeInterval) {
         timer -= deltaTime
         if timer <= 0 {
-            timer = 0.25
+            timer = 0.15
             move()
             direction = .none
         }
