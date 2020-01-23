@@ -15,7 +15,7 @@ final class Game: SKView, SKSceneDelegate {
     }
     
     func home() {
-        scene(GKScene(fileNamed: "Home")!)
+        scene(GKScene(fileNamed: "House_Bedroom")!)
     }
     
     func update(_ time: TimeInterval, for: SKScene) {
