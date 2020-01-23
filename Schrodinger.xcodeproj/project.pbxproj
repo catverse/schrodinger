@@ -12,6 +12,7 @@
 		DA24878223D8682500BA265B /* Sprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878123D8682500BA265B /* Sprite.swift */; };
 		DA24878423D86CE200BA265B /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878323D86CE200BA265B /* Control.swift */; };
 		DA24878623D870C400BA265B /* Stand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878523D870C400BA265B /* Stand.swift */; };
+		DA2F75A923D9A080001519C6 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F75A823D9A080001519C6 /* Scene.swift */; };
 		DA5D13F023D236A6008E78D1 /* Home.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA5D13EF23D236A6008E78D1 /* Home.sks */; };
 		DA5D13F223D25D47008E78D1 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D13F123D25D47008E78D1 /* Home.swift */; };
 		DA628FA523D1BF0500F240AC /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA628FA423D1BF0500F240AC /* Window.swift */; };
@@ -30,6 +31,7 @@
 		DA24878123D8682500BA265B /* Sprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprite.swift; sourceTree = "<group>"; };
 		DA24878323D86CE200BA265B /* Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
 		DA24878523D870C400BA265B /* Stand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stand.swift; sourceTree = "<group>"; };
+		DA2F75A823D9A080001519C6 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		DA5D13EF23D236A6008E78D1 /* Home.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Home.sks; sourceTree = "<group>"; };
 		DA5D13F123D25D47008E78D1 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		DA628FA423D1BF0500F240AC /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				DA5D13F123D25D47008E78D1 /* Home.swift */,
 				DAF522EF23D464A200BB0EDA /* Key.swift */,
 				DA24877F23D8646B00BA265B /* Player.swift */,
+				DA2F75A823D9A080001519C6 /* Scene.swift */,
 				DA24878123D8682500BA265B /* Sprite.swift */,
 				DA24878523D870C400BA265B /* Stand.swift */,
 				DA628FA423D1BF0500F240AC /* Window.swift */,
@@ -233,6 +236,7 @@
 			files = (
 				DA73DE4723D1B9C400E48E24 /* App.swift in Sources */,
 				DA24878623D870C400BA265B /* Stand.swift in Sources */,
+				DA2F75A923D9A080001519C6 /* Scene.swift in Sources */,
 				DA24878423D86CE200BA265B /* Control.swift in Sources */,
 				DA24877E23D857CC00BA265B /* Game.swift in Sources */,
 				DAF522F023D464A200BB0EDA /* Key.swift in Sources */,

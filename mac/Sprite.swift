@@ -1,11 +1,10 @@
 import GameplayKit
 
 final class Sprite: GKComponent {
-    let node = SKSpriteNode()
-    
-    required init?(coder: NSCoder) { nil }
-    override init() {
-        super.init()
-        node.size = .init(width: 100, height: 100)
+    var position = vector_int2.zero {
+        didSet {
+            node.run(.move(to: (node.scene as! Scene).point(position), duration: 0.2), withKey: "move")
+        }
     }
+    let node = SKSpriteNode(texture: nil, size: .init(width: 32, height: 32))
 }

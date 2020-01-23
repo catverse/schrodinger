@@ -16,18 +16,19 @@ class Stand: GKState {
         node.run(.setTexture(.init(imageNamed: texture)))
     }
     
-    final func direction(_ direction: Key) {
+    final func move(_ direction: Key) -> Bool {
         if direction == compare {
             stateMachine!.enter(next)
-        } else {
-            switch direction {
-            case .up: stateMachine!.enter(Back0.self)
-            case .down: stateMachine!.enter(Front0.self)
-            case .left: stateMachine!.enter(Left0.self)
-            case .right: stateMachine!.enter(Right0.self)
-            default: stateMachine!.enter(fallback)
-            }
+            return true
         }
+        switch direction {
+        case .up: stateMachine!.enter(Back0.self)
+        case .down: stateMachine!.enter(Front0.self)
+        case .left: stateMachine!.enter(Left0.self)
+        case .right: stateMachine!.enter(Right0.self)
+        default: stateMachine!.enter(fallback)
+        }
+        return false
     }
 }
 
