@@ -35,6 +35,7 @@ final class Game: SKView, SKSceneDelegate {
         (scene.rootNode as? SKScene)!.camera = camera
         (scene.rootNode as? SKScene)!.delegate = self
         (scene.rootNode as? SKScene)!.addChild(player.component(ofType: Sprite.self)!.node)
+        player.component(ofType: Sprite.self)!.move((scene.rootNode as! Scene).start(nil))
         presentScene(scene.rootNode as? SKScene)
     }
 }

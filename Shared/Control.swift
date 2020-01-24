@@ -36,7 +36,7 @@ final class Control: GKComponent {
             default: break
             }
             if (sprite.node.scene as! Scene).grid.node(atGridPosition: next) != nil {
-                sprite.position = next
+                sprite.animate(next)
             }
         }
     }
