@@ -17,6 +17,10 @@
 		DA39DF2923D9E09D00A304F2 /* Schrodinger.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */; };
 		DA39DF2B23D9E0CC00A304F2 /* House.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA39DF2A23D9E0CC00A304F2 /* House.xcassets */; };
 		DA39DF2D23D9E86A00A304F2 /* Tiles_House.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA39DF2C23D9E86A00A304F2 /* Tiles_House.sks */; };
+		DA4AF1C523DB17480041A35D /* House_Corridor.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA4AF1C423DB17480041A35D /* House_Corridor.sks */; };
+		DA4AF1C723DB1A340041A35D /* House_Corridor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AF1C623DB1A340041A35D /* House_Corridor.swift */; };
+		DA4AF1CE23DB1C750041A35D /* libSchrodinger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA73DE3F23D1B78E00E48E24 /* libSchrodinger.a */; };
+		DA4AF1D223DB1CED0041A35D /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AF1D123DB1CED0041A35D /* View.swift */; };
 		DA5D13F223D25D47008E78D1 /* House_Bedroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */; };
 		DA628FA523D1BF0500F240AC /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA628FA423D1BF0500F240AC /* Window.swift */; };
 		DA73DE3823D1B6AE00E48E24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA73DE3123D1B6AE00E48E24 /* Assets.xcassets */; };
@@ -25,6 +29,16 @@
 		DA73DE4723D1B9C400E48E24 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73DE4623D1B9C400E48E24 /* App.swift */; };
 		DAF522F023D464A200BB0EDA /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF522EF23D464A200BB0EDA /* Key.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DA4AF1CF23DB1C750041A35D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA73DDFD23D1B2F600E48E24 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA73DE0623D1B33400E48E24;
+			remoteInfo = mac;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DA24877D23D857CC00BA265B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -37,6 +51,9 @@
 		DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Schrodinger.xcassets; sourceTree = "<group>"; };
 		DA39DF2A23D9E0CC00A304F2 /* House.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = House.xcassets; sourceTree = "<group>"; };
 		DA39DF2C23D9E86A00A304F2 /* Tiles_House.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tiles_House.sks; sourceTree = "<group>"; };
+		DA4AF1C423DB17480041A35D /* House_Corridor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Corridor.sks; sourceTree = "<group>"; };
+		DA4AF1C623DB1A340041A35D /* House_Corridor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Corridor.swift; sourceTree = "<group>"; };
+		DA4AF1D123DB1CED0041A35D /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Bedroom.swift; sourceTree = "<group>"; };
 		DA628FA423D1BF0500F240AC /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		DA73DE2B23D1B68B00E48E24 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -65,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA4AF1CE23DB1C750041A35D /* libSchrodinger.a in Frameworks */,
 				DA73DE4523D1B8BC00E48E24 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,10 +94,12 @@
 			isa = PBXGroup;
 			children = (
 				DA39DF2623D9DFB900A304F2 /* House_Bedroom.sks */,
+				DA4AF1C423DB17480041A35D /* House_Corridor.sks */,
 				DA39DF2C23D9E86A00A304F2 /* Tiles_House.sks */,
 				DA24878323D86CE200BA265B /* Control.swift */,
 				DA24877D23D857CC00BA265B /* Game.swift */,
 				DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */,
+				DA4AF1C623DB1A340041A35D /* House_Corridor.swift */,
 				DAF522EF23D464A200BB0EDA /* Key.swift */,
 				DA24877F23D8646B00BA265B /* Player.swift */,
 				DA2F75A823D9A080001519C6 /* Scene.swift */,
@@ -113,6 +133,7 @@
 				DA73DE3023D1B6AE00E48E24 /* mac.entitlements */,
 				DA73DE3523D1B6AE00E48E24 /* Info.plist */,
 				DA73DE4623D1B9C400E48E24 /* App.swift */,
+				DA4AF1D123DB1CED0041A35D /* View.swift */,
 				DA628FA423D1BF0500F240AC /* Window.swift */,
 			);
 			path = mac;
@@ -175,6 +196,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA4AF1D023DB1C750041A35D /* PBXTargetDependency */,
 			);
 			name = macApp;
 			productName = macApp;
@@ -223,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA4AF1C523DB17480041A35D /* House_Corridor.sks in Resources */,
 				DA73DE3823D1B6AE00E48E24 /* Assets.xcassets in Resources */,
 				DA39DF2D23D9E86A00A304F2 /* Tiles_House.sks in Resources */,
 				DA39DF2923D9E09D00A304F2 /* Schrodinger.xcassets in Resources */,
@@ -248,11 +271,13 @@
 			files = (
 				DA73DE4723D1B9C400E48E24 /* App.swift in Sources */,
 				DA24878623D870C400BA265B /* Stand.swift in Sources */,
+				DA4AF1C723DB1A340041A35D /* House_Corridor.swift in Sources */,
 				DA2F75A923D9A080001519C6 /* Scene.swift in Sources */,
 				DA24878423D86CE200BA265B /* Control.swift in Sources */,
 				DA24877E23D857CC00BA265B /* Game.swift in Sources */,
 				DAF522F023D464A200BB0EDA /* Key.swift in Sources */,
 				DA5D13F223D25D47008E78D1 /* House_Bedroom.swift in Sources */,
+				DA4AF1D223DB1CED0041A35D /* View.swift in Sources */,
 				DA24878223D8682500BA265B /* Sprite.swift in Sources */,
 				DA24878023D8646B00BA265B /* Player.swift in Sources */,
 				DA628FA523D1BF0500F240AC /* Window.swift in Sources */,
@@ -260,6 +285,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DA4AF1D023DB1C750041A35D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA73DE0623D1B33400E48E24 /* mac */;
+			targetProxy = DA4AF1CF23DB1C750041A35D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DA73DE0123D1B2F600E48E24 /* Debug */ = {
@@ -348,6 +381,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_MODULE_NAME = Library;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -405,6 +439,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_MODULE_NAME = Library;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -472,7 +507,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = Schrodinger.mac;
-				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)mac";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -535,7 +569,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = Schrodinger.mac;
-				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)mac";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};

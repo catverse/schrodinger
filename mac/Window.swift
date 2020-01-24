@@ -15,8 +15,8 @@ final class Window: NSWindow {
         collectionBehavior = .fullScreenNone
         isReleasedWhenClosed = false
         isMovableByWindowBackground = false
-        contentView = Game()
-        (contentView as! Game).home()
+        contentView = View()
+        (contentView as! Game).scene("House_Bedroom")
     }
     
     override func close() {

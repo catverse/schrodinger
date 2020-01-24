@@ -1,6 +1,7 @@
 import GameplayKit
 
 final class Control: GKComponent {
+    weak var game: Game!
     var direction = Key.none
     private var timer = TimeInterval()
     private var state: GKStateMachine!
@@ -19,14 +20,22 @@ final class Control: GKComponent {
         timer -= deltaTime
         if timer <= 0 {
             timer = 0.15
-            move()
+            let sprite = entity!.component(ofType: Sprite.self)!
+            let scene = (sprite.node.scene as! Scene)
+            interact(sprite, scene)
+            move(sprite, scene)
             direction = .none
         }
     }
     
-    private func move() {
+    private func interact(_ sprite: Sprite, _ scene: Scene) {
+        if let door = scene.doors[sprite.position] {
+            game.scene(door)
+        }
+    }
+    
+    private func move(_ sprite: Sprite, _ scene: Scene) {
         if (state.currentState as! Stand).move(direction) {
-            let sprite = entity!.component(ofType: Sprite.self)!
             var next = sprite.position
             switch direction {
             case .up: next.y += 1
@@ -35,7 +44,7 @@ final class Control: GKComponent {
             case .right: next.x += 1
             default: break
             }
-            if (sprite.node.scene as! Scene).grid.node(atGridPosition: next) != nil {
+            if scene.grid.node(atGridPosition: next) != nil {
                 sprite.animate(next)
             }
         }
