@@ -7,4 +7,8 @@ class State: GKState {
         super.init()
         self.game = game
     }
+    
+    func direction(_ direction: Key) {
+        
+    }
 }

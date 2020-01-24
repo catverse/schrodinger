@@ -2,6 +2,6 @@ import AppKit
 
 final class View: Game {
     override func keyDown(with: NSEvent) {
-        player.component(ofType: Control.self)!.direction = Key(rawValue: with.keyCode) ?? .none
+        (state.currentState as! State).direction(Key(rawValue: with.keyCode) ?? .none)
     }
 }

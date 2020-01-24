@@ -1,6 +1,6 @@
 import GameplayKit
 
-class Stand: GKState {
+class WalkState: GKState {
     fileprivate var texture: String! { nil }
     fileprivate var compare: Key! { nil }
     fileprivate var next: AnyClass! { nil }
@@ -32,22 +32,22 @@ class Stand: GKState {
     }
 }
 
-class Front: Stand {
+class Front: WalkState {
     override var compare: Key { .down }
     override var fallback: AnyClass { Front0.self }
 }
 
-class Back: Stand {
+class Back: WalkState {
     override var compare: Key { .up }
     override var fallback: AnyClass { Back0.self }
 }
 
-class Left: Stand {
+class Left: WalkState {
     override var compare: Key { .left }
     override var fallback: AnyClass { Left0.self }
 }
 
-class Right: Stand {
+class Right: WalkState {
     override var compare: Key { .right }
     override var fallback: AnyClass { Right0.self }
 }
