@@ -5,6 +5,6 @@ final class House_Corridor: SKScene, Scene {
     let doors = [vector_int2 : String]()
     
     func start(_ from: Scene?) -> vector_int2 {
-        vector_int2(1, 3)
+        vector_int2(7, 4)
     }
 }

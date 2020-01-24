@@ -21,6 +21,9 @@
 		DA4AF1C723DB1A340041A35D /* House_Corridor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AF1C623DB1A340041A35D /* House_Corridor.swift */; };
 		DA4AF1CE23DB1C750041A35D /* libSchrodinger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA73DE3F23D1B78E00E48E24 /* libSchrodinger.a */; };
 		DA4AF1D223DB1CED0041A35D /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AF1D123DB1CED0041A35D /* View.swift */; };
+		DA4AF1D423DB2B1A0041A35D /* Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AF1D323DB2B1A0041A35D /* Wait.swift */; };
+		DA4AF1D623DB2B470041A35D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AF1D523DB2B470041A35D /* State.swift */; };
+		DA4AF1D823DB2B9C0041A35D /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AF1D723DB2B9C0041A35D /* Play.swift */; };
 		DA5D13F223D25D47008E78D1 /* House_Bedroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */; };
 		DA628FA523D1BF0500F240AC /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA628FA423D1BF0500F240AC /* Window.swift */; };
 		DA73DE3823D1B6AE00E48E24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA73DE3123D1B6AE00E48E24 /* Assets.xcassets */; };
@@ -54,6 +57,9 @@
 		DA4AF1C423DB17480041A35D /* House_Corridor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Corridor.sks; sourceTree = "<group>"; };
 		DA4AF1C623DB1A340041A35D /* House_Corridor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Corridor.swift; sourceTree = "<group>"; };
 		DA4AF1D123DB1CED0041A35D /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		DA4AF1D323DB2B1A0041A35D /* Wait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
+		DA4AF1D523DB2B470041A35D /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		DA4AF1D723DB2B9C0041A35D /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
 		DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Bedroom.swift; sourceTree = "<group>"; };
 		DA628FA423D1BF0500F240AC /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		DA73DE2B23D1B68B00E48E24 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -101,11 +107,13 @@
 				DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */,
 				DA4AF1C623DB1A340041A35D /* House_Corridor.swift */,
 				DAF522EF23D464A200BB0EDA /* Key.swift */,
+				DA4AF1D723DB2B9C0041A35D /* Play.swift */,
 				DA24877F23D8646B00BA265B /* Player.swift */,
 				DA2F75A823D9A080001519C6 /* Scene.swift */,
 				DA24878123D8682500BA265B /* Sprite.swift */,
 				DA24878523D870C400BA265B /* Stand.swift */,
-				DA73DE3123D1B6AE00E48E24 /* Assets.xcassets */,
+				DA4AF1D523DB2B470041A35D /* State.swift */,
+				DA4AF1D323DB2B1A0041A35D /* Wait.swift */,
 				DA39DF2A23D9E0CC00A304F2 /* House.xcassets */,
 				DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */,
 			);
@@ -135,6 +143,7 @@
 				DA73DE4623D1B9C400E48E24 /* App.swift */,
 				DA4AF1D123DB1CED0041A35D /* View.swift */,
 				DA628FA423D1BF0500F240AC /* Window.swift */,
+				DA73DE3123D1B6AE00E48E24 /* Assets.xcassets */,
 			);
 			path = mac;
 			sourceTree = "<group>";
@@ -274,13 +283,16 @@
 				DA4AF1C723DB1A340041A35D /* House_Corridor.swift in Sources */,
 				DA2F75A923D9A080001519C6 /* Scene.swift in Sources */,
 				DA24878423D86CE200BA265B /* Control.swift in Sources */,
+				DA4AF1D623DB2B470041A35D /* State.swift in Sources */,
 				DA24877E23D857CC00BA265B /* Game.swift in Sources */,
+				DA4AF1D423DB2B1A0041A35D /* Wait.swift in Sources */,
 				DAF522F023D464A200BB0EDA /* Key.swift in Sources */,
 				DA5D13F223D25D47008E78D1 /* House_Bedroom.swift in Sources */,
 				DA4AF1D223DB1CED0041A35D /* View.swift in Sources */,
 				DA24878223D8682500BA265B /* Sprite.swift in Sources */,
 				DA24878023D8646B00BA265B /* Player.swift in Sources */,
 				DA628FA523D1BF0500F240AC /* Window.swift in Sources */,
+				DA4AF1D823DB2B9C0041A35D /* Play.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@ final class Control: GKComponent {
     
     override func didAddToEntity() {
         let node = entity!.component(ofType: Sprite.self)!.node
-        state = GKStateMachine(states: [
+        state = .init(states: [
             Front0(node), Front1(node), Front2(node),
             Back0(node), Back1(node), Back2(node),
             Left0(node), Left1(node), Left2(node),
