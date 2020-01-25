@@ -27,7 +27,7 @@ class Game: SKView, SKSceneDelegate {
         scene.camera = camera
         scene.delegate = self
         scene.addChild(sprite.node)
-        sprite.move(scene.start(nil))
+        sprite.move(scene.start(self.scene))
         presentScene(scene, transition: .fade(withDuration: 2))
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.state.enter(Walk.self)
