@@ -26,33 +26,22 @@ final class WalkControl: GKComponent {
         timer -= deltaTime
         if timer <= 0 {
             timer = 0.15
-            let sprite = entity!.component(ofType: WalkSprite.self)!
-            let scene = (sprite.node.scene as! Scene)
-            interact(sprite, scene)
-            move(sprite, scene)
+            if (state.currentState as! WalkState).move(direction) {
+                var next = entity!.component(ofType: WalkSprite.self)!.position
+                switch direction {
+                case .up: next.y += 1
+                case .down: next.y -= 1
+                case .left: next.x -= 1
+                case .right: next.x += 1
+                default: break
+                }
+                if let door = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).doors[next] {
+                    game.scene(door)
+                } else if (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).grid.node(atGridPosition: next) != nil {
+                    entity!.component(ofType: WalkSprite.self)!.animate(next)
+                }
+            }
             direction = .none
-        }
-    }
-    
-    private func interact(_ sprite: WalkSprite, _ scene: Scene) {
-        if let door = scene.doors[sprite.position] {
-            game.scene(door)
-        }
-    }
-    
-    private func move(_ sprite: WalkSprite, _ scene: Scene) {
-        if (state.currentState as! WalkState).move(direction) {
-            var next = sprite.position
-            switch direction {
-            case .up: next.y += 1
-            case .down: next.y -= 1
-            case .left: next.x -= 1
-            case .right: next.x += 1
-            default: break
-            }
-            if scene.grid.node(atGridPosition: next) != nil {
-                sprite.animate(next)
-            }
         }
     }
 }
