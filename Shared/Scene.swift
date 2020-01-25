@@ -6,3 +6,18 @@ protocol Scene: SKScene {
     
     func start(_ from: SKScene?) -> vector_int2
 }
+
+extension Scene {
+    func configure() {
+        let floor = childNode(withName: "Floor") as! SKTileMapNode
+        var nodes = [GKGridGraphNode]()
+        (0 ..< grid.gridWidth).forEach { x in
+            (0 ..< grid.gridHeight).forEach { y in
+                if floor.tileDefinition(atColumn: x, row: y) == nil {
+                    nodes.append(grid.node(atGridPosition: .init(.init(x), .init(y)))!)
+                }
+            }
+        }
+        grid.remove(nodes)
+    }
+}

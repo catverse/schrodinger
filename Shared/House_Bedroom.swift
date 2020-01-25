@@ -1,7 +1,7 @@
 import GameplayKit
 
 final class House_Bedroom: SKScene, Scene {
-    let grid = GKGridGraph(fromGridStartingAt: .zero, width: 100, height: 100, diagonalsAllowed: false)
+    let grid = GKGridGraph(fromGridStartingAt: .zero, width: 18, height: 15, diagonalsAllowed: false)
     let doors = [vector_int2(14, 4) : "House_Corridor"]
     
     func start(_ from: SKScene?) -> vector_int2 {
@@ -11,5 +11,9 @@ final class House_Bedroom: SKScene, Scene {
         default:
             return vector_int2(1, 3)
         }
+    }
+    
+    override func didMove(to: SKView) {
+        configure()
     }
 }
