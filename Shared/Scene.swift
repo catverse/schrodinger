@@ -10,10 +10,11 @@ protocol Scene: SKScene {
 extension Scene {
     func configure() {
         let floor = childNode(withName: "Floor") as! SKTileMapNode
+        let items = childNode(withName: "Items") as! SKTileMapNode
         var nodes = [GKGridGraphNode]()
         (0 ..< grid.gridWidth).forEach { x in
             (0 ..< grid.gridHeight).forEach { y in
-                if floor.tileDefinition(atColumn: x, row: y) == nil {
+                if floor.tileDefinition(atColumn: x, row: y) == nil || items.tileDefinition(atColumn: x, row: y) != nil {
                     nodes.append(grid.node(atGridPosition: .init(.init(x), .init(y)))!)
                 }
             }
