@@ -8,11 +8,7 @@ class State: GKState {
         self.game = game
     }
     
-    func direction(_ direction: Direction) {
-        
-    }
-    
-    func action(_ action: Action) {
+    func control(_ direction: Direction, _ action: Action) {
         
     }
 }

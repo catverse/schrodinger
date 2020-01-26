@@ -2,6 +2,7 @@ import GameplayKit
 
 final class WalkControl: GKComponent {
     var direction = Direction.none
+    var action = Action.none
     private weak var game: Game!
     private var timer = TimeInterval()
     private var state: GKStateMachine!
@@ -26,22 +27,21 @@ final class WalkControl: GKComponent {
         timer -= deltaTime
         if timer <= 0 {
             timer = 0.15
-            if (state.currentState as! WalkState).move(direction) {
-                var next = entity!.component(ofType: WalkSprite.self)!.position
-                switch direction {
-                case .up: next.y += 1
-                case .down: next.y -= 1
-                case .left: next.x -= 1
-                case .right: next.x += 1
-                default: break
+            let pointing = (state.currentState as! WalkState).pointing(entity!.component(ofType: WalkSprite.self)!.position)
+            if action == .ok {
+                if let item = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).items[pointing] {
+                    print(item)
                 }
-                if let door = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).doors[next] {
+            }
+            if (state.currentState as! WalkState).move(direction) {
+                if let door = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).doors[pointing] {
                     game.scene(door)
-                } else if (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).grid.node(atGridPosition: next) != nil {
-                    entity!.component(ofType: WalkSprite.self)!.animate(next)
+                } else if (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).grid.node(atGridPosition: pointing) != nil {
+                    entity!.component(ofType: WalkSprite.self)!.animate(pointing)
                 }
             }
             direction = .none
+            action = .none
         }
     }
 }

@@ -1,10 +1,11 @@
 import GameplayKit
 
 class WalkState: GKState {
-    fileprivate var texture: String! { nil }
     fileprivate var compare: Direction! { nil }
+    fileprivate var texture: String! { nil }
     fileprivate var next: AnyClass! { nil }
     fileprivate var fallback: AnyClass! { nil }
+    fileprivate var delta: vector_int2! { nil }
     private weak var node: SKSpriteNode!
     
     init(_ node: SKSpriteNode) {
@@ -14,6 +15,10 @@ class WalkState: GKState {
     
     final override func didEnter(from: GKState?) {
         node.run(.setTexture(.init(imageNamed: texture)))
+    }
+    
+    final func pointing(_ tile: vector_int2) -> vector_int2 {
+        tile &+ delta
     }
     
     final func move(_ direction: Direction) -> Bool {
@@ -35,21 +40,25 @@ class WalkState: GKState {
 class Front: WalkState {
     override var compare: Direction { .down }
     override var fallback: AnyClass { Front0.self }
+    override var delta: vector_int2! { .init(0, -1) }
 }
 
 class Back: WalkState {
     override var compare: Direction { .up }
     override var fallback: AnyClass { Back0.self }
+    override var delta: vector_int2! { .init(0, 1) }
 }
 
 class Left: WalkState {
     override var compare: Direction { .left }
     override var fallback: AnyClass { Left0.self }
+    override var delta: vector_int2! { .init(-1, 0) }
 }
 
 class Right: WalkState {
     override var compare: Direction { .right }
     override var fallback: AnyClass { Right0.self }
+    override var delta: vector_int2! { .init(1, 0) }
 }
 
 final class Front0: Front {

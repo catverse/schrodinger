@@ -5,7 +5,8 @@ final class Walk: State {
         game.player.update(deltaTime: deltaTime)
     }
     
-    override func direction(_ direction: Direction) {
+    override func control(_ direction: Direction, _ action: Action) {
         game.player.component(ofType: WalkControl.self)!.direction = direction
+        game.player.component(ofType: WalkControl.self)!.action = action
     }
 }
