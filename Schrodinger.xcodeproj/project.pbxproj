@@ -31,6 +31,9 @@
 		DA73DE4523D1B8BC00E48E24 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA73DE4423D1B8BC00E48E24 /* GameKit.framework */; };
 		DA73DE4723D1B9C400E48E24 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73DE4623D1B9C400E48E24 /* App.swift */; };
 		DAD7B94223DDBA7300C483EC /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94123DDBA7300C483EC /* Action.swift */; };
+		DAD7B94423DDCC3000C483EC /* UI.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD7B94323DDCC3000C483EC /* UI.xcassets */; };
+		DAD7B94623DDCE2400C483EC /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94523DDCE2400C483EC /* Dialog.swift */; };
+		DAD7B94823DDD4BB00C483EC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94723DDD4BB00C483EC /* Message.swift */; };
 		DAF522F023D464A200BB0EDA /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF522EF23D464A200BB0EDA /* Direction.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +78,9 @@
 		DA73DE4423D1B8BC00E48E24 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DA73DE4623D1B9C400E48E24 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		DAD7B94123DDBA7300C483EC /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		DAD7B94323DDCC3000C483EC /* UI.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UI.xcassets; sourceTree = "<group>"; };
+		DAD7B94523DDCE2400C483EC /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
+		DAD7B94723DDD4BB00C483EC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		DAF522EF23D464A200BB0EDA /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,10 +111,12 @@
 				DA4AF1C423DB17480041A35D /* House_Corridor.sks */,
 				DA39DF2C23D9E86A00A304F2 /* Tiles_House.sks */,
 				DAD7B94123DDBA7300C483EC /* Action.swift */,
+				DAD7B94523DDCE2400C483EC /* Dialog.swift */,
 				DAF522EF23D464A200BB0EDA /* Direction.swift */,
 				DA24877D23D857CC00BA265B /* Game.swift */,
 				DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */,
 				DA4AF1C623DB1A340041A35D /* House_Corridor.swift */,
+				DAD7B94723DDD4BB00C483EC /* Message.swift */,
 				DA2F75A823D9A080001519C6 /* Scene.swift */,
 				DA4AF1D523DB2B470041A35D /* State.swift */,
 				DA4AF1D323DB2B1A0041A35D /* Wait.swift */,
@@ -119,6 +127,7 @@
 				DA24878523D870C400BA265B /* WalkState.swift */,
 				DA39DF2A23D9E0CC00A304F2 /* House.xcassets */,
 				DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */,
+				DAD7B94323DDCC3000C483EC /* UI.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -259,6 +268,7 @@
 			files = (
 				DA4AF1C523DB17480041A35D /* House_Corridor.sks in Resources */,
 				DA73DE3823D1B6AE00E48E24 /* Assets.xcassets in Resources */,
+				DAD7B94423DDCC3000C483EC /* UI.xcassets in Resources */,
 				DA39DF2D23D9E86A00A304F2 /* Tiles_House.sks in Resources */,
 				DA39DF2923D9E09D00A304F2 /* Schrodinger.xcassets in Resources */,
 				DA39DF2B23D9E0CC00A304F2 /* House.xcassets in Resources */,
@@ -284,7 +294,9 @@
 				DA73DE4723D1B9C400E48E24 /* App.swift in Sources */,
 				DA24878623D870C400BA265B /* WalkState.swift in Sources */,
 				DA4AF1C723DB1A340041A35D /* House_Corridor.swift in Sources */,
+				DAD7B94823DDD4BB00C483EC /* Message.swift in Sources */,
 				DA2F75A923D9A080001519C6 /* Scene.swift in Sources */,
+				DAD7B94623DDCE2400C483EC /* Dialog.swift in Sources */,
 				DA24878423D86CE200BA265B /* WalkControl.swift in Sources */,
 				DAD7B94223DDBA7300C483EC /* Action.swift in Sources */,
 				DA4AF1D623DB2B470041A35D /* State.swift in Sources */,

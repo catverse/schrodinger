@@ -1,8 +1,6 @@
 import GameplayKit
 
 final class WalkControl: GKComponent {
-    var direction = Direction.none
-    var action = Action.none
     private weak var game: Game!
     private var timer = TimeInterval()
     private var state: GKStateMachine!
@@ -23,25 +21,21 @@ final class WalkControl: GKComponent {
         state.enter(Front0.self)
     }
     
-    override func update(deltaTime: TimeInterval) {
-        timer -= deltaTime
-        if timer <= 0 {
-            timer = 0.15
-            let pointing = (state.currentState as! WalkState).pointing(entity!.component(ofType: WalkSprite.self)!.position)
-            if action == .ok {
-                if let item = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).items[pointing] {
-                    print(item)
-                }
+    func control(_ direction: Direction, _ action: Action) {
+        let pointing = (state.currentState as! WalkState).pointing(entity!.component(ofType: WalkSprite.self)!.position)
+        if action == .ok {
+        if let item = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).items[pointing] {
+                print(item)
+//                game.state.enter(Dialog.self)
+                game.message.isHidden = false
             }
-            if (state.currentState as! WalkState).move(direction) {
-                if let door = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).doors[pointing] {
-                    game.scene(door)
-                } else if (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).grid.node(atGridPosition: pointing) != nil {
-                    entity!.component(ofType: WalkSprite.self)!.animate(pointing)
-                }
+        }
+        if (state.currentState as! WalkState).move(direction) {
+            if let door = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).doors[pointing] {
+                game.scene(door)
+            } else if (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).grid.node(atGridPosition: pointing) != nil {
+                entity!.component(ofType: WalkSprite.self)!.animate(pointing)
             }
-            direction = .none
-            action = .none
         }
     }
 }
