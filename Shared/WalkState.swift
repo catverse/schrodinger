@@ -2,7 +2,7 @@ import GameplayKit
 
 class WalkState: GKState {
     fileprivate var texture: String! { nil }
-    fileprivate var compare: Key! { nil }
+    fileprivate var compare: Direction! { nil }
     fileprivate var next: AnyClass! { nil }
     fileprivate var fallback: AnyClass! { nil }
     private weak var node: SKSpriteNode!
@@ -16,7 +16,7 @@ class WalkState: GKState {
         node.run(.setTexture(.init(imageNamed: texture)))
     }
     
-    final func move(_ direction: Key) -> Bool {
+    final func move(_ direction: Direction) -> Bool {
         if direction == compare {
             stateMachine!.enter(next)
             return true
@@ -33,22 +33,22 @@ class WalkState: GKState {
 }
 
 class Front: WalkState {
-    override var compare: Key { .down }
+    override var compare: Direction { .down }
     override var fallback: AnyClass { Front0.self }
 }
 
 class Back: WalkState {
-    override var compare: Key { .up }
+    override var compare: Direction { .up }
     override var fallback: AnyClass { Back0.self }
 }
 
 class Left: WalkState {
-    override var compare: Key { .left }
+    override var compare: Direction { .left }
     override var fallback: AnyClass { Left0.self }
 }
 
 class Right: WalkState {
-    override var compare: Key { .right }
+    override var compare: Direction { .right }
     override var fallback: AnyClass { Right0.self }
 }
 

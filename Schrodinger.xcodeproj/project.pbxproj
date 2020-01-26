@@ -30,7 +30,8 @@
 		DA73DE4223D1B7F700E48E24 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73DE4123D1B7F700E48E24 /* Session.swift */; };
 		DA73DE4523D1B8BC00E48E24 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA73DE4423D1B8BC00E48E24 /* GameKit.framework */; };
 		DA73DE4723D1B9C400E48E24 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73DE4623D1B9C400E48E24 /* App.swift */; };
-		DAF522F023D464A200BB0EDA /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF522EF23D464A200BB0EDA /* Key.swift */; };
+		DAD7B94223DDBA7300C483EC /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94123DDBA7300C483EC /* Action.swift */; };
+		DAF522F023D464A200BB0EDA /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF522EF23D464A200BB0EDA /* Direction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +74,8 @@
 		DA73DE4123D1B7F700E48E24 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DA73DE4423D1B8BC00E48E24 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DA73DE4623D1B9C400E48E24 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		DAF522EF23D464A200BB0EDA /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		DAD7B94123DDBA7300C483EC /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		DAF522EF23D464A200BB0EDA /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +104,11 @@
 				DA39DF2623D9DFB900A304F2 /* House_Bedroom.sks */,
 				DA4AF1C423DB17480041A35D /* House_Corridor.sks */,
 				DA39DF2C23D9E86A00A304F2 /* Tiles_House.sks */,
+				DAD7B94123DDBA7300C483EC /* Action.swift */,
+				DAF522EF23D464A200BB0EDA /* Direction.swift */,
 				DA24877D23D857CC00BA265B /* Game.swift */,
 				DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */,
 				DA4AF1C623DB1A340041A35D /* House_Corridor.swift */,
-				DAF522EF23D464A200BB0EDA /* Key.swift */,
 				DA2F75A823D9A080001519C6 /* Scene.swift */,
 				DA4AF1D523DB2B470041A35D /* State.swift */,
 				DA4AF1D323DB2B1A0041A35D /* Wait.swift */,
@@ -283,10 +286,11 @@
 				DA4AF1C723DB1A340041A35D /* House_Corridor.swift in Sources */,
 				DA2F75A923D9A080001519C6 /* Scene.swift in Sources */,
 				DA24878423D86CE200BA265B /* WalkControl.swift in Sources */,
+				DAD7B94223DDBA7300C483EC /* Action.swift in Sources */,
 				DA4AF1D623DB2B470041A35D /* State.swift in Sources */,
 				DA24877E23D857CC00BA265B /* Game.swift in Sources */,
 				DA4AF1D423DB2B1A0041A35D /* Wait.swift in Sources */,
-				DAF522F023D464A200BB0EDA /* Key.swift in Sources */,
+				DAF522F023D464A200BB0EDA /* Direction.swift in Sources */,
 				DA5D13F223D25D47008E78D1 /* House_Bedroom.swift in Sources */,
 				DA4AF1D223DB1CED0041A35D /* View.swift in Sources */,
 				DA24878223D8682500BA265B /* WalkSprite.swift in Sources */,

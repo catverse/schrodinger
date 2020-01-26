@@ -1,7 +1,7 @@
 import GameplayKit
 
 final class WalkControl: GKComponent {
-    var direction = Key.none
+    var direction = Direction.none
     private weak var game: Game!
     private var timer = TimeInterval()
     private var state: GKStateMachine!

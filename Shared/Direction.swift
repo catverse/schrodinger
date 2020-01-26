@@ -1,8 +1,8 @@
 import Foundation
 
-enum Key: UInt16 {
+enum Direction: UInt16 {
     case
-    none = 0,
+    none = 999,
     up = 126,
     down = 125,
     left = 123,
