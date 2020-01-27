@@ -16,4 +16,16 @@ class State: GKState {
         super.init()
         self.game = game
     }
+    
+    override func update(deltaTime: TimeInterval) {
+        timer -= deltaTime
+        if timer <= 0 {
+            timer = 0.1
+            control()
+        }
+    }
+    
+    func control() {
+        
+    }
 }

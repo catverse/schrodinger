@@ -13,7 +13,10 @@ class Game: SKView, SKSceneDelegate {
         showsFPS = true
         showsNodeCount = true
         showsDrawCount = true
-        state = .init(states: [Wait(self), Walk(self), Dialog(self)])
+        state = .init(states: [Begin(self), Wait(self), Walk(self), Dialog(self)])
+        presentScene(Start())
+        scene!.delegate = self
+        state.enter(Begin.self)
     }
     
     func scene(_ name: String) {

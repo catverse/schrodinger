@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		DA09802B23DEE9AC007CC607 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA09802A23DEE9AC007CC607 /* Entry.swift */; };
+		DA09802D23DEFAEA007CC607 /* SKLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA09802C23DEFAEA007CC607 /* SKLabelNode.swift */; };
+		DA09803723DF026C007CC607 /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA09803623DF026C007CC607 /* Start.swift */; };
+		DA09803B23DF064E007CC607 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA09803A23DF064E007CC607 /* String.swift */; };
+		DA09803E23DF068E007CC607 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA09803C23DF068E007CC607 /* Localizable.strings */; };
+		DA09804023DF1E4C007CC607 /* Begin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA09803F23DF1E4C007CC607 /* Begin.swift */; };
 		DA24877E23D857CC00BA265B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24877D23D857CC00BA265B /* Game.swift */; };
 		DA24878023D8646B00BA265B /* WalkPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24877F23D8646B00BA265B /* WalkPlayer.swift */; };
 		DA24878223D8682500BA265B /* WalkSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878123D8682500BA265B /* WalkSprite.swift */; };
 		DA24878423D86CE200BA265B /* WalkControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878323D86CE200BA265B /* WalkControl.swift */; };
-		DA24878623D870C400BA265B /* WalkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878523D870C400BA265B /* WalkState.swift */; };
+		DA24878623D870C400BA265B /* WalkControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878523D870C400BA265B /* WalkControlState.swift */; };
 		DA2F75A923D9A080001519C6 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F75A823D9A080001519C6 /* Scene.swift */; };
 		DA39DF2723D9DFB900A304F2 /* House_Bedroom.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA39DF2623D9DFB900A304F2 /* House_Bedroom.sks */; };
 		DA39DF2923D9E09D00A304F2 /* Schrodinger.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */; };
@@ -60,11 +65,16 @@
 
 /* Begin PBXFileReference section */
 		DA09802A23DEE9AC007CC607 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		DA09802C23DEFAEA007CC607 /* SKLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLabelNode.swift; sourceTree = "<group>"; };
+		DA09803623DF026C007CC607 /* Start.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
+		DA09803A23DF064E007CC607 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		DA09803D23DF068E007CC607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DA09803F23DF1E4C007CC607 /* Begin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Begin.swift; sourceTree = "<group>"; };
 		DA24877D23D857CC00BA265B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		DA24877F23D8646B00BA265B /* WalkPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkPlayer.swift; sourceTree = "<group>"; };
 		DA24878123D8682500BA265B /* WalkSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkSprite.swift; sourceTree = "<group>"; };
 		DA24878323D86CE200BA265B /* WalkControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkControl.swift; sourceTree = "<group>"; };
-		DA24878523D870C400BA265B /* WalkState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkState.swift; sourceTree = "<group>"; };
+		DA24878523D870C400BA265B /* WalkControlState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkControlState.swift; sourceTree = "<group>"; };
 		DA2F75A823D9A080001519C6 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		DA39DF2623D9DFB900A304F2 /* House_Bedroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Bedroom.sks; sourceTree = "<group>"; };
 		DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Schrodinger.xcassets; sourceTree = "<group>"; };
@@ -128,31 +138,100 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DA39DF2323D9DBAC00A304F2 /* Shared */ = {
+		DA09802E23DEFEAD007CC607 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				DA39DF2623D9DFB900A304F2 /* House_Bedroom.sks */,
 				DA4AF1C423DB17480041A35D /* House_Corridor.sks */,
-				DA39DF2C23D9E86A00A304F2 /* Tiles_House.sks */,
-				DAD7B94123DDBA7300C483EC /* Action.swift */,
-				DAD7B94523DDCE2400C483EC /* Dialog.swift */,
-				DAF522EF23D464A200BB0EDA /* Direction.swift */,
-				DA24877D23D857CC00BA265B /* Game.swift */,
 				DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */,
 				DA4AF1C623DB1A340041A35D /* House_Corridor.swift */,
-				DAD7B94723DDD4BB00C483EC /* Message.swift */,
 				DA2F75A823D9A080001519C6 /* Scene.swift */,
+				DA09803623DF026C007CC607 /* Start.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		DA09802F23DEFEF4007CC607 /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				DA39DF2C23D9E86A00A304F2 /* Tiles_House.sks */,
+			);
+			path = Tiles;
+			sourceTree = "<group>";
+		};
+		DA09803023DEFF0B007CC607 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				DA09803F23DF1E4C007CC607 /* Begin.swift */,
+				DAD7B94523DDCE2400C483EC /* Dialog.swift */,
 				DA4AF1D523DB2B470041A35D /* State.swift */,
 				DA4AF1D323DB2B1A0041A35D /* Wait.swift */,
 				DA4AF1D723DB2B9C0041A35D /* Walk.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		DA09803123DEFF6B007CC607 /* Component */ = {
+			isa = PBXGroup;
+			children = (
 				DA24878323D86CE200BA265B /* WalkControl.swift */,
-				DA24877F23D8646B00BA265B /* WalkPlayer.swift */,
+				DA24878523D870C400BA265B /* WalkControlState.swift */,
 				DA24878123D8682500BA265B /* WalkSprite.swift */,
-				DA24878523D870C400BA265B /* WalkState.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		DA09803223DEFF81007CC607 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				DA24877F23D8646B00BA265B /* WalkPlayer.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		DA09803323DEFFDA007CC607 /* Node */ = {
+			isa = PBXGroup;
+			children = (
+				DAD7B94723DDD4BB00C483EC /* Message.swift */,
+			);
+			path = Node;
+			sourceTree = "<group>";
+		};
+		DA09803423DEFFEA007CC607 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DA09802C23DEFAEA007CC607 /* SKLabelNode.swift */,
+				DA09803A23DF064E007CC607 /* String.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DA09803523DF0005007CC607 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				DAD7B94123DDBA7300C483EC /* Action.swift */,
+				DAF522EF23D464A200BB0EDA /* Direction.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		DA39DF2323D9DBAC00A304F2 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				DA24877D23D857CC00BA265B /* Game.swift */,
 				DA39DF2A23D9E0CC00A304F2 /* House.xcassets */,
 				DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */,
 				DAD7B94323DDCC3000C483EC /* UI.xcassets */,
+				DA09803123DEFF6B007CC607 /* Component */,
+				DA09803523DF0005007CC607 /* Control */,
+				DA09803223DEFF81007CC607 /* Entity */,
+				DA09803423DEFFEA007CC607 /* Extension */,
 				DAEB746823DEDAEF0021951B /* Font */,
+				DA09803C23DF068E007CC607 /* Localizable.strings */,
+				DA09803323DEFFDA007CC607 /* Node */,
+				DA09802E23DEFEAD007CC607 /* Scene */,
+				DA09803023DEFF0B007CC607 /* State */,
+				DA09802F23DEFEF4007CC607 /* Tiles */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -337,6 +416,7 @@
 				DA4AF1C523DB17480041A35D /* House_Corridor.sks in Resources */,
 				DA73DE3823D1B6AE00E48E24 /* Assets.xcassets in Resources */,
 				DAD7B94423DDCC3000C483EC /* UI.xcassets in Resources */,
+				DA09803E23DF068E007CC607 /* Localizable.strings in Resources */,
 				DA39DF2D23D9E86A00A304F2 /* Tiles_House.sks in Resources */,
 				DA39DF2923D9E09D00A304F2 /* Schrodinger.xcassets in Resources */,
 				DA39DF2B23D9E0CC00A304F2 /* House.xcassets in Resources */,
@@ -368,9 +448,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA73DE4723D1B9C400E48E24 /* App.swift in Sources */,
-				DA24878623D870C400BA265B /* WalkState.swift in Sources */,
+				DA24878623D870C400BA265B /* WalkControlState.swift in Sources */,
 				DA4AF1C723DB1A340041A35D /* House_Corridor.swift in Sources */,
 				DAD7B94823DDD4BB00C483EC /* Message.swift in Sources */,
+				DA09802D23DEFAEA007CC607 /* SKLabelNode.swift in Sources */,
+				DA09804023DF1E4C007CC607 /* Begin.swift in Sources */,
 				DA2F75A923D9A080001519C6 /* Scene.swift in Sources */,
 				DAD7B94623DDCE2400C483EC /* Dialog.swift in Sources */,
 				DA24878423D86CE200BA265B /* WalkControl.swift in Sources */,
@@ -378,11 +460,13 @@
 				DA4AF1D623DB2B470041A35D /* State.swift in Sources */,
 				DA24877E23D857CC00BA265B /* Game.swift in Sources */,
 				DA4AF1D423DB2B1A0041A35D /* Wait.swift in Sources */,
+				DA09803723DF026C007CC607 /* Start.swift in Sources */,
 				DAF522F023D464A200BB0EDA /* Direction.swift in Sources */,
 				DA5D13F223D25D47008E78D1 /* House_Bedroom.swift in Sources */,
 				DA4AF1D223DB1CED0041A35D /* View.swift in Sources */,
 				DA24878223D8682500BA265B /* WalkSprite.swift in Sources */,
 				DA24878023D8646B00BA265B /* WalkPlayer.swift in Sources */,
+				DA09803B23DF064E007CC607 /* String.swift in Sources */,
 				DA628FA523D1BF0500F240AC /* Window.swift in Sources */,
 				DA4AF1D823DB2B9C0041A35D /* Walk.swift in Sources */,
 			);
@@ -410,6 +494,17 @@
 			targetProxy = DAE28BD323DEE58A005B7BB7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DA09803C23DF068E007CC607 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA09803D23DF068E007CC607 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DA73DE0123D1B2F600E48E24 /* Debug */ = {

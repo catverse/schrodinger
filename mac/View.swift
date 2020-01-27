@@ -18,6 +18,6 @@ final class View: Game {
     }
     
     override func viewDidEndLiveResize() {
-        message.bound(bounds)
+//        message.bound(bounds)
     }
 }

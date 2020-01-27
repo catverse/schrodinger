@@ -16,7 +16,6 @@ final class Window: NSWindow {
         isReleasedWhenClosed = false
         isMovableByWindowBackground = false
         contentView = View()
-        (contentView as! Game).scene("House_Bedroom")
     }
     
     override func close() {

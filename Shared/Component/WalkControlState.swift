@@ -1,6 +1,6 @@
 import GameplayKit
 
-class WalkState: GKState {
+class WalkControlState: GKState {
     fileprivate var compare: Direction! { nil }
     fileprivate var texture: String! { nil }
     fileprivate var next: AnyClass! { nil }
@@ -37,25 +37,25 @@ class WalkState: GKState {
     }
 }
 
-class Front: WalkState {
+class Front: WalkControlState {
     override var compare: Direction { .down }
     override var fallback: AnyClass { Front0.self }
     override var delta: vector_int2! { .init(0, -1) }
 }
 
-class Back: WalkState {
+class Back: WalkControlState {
     override var compare: Direction { .up }
     override var fallback: AnyClass { Back0.self }
     override var delta: vector_int2! { .init(0, 1) }
 }
 
-class Left: WalkState {
+class Left: WalkControlState {
     override var compare: Direction { .left }
     override var fallback: AnyClass { Left0.self }
     override var delta: vector_int2! { .init(-1, 0) }
 }
 
-class Right: WalkState {
+class Right: WalkControlState {
     override var compare: Direction { .right }
     override var fallback: AnyClass { Right0.self }
     override var delta: vector_int2! { .init(1, 0) }

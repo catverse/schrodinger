@@ -24,7 +24,7 @@ final class Message: SKNode {
         addChild(title)
         self.title = title
         
-        let label = SKLabelNode(fontNamed: "PressStart2P-Regular")
+        let label = SKLabelNode(fontNamed: SKLabelNode.font)
         label.zPosition = 2
         label.fontColor = .white
         label.fontSize = 16
@@ -35,7 +35,7 @@ final class Message: SKNode {
         addChild(label)
         self.label = label
         
-        let left = SKLabelNode(fontNamed: "PressStart2P-Regular")
+        let left = SKLabelNode(fontNamed: SKLabelNode.font)
         left.zPosition = 3
         left.fontColor = .black
         left.fontSize = 16
@@ -44,7 +44,7 @@ final class Message: SKNode {
         addChild(left)
         self.left = left
         
-        let right = SKLabelNode(fontNamed: "PressStart2P-Regular")
+        let right = SKLabelNode(fontNamed: SKLabelNode.font)
         right.zPosition = 3
         right.fontColor = .black
         right.fontSize = 16

@@ -22,7 +22,7 @@ final class WalkControl: GKComponent {
     }
     
     func control(_ direction: Direction, _ action: Action) {
-        let pointing = (state.currentState as! WalkState).pointing(entity!.component(ofType: WalkSprite.self)!.position)
+        let pointing = (state.currentState as! WalkControlState).pointing(entity!.component(ofType: WalkSprite.self)!.position)
         if action == .ok {
         if let item = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).items[pointing] {
                 print(item)
@@ -30,7 +30,7 @@ final class WalkControl: GKComponent {
                 game.message.isHidden = false
             }
         }
-        if (state.currentState as! WalkState).move(direction) {
+        if (state.currentState as! WalkControlState).move(direction) {
             if let door = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).doors[pointing] {
                 game.scene(door)
             } else if (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).grid.node(atGridPosition: pointing) != nil {

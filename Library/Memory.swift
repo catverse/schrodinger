@@ -31,7 +31,7 @@ public final class Memory {
                     entries.append(entry)
                 }
             }
-            self.entries.send(entries)
+            self.entries.send(entries.sorted { $0.saved > $1.saved })
         }
     }
     
