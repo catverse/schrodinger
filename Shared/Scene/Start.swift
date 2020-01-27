@@ -5,7 +5,7 @@ final class Start: SKScene {
     private weak var press: SKLabelNode!
     private weak var new: SKLabelNode!
     private weak var cont: SKLabelNode!
-    private let blink = SKAction.repeatForever(.sequence([.fadeIn(withDuration: 0.5), .wait(forDuration: 1.5), .fadeOut(withDuration: 0.5)]))
+    private let blink = SKAction.repeatForever(.sequence([.fadeIn(withDuration: 0.5), .wait(forDuration: 1), .fadeOut(withDuration: 0.5)]))
     
     required init?(coder: NSCoder) { nil }
     override init() {
@@ -16,7 +16,7 @@ final class Start: SKScene {
         
         let cat = SKSpriteNode(imageNamed: "menu_cat")
         cat.alpha = 0
-        cat.position.x = -105
+        cat.position.x = -100
         addChild(cat)
         self.cat = cat
         
@@ -33,8 +33,8 @@ final class Start: SKScene {
         new.alpha = 0
         new.fontSize = 16
         new.text = .key("Start.new")
-        new.verticalAlignmentMode = .top
-        new.position.y = -50
+        new.verticalAlignmentMode = .center
+        new.position.y = -100
         addChild(new)
         self.new = new
         
@@ -42,8 +42,8 @@ final class Start: SKScene {
         cont.alpha = 0
         cont.fontSize = 16
         cont.text = .key("Start.continue")
-        cont.verticalAlignmentMode = .top
-        cont.position.y = -100
+        cont.verticalAlignmentMode = .center
+        cont.position.y = -150
         addChild(cont)
         self.cont = cont
     }
@@ -62,7 +62,7 @@ final class Start: SKScene {
         
         new.fontColor = .white
         cont.fontColor = .init(white: 1, alpha: 0.5)
-        cat.position.y = new.position.y
+        cat.position.y = new.position.y + 3
         new.run(blink)
         press.run(.fadeOut(withDuration: 0.5))
         cont.run(.fadeIn(withDuration: 0.5))
@@ -74,7 +74,7 @@ final class Start: SKScene {
         
         new.fontColor = .init(white: 1, alpha: 0.5)
         cont.fontColor = .white
-        cat.position.y = cont.position.y
+        cat.position.y = cont.position.y + 3
         cont.run(blink)
         press.run(.fadeOut(withDuration: 0.5))
         new.run(.fadeIn(withDuration: 0.5))

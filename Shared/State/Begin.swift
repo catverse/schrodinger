@@ -10,17 +10,20 @@ final class Begin: State {
     }
     
     override func control() {
-        switch action {
+        switch action.0 {
         case .ok: (state.currentState as! BeginState).next()
         case .cancel: (state.currentState as! BeginState).previous()
         default: break
         }
         
-        switch direction {
+        switch direction.0 {
         case .up: (state.currentState as! BeginState).up()
         case .down: (state.currentState as! BeginState).down()
         default: break
         }
+        
+        action.0 = .none
+        direction.0 = .none
     }
 }
 
