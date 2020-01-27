@@ -34,6 +34,7 @@
 		DAD7B94423DDCC3000C483EC /* UI.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD7B94323DDCC3000C483EC /* UI.xcassets */; };
 		DAD7B94623DDCE2400C483EC /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94523DDCE2400C483EC /* Dialog.swift */; };
 		DAD7B94823DDD4BB00C483EC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94723DDD4BB00C483EC /* Message.swift */; };
+		DAEB746A23DEDAEF0021951B /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAEB746923DEDAEF0021951B /* PressStart2P-Regular.ttf */; };
 		DAF522F023D464A200BB0EDA /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF522EF23D464A200BB0EDA /* Direction.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		DAD7B94323DDCC3000C483EC /* UI.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UI.xcassets; sourceTree = "<group>"; };
 		DAD7B94523DDCE2400C483EC /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		DAD7B94723DDD4BB00C483EC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		DAEB746923DEDAEF0021951B /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
 		DAF522EF23D464A200BB0EDA /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				DA39DF2A23D9E0CC00A304F2 /* House.xcassets */,
 				DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */,
 				DAD7B94323DDCC3000C483EC /* UI.xcassets */,
+				DAEB746823DEDAEF0021951B /* Font */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -174,6 +177,14 @@
 				DA73DE4423D1B8BC00E48E24 /* GameKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DAEB746823DEDAEF0021951B /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				DAEB746923DEDAEF0021951B /* PressStart2P-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEB746A23DEDAEF0021951B /* PressStart2P-Regular.ttf in Resources */,
 				DA4AF1C523DB17480041A35D /* House_Corridor.sks in Resources */,
 				DA73DE3823D1B6AE00E48E24 /* Assets.xcassets in Resources */,
 				DAD7B94423DDCC3000C483EC /* UI.xcassets in Resources */,
