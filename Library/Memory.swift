@@ -42,6 +42,13 @@ public final class Memory {
         }
     }
     
+    public func take(chest location: Location, index: Int, item: Item) -> [[String]] {
+        guard game.value!.taken[location]?.contains(index) != true else { return Dialog.chest(nil) }
+        game.value!.taken[location] = [index] + (game.value!.taken[location] ?? [])
+        game.value!.inventory[item] = 1 + (game.value!.inventory[item] ?? 0)
+        return Dialog.chest(item)
+    }
+    
     func prepare() {
         var root = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         var resources = URLResourceValues()

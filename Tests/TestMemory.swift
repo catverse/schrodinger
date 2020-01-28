@@ -40,4 +40,19 @@ final class TestMemory: XCTestCase {
         memory.new()
         waitForExpectations(timeout: 1)
     }
+    
+    func testTakeChest() {
+        memory.game.value = .init()
+        _ = memory.take(chest: .House_Bedroom, index: 0, item: .Potion)
+        XCTAssertEqual([0], memory.game.value!.taken[.House_Bedroom])
+        XCTAssertEqual(1, memory.game.value!.inventory[.Potion])
+    }
+    
+    func testTakeChestTaken() {
+        memory.game.value = .init()
+        memory.game.value!.taken[.House_Bedroom] = [0]
+        _ = memory.take(chest: .House_Bedroom, index: 0, item: .Potion)
+        XCTAssertEqual(1, memory.game.value!.taken[.House_Bedroom]!.count)
+        XCTAssertNil(memory.game.value!.inventory[.Potion])
+    }
 }

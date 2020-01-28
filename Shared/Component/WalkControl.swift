@@ -22,13 +22,13 @@ final class WalkControl: GKComponent {
     }
     
     func control(_ direction: Direction, _ action: Action) {
-        let pointing = (state.currentState as! WalkState).pointing(entity!.component(ofType: WalkSprite.self)!.position)
+        let pointing = (state.currentState as! _State).pointing(entity!.component(ofType: WalkSprite.self)!.position)
         if action == .ok {
             if let item = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).items[pointing] {
-                game.state.enter(Dialog.self)
+                game.state.enter(DialogState.self)
             }
         }
-        if (state.currentState as! WalkState).move(direction) {
+        if (state.currentState as! _State).move(direction) {
             if let door = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).doors[pointing] {
                 game.scene(door)
             } else if (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).grid.node(atGridPosition: pointing) != nil {
@@ -38,7 +38,7 @@ final class WalkControl: GKComponent {
     }
 }
 
-private class WalkState: GKState {
+private class _State: GKState {
     var compare: Direction! { nil }
     var texture: String! { nil }
     var next: AnyClass! { nil }
@@ -75,25 +75,25 @@ private class WalkState: GKState {
     }
 }
 
-private class Front: WalkState {
+private class Front: _State {
     override var compare: Direction { .down }
     override var fallback: AnyClass { Front0.self }
     override var delta: vector_int2! { .init(0, -1) }
 }
 
-private class Back: WalkState {
+private class Back: _State {
     override var compare: Direction { .up }
     override var fallback: AnyClass { Back0.self }
     override var delta: vector_int2! { .init(0, 1) }
 }
 
-private class Left: WalkState {
+private class Left: _State {
     override var compare: Direction { .left }
     override var fallback: AnyClass { Left0.self }
     override var delta: vector_int2! { .init(-1, 0) }
 }
 
-private class Right: WalkState {
+private class Right: _State {
     override var compare: Direction { .right }
     override var fallback: AnyClass { Right0.self }
     override var delta: vector_int2! { .init(1, 0) }

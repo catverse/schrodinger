@@ -17,7 +17,7 @@ class Game: SKView, SKSceneDelegate {
         showsFPS = true
         showsNodeCount = true
         showsDrawCount = true
-        state = .init(states: [Begin(self), Wait(self), Walk(self), Dialog(self)])
+        state = .init(states: [StartState(self), WaitState(self), WalkState(self), DialogState(self)])
         sub = memory.game.receive(on: DispatchQueue.main).sink {
             if let game = $0 {
                 if game.location.rawValue != self.scene?.name {
@@ -30,7 +30,7 @@ class Game: SKView, SKSceneDelegate {
     }
     
     func scene(_ location: Location) {
-        state.enter(Wait.self)
+        state.enter(WaitState.self)
         time = 0
         player = WalkPlayer(self)
         let scene = GKScene(fileNamed: location.rawValue)!.rootNode as! Scene
@@ -45,7 +45,7 @@ class Game: SKView, SKSceneDelegate {
         
         presentScene(scene, transition: .fade(withDuration: 2))
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.state.enter(Walk.self)
+            self.state.enter(WalkState.self)
         }
     }
     
@@ -55,11 +55,11 @@ class Game: SKView, SKSceneDelegate {
     }
     
     private func start() {
-        presentScene(Start())
+        presentScene(StartScene())
         let camera = SKCameraNode()
         scene!.addChild(camera)
         scene!.camera = camera
         scene!.delegate = self
-        state.enter(Begin.self)
+        state.enter(StartState.self)
     }
 }

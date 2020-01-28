@@ -1,6 +1,6 @@
 import SpriteKit
 
-final class Message: SKNode {
+final class DialogNode: SKNode {
     private weak var title: SKSpriteNode!
     private weak var text: SKSpriteNode!
     private weak var label: SKLabelNode!

@@ -1,7 +1,7 @@
 import Library
 import GameplayKit
 
-final class Start: SKScene {
+final class StartScene: SKScene {
     private weak var cat: SKSpriteNode!
     private weak var press: SKLabelNode!
     private weak var new: SKLabelNode!

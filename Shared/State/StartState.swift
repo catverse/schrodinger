@@ -2,25 +2,25 @@ import Library
 import GameplayKit
 import Combine
 
-final class Begin: State {
+final class StartState: State {
     private var state: GKStateMachine!
     
     override func didEnter(from: GKState?) {
-        let start = game.scene as! Start
+        let start = game.scene as! StartScene
         state = GKStateMachine(states: [Press(start), New(start), Continue(start), List(start)])
         state.enter(Press.self)
     }
     
     override func control() {
         switch action.0 {
-        case .ok: (state.currentState as! BeginState).next()
-        case .cancel: (state.currentState as! BeginState).previous()
+        case .ok: (state.currentState as! _State).next()
+        case .cancel: (state.currentState as! _State).previous()
         default: break
         }
         
         switch direction.0 {
-        case .up: (state.currentState as! BeginState).up()
-        case .down: (state.currentState as! BeginState).down()
+        case .up: (state.currentState as! _State).up()
+        case .down: (state.currentState as! _State).down()
         default: break
         }
         
@@ -29,10 +29,10 @@ final class Begin: State {
     }
 }
 
-private class BeginState: GKState {
-    fileprivate weak var start: Start!
+private class _State: GKState {
+    fileprivate weak var start: StartScene!
     
-    init(_ start: Start) {
+    init(_ start: StartScene) {
         super.init()
         self.start = start
     }
@@ -54,7 +54,7 @@ private class BeginState: GKState {
     }
 }
 
-private final class Press: BeginState {
+private final class Press: _State {
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
         start.showPress()
@@ -65,7 +65,7 @@ private final class Press: BeginState {
     }
 }
 
-private final class New: BeginState {
+private final class New: _State {
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
         start.showNew()
@@ -88,7 +88,7 @@ private final class New: BeginState {
     }
 }
 
-private final class Continue: BeginState {
+private final class Continue: _State {
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
         start.showCont()
@@ -111,7 +111,7 @@ private final class Continue: BeginState {
     }
 }
 
-private final class List: BeginState {
+private final class List: _State {
     private var entries = [Entry]()
     private var sub: AnyCancellable?
     private var index = Int()

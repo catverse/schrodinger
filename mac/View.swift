@@ -18,6 +18,6 @@ final class View: Game {
     }
     
     override func viewDidEndLiveResize() {
-        scene!.camera!.children.compactMap { $0 as? Message }.first?.bound(bounds)
+        scene!.camera!.children.compactMap { $0 as? DialogNode }.first?.bound(bounds)
     }
 }
