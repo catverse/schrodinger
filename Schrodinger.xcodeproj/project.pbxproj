@@ -18,7 +18,6 @@
 		DA24878023D8646B00BA265B /* WalkPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24877F23D8646B00BA265B /* WalkPlayer.swift */; };
 		DA24878223D8682500BA265B /* WalkSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878123D8682500BA265B /* WalkSprite.swift */; };
 		DA24878423D86CE200BA265B /* WalkControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878323D86CE200BA265B /* WalkControl.swift */; };
-		DA24878623D870C400BA265B /* WalkControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878523D870C400BA265B /* WalkControlState.swift */; };
 		DA2F75A923D9A080001519C6 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F75A823D9A080001519C6 /* Scene.swift */; };
 		DA39DF2723D9DFB900A304F2 /* House_Bedroom.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA39DF2623D9DFB900A304F2 /* House_Bedroom.sks */; };
 		DA39DF2923D9E09D00A304F2 /* Schrodinger.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */; };
@@ -76,7 +75,6 @@
 		DA24877F23D8646B00BA265B /* WalkPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkPlayer.swift; sourceTree = "<group>"; };
 		DA24878123D8682500BA265B /* WalkSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkSprite.swift; sourceTree = "<group>"; };
 		DA24878323D86CE200BA265B /* WalkControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkControl.swift; sourceTree = "<group>"; };
-		DA24878523D870C400BA265B /* WalkControlState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkControlState.swift; sourceTree = "<group>"; };
 		DA2F75A823D9A080001519C6 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		DA39DF2623D9DFB900A304F2 /* House_Bedroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Bedroom.sks; sourceTree = "<group>"; };
 		DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Schrodinger.xcassets; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				DA24878323D86CE200BA265B /* WalkControl.swift */,
-				DA24878523D870C400BA265B /* WalkControlState.swift */,
 				DA24878123D8682500BA265B /* WalkSprite.swift */,
 			);
 			path = Component;
@@ -452,7 +449,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA73DE4723D1B9C400E48E24 /* App.swift in Sources */,
-				DA24878623D870C400BA265B /* WalkControlState.swift in Sources */,
 				DA4AF1C723DB1A340041A35D /* House_Corridor.swift in Sources */,
 				DAD7B94823DDD4BB00C483EC /* Message.swift in Sources */,
 				DA09802D23DEFAEA007CC607 /* SKLabelNode.swift in Sources */,
