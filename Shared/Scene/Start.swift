@@ -132,7 +132,7 @@ final class Start: SKScene {
                 location.text = .key("Location.\($0.1.location.rawValue)")
                 location.verticalAlignmentMode = .center
                 location.horizontalAlignmentMode = .left
-                location.position = .init(x: -50, y: ($0.0 * -80) - 80)
+                location.position = .init(x: -45, y: ($0.0 * -80) - 70)
                 list.addChild(location)
                 
                 let time = SKLabelNode(fontNamed: SKLabelNode.font)
@@ -141,10 +141,18 @@ final class Start: SKScene {
                 time.text = formatter.string(from: $0.1.time)
                 time.verticalAlignmentMode = .center
                 time.horizontalAlignmentMode = .left
-                time.position = .init(x: -50, y: ($0.0 * -80) - 100)
+                time.position = .init(x: -45, y: ($0.0 * -80) - 90)
                 list.addChild(time)
             }
         }
+    }
+    
+    func scrollDown() {
+        list.run(.moveBy(x: 0, y: 80, duration: 0.35))
+    }
+    
+    func scrollUp() {
+        list.run(.moveBy(x: 0, y: -80, duration: 0.35))
     }
     
     private func remove() {

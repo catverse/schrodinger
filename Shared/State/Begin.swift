@@ -112,7 +112,7 @@ private final class Continue: BeginState {
 }
 
 private final class List: BeginState {
-    private var entries = [String]()
+    private var entries = [Entry]()
     private var sub: AnyCancellable?
     private var index = Int()
     
@@ -122,7 +122,7 @@ private final class List: BeginState {
         index = -1
         sub = memory.entries.receive(on: DispatchQueue.main).sink { [weak self] in
             self?.start.list($0)
-            self?.entries = $0.map { $0.id }
+            self?.entries = $0
         }
         memory.load()
     }
@@ -135,7 +135,7 @@ private final class List: BeginState {
         if index == -1 {
             stateMachine!.enter(Continue.self)
         } else {
-            
+            memory.game.value = entries[index]
         }
     }
     
@@ -144,10 +144,16 @@ private final class List: BeginState {
     }
     
     override func up() {
-        
+        if !entries.isEmpty && index > -1 {
+            index -= 1
+            start.scrollUp()
+        }
     }
     
     override func down() {
-        
+        if index < entries.count - 1 {
+            index += 1
+            start.scrollDown()
+        }
     }
 }
