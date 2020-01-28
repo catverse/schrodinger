@@ -18,6 +18,6 @@ final class View: Game {
     }
     
     override func viewDidEndLiveResize() {
-//        message.bound(bounds)
+        scene!.camera!.children.compactMap { $0 as? Message }.first?.bound(bounds)
     }
 }

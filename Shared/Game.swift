@@ -7,7 +7,6 @@ let memory = Memory()
 class Game: SKView, SKSceneDelegate {
     private(set) var player: GKEntity!
     private(set) var state: GKStateMachine!
-    private(set) weak var message: Message!
     private var sub: AnyCancellable!
     private var time = TimeInterval()
     
@@ -44,11 +43,6 @@ class Game: SKView, SKSceneDelegate {
         scene.addChild(sprite.node)
         sprite.move(scene.start(self.scene))
         
-        let message = Message()
-        message.bound(bounds)
-        camera.addChild(message)
-        self.message = message
-        
         presentScene(scene, transition: .fade(withDuration: 2))
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.state.enter(Walk.self)
@@ -62,6 +56,9 @@ class Game: SKView, SKSceneDelegate {
     
     private func start() {
         presentScene(Start())
+        let camera = SKCameraNode()
+        scene!.addChild(camera)
+        scene!.camera = camera
         scene!.delegate = self
         state.enter(Begin.self)
     }

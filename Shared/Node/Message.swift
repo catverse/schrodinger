@@ -8,9 +8,9 @@ final class Message: SKNode {
     private weak var right: SKLabelNode!
     
     required init?(coder aDecoder: NSCoder) { nil }
-    override init() {
+    init(_ bounds: CGRect) {
         super.init()
-        isHidden = true
+        alpha = 0
         zPosition = 100
         
         let text = SKSpriteNode(imageNamed: "dialog_text")
@@ -52,9 +52,13 @@ final class Message: SKNode {
         right.isHidden = true
         addChild(right)
         self.right = right
+        
+        bound(bounds)
+        run(.fadeIn(withDuration: 0.4))
     }
     
     func bound(_ bounds: CGRect) {
+        print(bounds)
         text.position.y = (bounds.height - 100) / -2
         title.position.y = text.position.y + 73
         label.position.y = text.position.y

@@ -4,12 +4,17 @@ import GameplayKit
 protocol Scene: SKScene {
     var grid: GKGridGraph<GKGridGraphNode> { get }
     var doors: [vector_int2 : Location] { get }
-    var items: [vector_int2 : String] { get }
+    var items: [vector_int2 : Item] { get }
+    var chests: [vector_int2 : Item] { get }
     
     func start(_ from: SKScene?) -> vector_int2
 }
 
 extension Scene {
+    var doors: [vector_int2 : Location] { [:] }
+    var items: [vector_int2 : Item] { [:] }
+    var chests: [vector_int2 : Item] { [:] }
+    
     func configure() {
         let floor = childNode(withName: "Floor") as! SKTileMapNode
         let items = childNode(withName: "Items") as! SKTileMapNode
