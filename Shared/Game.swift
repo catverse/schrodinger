@@ -1,5 +1,6 @@
 import Library
 import GameplayKit
+import Combine
 
 let memory = Memory()
 
@@ -7,6 +8,7 @@ class Game: SKView, SKSceneDelegate {
     private(set) var player: GKEntity!
     private(set) var state: GKStateMachine!
     private(set) weak var message: Message!
+    private var sub: AnyCancellable!
     private var time = TimeInterval()
     
     required init?(coder: NSCoder) { nil }
@@ -17,16 +19,22 @@ class Game: SKView, SKSceneDelegate {
         showsNodeCount = true
         showsDrawCount = true
         state = .init(states: [Begin(self), Wait(self), Walk(self), Dialog(self)])
-        presentScene(Start())
-        scene!.delegate = self
-        state.enter(Begin.self)
+        sub = memory.game.receive(on: DispatchQueue.main).sink {
+            if let game = $0 {
+                if game.location.rawValue != self.scene?.name {
+                    self.scene(game.location)
+                }
+            } else {
+                self.start()
+            }
+        }
     }
     
-    func scene(_ name: String) {
+    func scene(_ location: Location) {
         state.enter(Wait.self)
         time = 0
         player = WalkPlayer(self)
-        let scene = GKScene(fileNamed: name)!.rootNode as! Scene
+        let scene = GKScene(fileNamed: location.rawValue)!.rootNode as! Scene
         let sprite = player.component(ofType: WalkSprite.self)!
         let camera = SKCameraNode()
         camera.constraints = [.distance(.init(upperLimit: 100), to: sprite.node)]
@@ -50,5 +58,11 @@ class Game: SKView, SKSceneDelegate {
     func update(_ time: TimeInterval, for: SKScene) {
         state.update(deltaTime: self.time == 0 ? 0 : time - self.time)
         self.time = time
+    }
+    
+    private func start() {
+        presentScene(Start())
+        scene!.delegate = self
+        state.enter(Begin.self)
     }
 }

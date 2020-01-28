@@ -9,6 +9,7 @@ final class Start: SKScene {
     private weak var back: SKLabelNode!
     private weak var list: SKNode!
     private let blink = SKAction.repeatForever(.sequence([.fadeIn(withDuration: 0.5), .wait(forDuration: 1), .fadeOut(withDuration: 0.5)]))
+    private let formatter = DateComponentsFormatter()
     
     required init?(coder: NSCoder) { nil }
     override init() {
@@ -16,6 +17,8 @@ final class Start: SKScene {
         backgroundColor = .black
         anchorPoint = .init(x: 0.5, y: 0.5)
         scaleMode = .resizeFill
+        formatter.unitsStyle = .full
+        formatter.allowedUnits = [.day, .hour, .minute]
         
         let cat = SKSpriteNode(imageNamed: "menu_cat")
         cat.alpha = 0
@@ -125,10 +128,21 @@ final class Start: SKScene {
             entries.enumerated().forEach {
                 let location = SKLabelNode(fontNamed: SKLabelNode.font)
                 location.fontColor = .white
-                location.fontSize = 16
+                location.fontSize = 12
                 location.text = .key("Location.\($0.1.location.rawValue)")
                 location.verticalAlignmentMode = .center
+                location.horizontalAlignmentMode = .left
+                location.position = .init(x: -50, y: ($0.0 * -80) - 80)
                 list.addChild(location)
+                
+                let time = SKLabelNode(fontNamed: SKLabelNode.font)
+                time.fontColor = .white
+                time.fontSize = 12
+                time.text = formatter.string(from: $0.1.time)
+                time.verticalAlignmentMode = .center
+                time.horizontalAlignmentMode = .left
+                time.position = .init(x: -50, y: ($0.0 * -80) - 100)
+                list.addChild(time)
             }
         }
     }

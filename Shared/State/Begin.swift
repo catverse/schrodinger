@@ -71,6 +71,10 @@ private final class New: BeginState {
         start.showNew()
     }
     
+    override func next() {
+        memory.new()
+    }
+    
     override func previous() {
         stateMachine!.enter(Press.self)
     }

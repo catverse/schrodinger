@@ -11,13 +11,20 @@ public final class Memory {
 
     }
     
+    public func new() {
+        queue.async {
+            self.game.value = .init()
+            self.save()
+        }
+    }
+    
     public func save() {
         queue.async {
-            if self.game.value != nil {
+            if var game = self.game.value {
                 self.prepare()
-                self.game.value!.saved = Date().timeIntervalSince1970
-                try! (JSONEncoder().encode(self.game.value!) as NSData).compressed(using: .lzfse)
-                    .write(to: self.url.appendingPathComponent(self.game.value!.id), atomically: true)
+                game.saved = Date().timeIntervalSince1970
+                try! (JSONEncoder().encode(game) as NSData).compressed(using: .lzfse)
+                    .write(to: self.url.appendingPathComponent(game.id), atomically: true)
                 self.load()
             }
         }
