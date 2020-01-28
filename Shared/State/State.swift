@@ -3,8 +3,8 @@ import GameplayKit
 class State: GKState {
     var direction = (Direction.none, Direction.none)
     var action = (Action.none, Action.none)
-    var timer = TimeInterval()
     private(set) weak var game: Game!
+    private var timer = TimeInterval()
     
     override func didEnter(from: GKState?) {
         timer = 0

@@ -17,7 +17,6 @@ final class TestDialog: XCTestCase {
     }
     
     func testChestPicked() {
-        memory.game.value!.taken[.House_Bedroom] = [0]
         let dialog = Dialog.chest(nil)
         XCTAssertEqual("Dialog.Chest.Found", dialog[0][0])
         XCTAssertEqual("Dialog.Chest.Empty", dialog[1][0])

@@ -7,7 +7,7 @@ let memory = Memory()
 class Game: SKView, SKSceneDelegate {
     private(set) var player: GKEntity!
     private(set) var state: GKStateMachine!
-    private var sub: AnyCancellable!
+    private var subs = Set<AnyCancellable>()
     private var time = TimeInterval()
     
     required init?(coder: NSCoder) { nil }
@@ -18,7 +18,7 @@ class Game: SKView, SKSceneDelegate {
         showsNodeCount = true
         showsDrawCount = true
         state = .init(states: [StartState(self), WaitState(self), WalkState(self), DialogState(self)])
-        sub = memory.game.receive(on: DispatchQueue.main).sink {
+        memory.game.receive(on: DispatchQueue.main).sink {
             if let game = $0 {
                 if game.location.rawValue != self.scene?.name {
                     self.scene(game.location)
@@ -26,7 +26,7 @@ class Game: SKView, SKSceneDelegate {
             } else {
                 self.start()
             }
-        }
+        }.store(in: &subs)
     }
     
     func scene(_ location: Location) {

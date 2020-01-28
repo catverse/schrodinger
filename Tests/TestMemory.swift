@@ -43,15 +43,15 @@ final class TestMemory: XCTestCase {
     
     func testTakeChest() {
         memory.game.value = .init()
-        _ = memory.take(chest: .House_Bedroom, index: 0, item: .Potion)
-        XCTAssertEqual([0], memory.game.value!.taken[.House_Bedroom])
+        _ = memory.take(chest: .init(0, 0), item: .Potion)
+        XCTAssertEqual([.init(0, 0)], memory.game.value!.taken[.House_Bedroom])
         XCTAssertEqual(1, memory.game.value!.inventory[.Potion])
     }
     
     func testTakeChestTaken() {
         memory.game.value = .init()
-        memory.game.value!.taken[.House_Bedroom] = [0]
-        _ = memory.take(chest: .House_Bedroom, index: 0, item: .Potion)
+        memory.game.value!.taken[.House_Bedroom] = [.init(0, 0)]
+        _ = memory.take(chest: .init(0, 0), item: .Potion)
         XCTAssertEqual(1, memory.game.value!.taken[.House_Bedroom]!.count)
         XCTAssertNil(memory.game.value!.inventory[.Potion])
     }

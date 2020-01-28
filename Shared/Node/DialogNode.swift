@@ -1,9 +1,9 @@
 import SpriteKit
 
 final class DialogNode: SKNode {
+    private(set) weak var label: SKLabelNode!
     private weak var title: SKSpriteNode!
     private weak var text: SKSpriteNode!
-    private weak var label: SKLabelNode!
     private weak var left: SKLabelNode!
     private weak var right: SKLabelNode!
     
@@ -31,7 +31,6 @@ final class DialogNode: SKNode {
         label.verticalAlignmentMode = .center
         label.numberOfLines = 3
         label.horizontalAlignmentMode = .left
-        label.isHidden = true
         addChild(label)
         self.label = label
         
@@ -40,7 +39,6 @@ final class DialogNode: SKNode {
         left.fontColor = .black
         left.fontSize = 16
         left.horizontalAlignmentMode = .left
-        left.isHidden = true
         addChild(left)
         self.left = left
         
@@ -49,7 +47,6 @@ final class DialogNode: SKNode {
         right.fontColor = .black
         right.fontSize = 16
         right.horizontalAlignmentMode = .right
-        right.isHidden = true
         addChild(right)
         self.right = right
         
@@ -58,7 +55,6 @@ final class DialogNode: SKNode {
     }
     
     func bound(_ bounds: CGRect) {
-        print(bounds)
         text.position.y = (bounds.height - 100) / -2
         title.position.y = text.position.y + 73
         label.position.y = text.position.y

@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import simd
 
 public final class Memory {
     public let game = CurrentValueSubject<Entry?, Never>(nil)
@@ -42,9 +43,9 @@ public final class Memory {
         }
     }
     
-    public func take(chest location: Location, index: Int, item: Item) -> [[String]] {
-        guard game.value!.taken[location]?.contains(index) != true else { return Dialog.chest(nil) }
-        game.value!.taken[location] = [index] + (game.value!.taken[location] ?? [])
+    public func take(chest: vector_int2, item: Item) -> [[String]] {
+        guard game.value!.taken[game.value!.location]?.contains(chest) != true else { return Dialog.chest(nil) }
+        game.value!.taken[game.value!.location] = [chest] + (game.value!.taken[game.value!.location] ?? [])
         game.value!.inventory[item] = 1 + (game.value!.inventory[item] ?? 0)
         return Dialog.chest(item)
     }

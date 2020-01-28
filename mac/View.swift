@@ -1,6 +1,8 @@
 import AppKit
 
 final class View: Game {
+    override var mouseDownCanMoveWindow: Bool { true }
+    
     override func keyDown(with: NSEvent) {
         if let direction = Direction(rawValue: with.keyCode) {
             (state.currentState as! State).direction = (direction, direction)

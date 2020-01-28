@@ -24,7 +24,8 @@ final class WalkControl: GKComponent {
     func control(_ direction: Direction, _ action: Action) {
         let pointing = (state.currentState as! _State).pointing(entity!.component(ofType: WalkSprite.self)!.position)
         if action == .ok {
-            if let item = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).items[pointing] {
+            if let item = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).chests[pointing] {
+                game.state.state(forClass: DialogState.self)!.dialog(memory.take(chest: pointing, item: item))
                 game.state.enter(DialogState.self)
             }
         }
