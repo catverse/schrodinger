@@ -1,4 +1,6 @@
+import Library
 import GameplayKit
+import Combine
 
 final class Begin: State {
     private var state: GKStateMachine!
@@ -88,6 +90,10 @@ private final class Continue: BeginState {
         start.showCont()
     }
     
+    override func next() {
+        stateMachine!.enter(List.self)
+    }
+    
     override func previous() {
         stateMachine!.enter(Press.self)
     }
@@ -102,5 +108,42 @@ private final class Continue: BeginState {
 }
 
 private final class List: BeginState {
+    private var entries = [String]()
+    private var sub: AnyCancellable?
+    private var index = Int()
     
+    override func didEnter(from: GKState?) {
+        super.didEnter(from: from)
+        start.showList()
+        index = -1
+        sub = memory.entries.receive(on: DispatchQueue.main).sink { [weak self] in
+            self?.start.list($0)
+            self?.entries = $0.map { $0.id }
+        }
+        memory.load()
+    }
+    
+    override func willExit(to: GKState) {
+        sub?.cancel()
+    }
+    
+    override func next() {
+        if index == -1 {
+            stateMachine!.enter(Continue.self)
+        } else {
+            
+        }
+    }
+    
+    override func previous() {
+        stateMachine!.enter(Continue.self)
+    }
+    
+    override func up() {
+        
+    }
+    
+    override func down() {
+        
+    }
 }

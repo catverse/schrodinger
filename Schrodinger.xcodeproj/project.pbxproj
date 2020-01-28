@@ -13,6 +13,7 @@
 		DA09803B23DF064E007CC607 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA09803A23DF064E007CC607 /* String.swift */; };
 		DA09803E23DF068E007CC607 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA09803C23DF068E007CC607 /* Localizable.strings */; };
 		DA09804023DF1E4C007CC607 /* Begin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA09803F23DF1E4C007CC607 /* Begin.swift */; };
+		DA0B01C123E03E2600D2875E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0B01BF23E03D3D00D2875E /* Location.swift */; };
 		DA24877E23D857CC00BA265B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24877D23D857CC00BA265B /* Game.swift */; };
 		DA24878023D8646B00BA265B /* WalkPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24877F23D8646B00BA265B /* WalkPlayer.swift */; };
 		DA24878223D8682500BA265B /* WalkSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878123D8682500BA265B /* WalkSprite.swift */; };
@@ -70,6 +71,7 @@
 		DA09803A23DF064E007CC607 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DA09803D23DF068E007CC607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DA09803F23DF1E4C007CC607 /* Begin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Begin.swift; sourceTree = "<group>"; };
+		DA0B01BF23E03D3D00D2875E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		DA24877D23D857CC00BA265B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		DA24877F23D8646B00BA265B /* WalkPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkPlayer.swift; sourceTree = "<group>"; };
 		DA24878123D8682500BA265B /* WalkSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkSprite.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				DA09802A23DEE9AC007CC607 /* Entry.swift */,
+				DA0B01BF23E03D3D00D2875E /* Location.swift */,
 				DA73DE4123D1B7F700E48E24 /* Memory.swift */,
 			);
 			path = Library;
@@ -439,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA09802B23DEE9AC007CC607 /* Entry.swift in Sources */,
+				DA0B01C123E03E2600D2875E /* Location.swift in Sources */,
 				DA73DE4223D1B7F700E48E24 /* Memory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

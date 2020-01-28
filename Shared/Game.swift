@@ -1,4 +1,7 @@
+import Library
 import GameplayKit
+
+let memory = Memory()
 
 class Game: SKView, SKSceneDelegate {
     private(set) var player: GKEntity!

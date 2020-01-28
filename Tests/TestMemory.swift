@@ -4,7 +4,7 @@ import Combine
 
 final class TestMemory: XCTestCase {
     private var memory: Memory!
-    private var sub: AnyCancellable!
+    private var sub: AnyCancellable?
     
     override func setUp() {
         memory = .init()

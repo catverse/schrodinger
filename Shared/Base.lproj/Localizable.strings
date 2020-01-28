@@ -1,3 +1,7 @@
 Start.press="Press A to Start";
 Start.new="New Game";
 Start.continue="Continue";
+Start.back="Back";
+Start.empty="No saved games!";
+Location.House_Bedroom="House: Bedroom";
+Location.House_Corridor="House: Corridor";
