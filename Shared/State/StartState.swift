@@ -6,12 +6,21 @@ final class StartState: State {
     private var state: GKStateMachine!
     
     override func didEnter(from: GKState?) {
-        let start = game.scene as! StartScene
-        state = GKStateMachine(states: [Press(start), New(start), Continue(start), List(start)])
+        super.didEnter(from: from)
+        let scene = StartScene()
+        state = GKStateMachine(states: [Press(scene), New(scene), Continue(scene), List(scene)])
         state.enter(Press.self)
+        scene.delegate = game
+        game.presentScene(scene, transition: .fade(withDuration: 3))
+    }
+    
+    override func willExit(to: GKState) {
+        super.willExit(to: to)
+        state = nil
     }
     
     override func control() {
+        super.control()
         switch action.0 {
         case .ok: (state.currentState as! _State).next()
         case .cancel: (state.currentState as! _State).previous()
@@ -30,11 +39,11 @@ final class StartState: State {
 }
 
 private class _State: GKState {
-    fileprivate weak var start: StartScene!
+    fileprivate weak var scene: StartScene!
     
-    init(_ start: StartScene) {
+    init(_ scene: StartScene) {
         super.init()
-        self.start = start
+        self.scene = scene
     }
     
     func next() {
@@ -56,8 +65,7 @@ private class _State: GKState {
 
 private final class Press: _State {
     override func didEnter(from: GKState?) {
-        super.didEnter(from: from)
-        start.showPress()
+        scene.showPress()
     }
     
     override func next() {
@@ -67,8 +75,7 @@ private final class Press: _State {
 
 private final class New: _State {
     override func didEnter(from: GKState?) {
-        super.didEnter(from: from)
-        start.showNew()
+        scene.showNew()
     }
     
     override func next() {
@@ -90,8 +97,7 @@ private final class New: _State {
 
 private final class Continue: _State {
     override func didEnter(from: GKState?) {
-        super.didEnter(from: from)
-        start.showCont()
+        scene.showCont()
     }
     
     override func next() {
@@ -117,11 +123,10 @@ private final class List: _State {
     private var index = Int()
     
     override func didEnter(from: GKState?) {
-        super.didEnter(from: from)
-        start.showList()
+        scene.showList()
         index = -1
         sub = memory.entries.receive(on: DispatchQueue.main).sink { [weak self] in
-            self?.start.list($0)
+            self?.scene.list($0)
             self?.entries = $0
         }
         memory.load()
@@ -146,14 +151,14 @@ private final class List: _State {
     override func up() {
         if !entries.isEmpty && index > -1 {
             index -= 1
-            start.scrollUp()
+            scene.scrollUp()
         }
     }
     
     override func down() {
         if index < entries.count - 1 {
             index += 1
-            start.scrollDown()
+            scene.scrollDown()
         }
     }
 }

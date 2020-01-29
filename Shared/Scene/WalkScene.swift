@@ -2,6 +2,7 @@ import Library
 import GameplayKit
 
 protocol WalkScene: SKScene {
+    var player: WalkPlayer! { get set }
     var grid: GKGridGraph<GKGridGraphNode> { get }
     var doors: [vector_int2 : Location] { get }
     var items: [vector_int2 : Item] { get }
@@ -16,6 +17,7 @@ extension WalkScene {
     var items: [vector_int2 : Item] { [:] }
     var chests: [vector_int2 : Item] { [:] }
     var unboxed: String { "" }
+    var location: Location { Location(rawValue: name!)! }
     
     func configure() {
         let floor = childNode(withName: "Floor") as! SKTileMapNode
@@ -30,7 +32,7 @@ extension WalkScene {
         }
         grid.remove(nodes)
         chests.keys.forEach {
-            if memory.game.value!.taken[Location(rawValue: name!)!]?.contains($0) == true {
+            if memory.game.value!.taken[location]?.contains($0) == true {
                 unbox($0)
             }
         }

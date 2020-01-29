@@ -9,6 +9,7 @@ final class DialogState: State {
     private let wait = TimeInterval(0.3)
     
     override func didEnter(from: GKState?) {
+        super.didEnter(from: from)
         game.scene!.camera!.children.first { $0 is DialogNode }?.removeFromParent()
         game.scene!.camera!.addChild(DialogNode(game.bounds))
         game.scene!.camera!.children.compactMap { $0 as? DialogNode }.first!.label.text = ""
@@ -17,6 +18,7 @@ final class DialogState: State {
     }
     
     override func willExit(to: GKState) {
+        super.willExit(to: to)
         game.scene!.camera!.children.first { $0 is DialogNode }!.run(.sequence([.fadeOut(withDuration: 0.4), .removeFromParent()]))
     }
     
@@ -32,6 +34,7 @@ final class DialogState: State {
     }
     
     override func control() {
+        super.control()
         if action.0 != .none {
             timer = wait
             if !message.isEmpty {

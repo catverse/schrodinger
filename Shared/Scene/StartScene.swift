@@ -1,5 +1,5 @@
 import Library
-import GameplayKit
+import SpriteKit
 
 final class StartScene: SKScene {
     private weak var cat: SKSpriteNode!
@@ -13,7 +13,7 @@ final class StartScene: SKScene {
     
     required init?(coder: NSCoder) { nil }
     override init() {
-        super.init(size: .init(width: 100, height: 100))
+        super.init(size: .init(width: 300, height: 300))
         backgroundColor = .black
         anchorPoint = .init(x: 0.5, y: 0.5)
         scaleMode = .resizeFill

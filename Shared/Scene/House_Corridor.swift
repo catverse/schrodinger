@@ -2,6 +2,7 @@ import Library
 import GameplayKit
 
 final class House_Corridor: SKScene, WalkScene {
+    var player: WalkPlayer!
     let grid = GKGridGraph(fromGridStartingAt: .zero, width: 32, height: 8, diagonalsAllowed: false)
     let doors = [vector_int2(3, 5) : Location.House_Bedroom]
     

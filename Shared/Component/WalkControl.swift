@@ -4,10 +4,12 @@ final class WalkControl: GKComponent {
     private weak var game: Game!
     private var timer = TimeInterval()
     private var state: GKStateMachine!
-    private var select: vector_int2 { (state.currentState as! _State).select(entity!.component(ofType: WalkSprite.self)!.position) }
-    private var scene: WalkScene { (entity!.component(ofType: WalkSprite.self)!.node.scene as! WalkScene) }
+    private var current: _State { state.currentState as! _State }
+    private var select: vector_int2 { current.select(player.position) }
+    private var scene: WalkScene { player.node.scene as! WalkScene }
     private var dialog: DialogState { game.state.state(forClass: DialogState.self)! }
     private var unbox: UnboxState { game.state.state(forClass: UnboxState.self)! }
+    private var menu: MenuState { game.state.state(forClass: MenuState.self)! }
     private var player: WalkSprite { entity!.component(ofType: WalkSprite.self)! }
     
     required init?(coder: NSCoder) { nil }
@@ -35,10 +37,17 @@ final class WalkControl: GKComponent {
                 dialog.finish = UnboxState.self
                 game.state.enter(DialogState.self)
             }
+        } else if action == .cancel {
+            menu.facing = current.compare
+            menu.position = player.position
+            menu.location = scene.location
+            menu.back = WalkState.self
+            game.state.enter(MenuState.self)
         }
         if (state.currentState as! _State).move(direction) {
             if let door = scene.doors[select] {
-                game.scene(door)
+                game.state.state(forClass: WalkState.self)!.location = door
+                game.state.enter(WalkState.self)
             } else if scene.grid.node(atGridPosition: select) != nil {
                 player.animate(select)
             }
