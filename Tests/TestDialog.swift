@@ -11,14 +11,14 @@ final class TestDialog: XCTestCase {
     
     func testChest() {
         let dialog = Dialog.chest(.Potion)
-        XCTAssertEqual("Dialog.Chest.Found", dialog[0][0])
-        XCTAssertEqual("Dialog.Chest.Obtained", dialog[1][0])
-        XCTAssertEqual("Item.Potion", dialog[1][1])
+        XCTAssertEqual("Dialog.Chest.Found", dialog.message[0][0])
+        XCTAssertEqual("Dialog.Chest.Obtained", dialog.message[1][0])
+        XCTAssertEqual("Item.Potion", dialog.message[1][1])
     }
     
     func testChestPicked() {
         let dialog = Dialog.chest(nil)
-        XCTAssertEqual("Dialog.Chest.Found", dialog[0][0])
-        XCTAssertEqual("Dialog.Chest.Empty", dialog[1][0])
+        XCTAssertEqual("Dialog.Chest.Found", dialog.message[0][0])
+        XCTAssertEqual("Dialog.Chest.Empty", dialog.message[1][0])
     }
 }

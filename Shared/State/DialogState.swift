@@ -1,13 +1,16 @@
+import Library
 import GameplayKit
 
 final class DialogState: State {
-    private var dialog = [[String]]()
+    var dialog: Dialog?
+    private var message = [[String]]()
     private var timer = TimeInterval()
+    private let wait = TimeInterval(0.3)
     
     override func didEnter(from: GKState?) {
         game.scene!.camera!.addChild(DialogNode(game.bounds))
         game.scene!.camera!.children.compactMap { $0 as? DialogNode }.first!.label.text = ""
-        timer = 1
+        timer = wait
     }
     
     override func willExit(to: GKState) {
@@ -18,27 +21,46 @@ final class DialogState: State {
         super.update(deltaTime: deltaTime)
         timer -= deltaTime
         if timer <= 0 {
-            timer = 1
-            if !dialog.isEmpty {
-                let label = game.scene!.camera!.children.compactMap { $0 as? DialogNode }.first!.label!
-                if !dialog[0].isEmpty {
-                    if !label.text!.isEmpty {
-                        label.text! += " "
-                    }
-                    label.text! += dialog[0].removeFirst()
-                }
+            timer = wait
+            if !message.isEmpty && !message[0].isEmpty {
+                write()
+            } else {
+                next()
             }
         }
     }
     
     override func control() {
         if action.0 != .none {
-            
+            timer = wait
+            if message.isEmpty {
+                next()
+            } else {
+                if message[0].isEmpty {
+                    game.scene!.camera!.children.compactMap { $0 as? DialogNode }.first!.label!.text = ""
+                    message.removeFirst()
+                } else {
+                    while !message[0].isEmpty {
+                        write()
+                    }
+                }
+            }
         }
         action.0 = .none
     }
     
-    func dialog(_ message: [[String]]) {
-        dialog = message.map { $0.flatMap { String.key($0).components(separatedBy: " ") } }
+    private func next() {
+        if dialog != nil {
+            message = dialog!.message.map { $0.flatMap { String.key($0).components(separatedBy: " ") } }
+            dialog = dialog!.next
+        }
+    }
+    
+    private func write() {
+        let label = game.scene!.camera!.children.compactMap { $0 as? DialogNode }.first!.label!
+        if !label.text!.isEmpty {
+            label.text! += " "
+        }
+        label.text! += message[0].removeFirst()
     }
 }
