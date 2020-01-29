@@ -4,6 +4,11 @@ final class WalkControl: GKComponent {
     private weak var game: Game!
     private var timer = TimeInterval()
     private var state: GKStateMachine!
+    private var select: vector_int2 { (state.currentState as! _State).select(entity!.component(ofType: WalkSprite.self)!.position) }
+    private var scene: WalkScene { (entity!.component(ofType: WalkSprite.self)!.node.scene as! WalkScene) }
+    private var dialog: DialogState { game.state.state(forClass: DialogState.self)! }
+    private var unbox: UnboxState { game.state.state(forClass: UnboxState.self)! }
+    private var player: WalkSprite { entity!.component(ofType: WalkSprite.self)! }
     
     required init?(coder: NSCoder) { nil }
     init(_ game: Game) {
@@ -22,19 +27,20 @@ final class WalkControl: GKComponent {
     }
     
     func control(_ direction: Direction, _ action: Action) {
-        let pointing = (state.currentState as! _State).pointing(entity!.component(ofType: WalkSprite.self)!.position)
         if action == .ok {
-            if let item = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).chests[pointing] {
-                game.state.state(forClass: DialogState.self)!.dialog = memory.take(chest: pointing, item: item)
-                game.state.state(forClass: DialogState.self)!.finish = WalkState.self
+            if let item = scene.chests[select] {
+                unbox.next = WalkState.self
+                unbox.position = select
+                dialog.dialog = memory.take(chest: select, item: item)
+                dialog.finish = UnboxState.self
                 game.state.enter(DialogState.self)
             }
         }
         if (state.currentState as! _State).move(direction) {
-            if let door = (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).doors[pointing] {
+            if let door = scene.doors[select] {
                 game.scene(door)
-            } else if (entity!.component(ofType: WalkSprite.self)!.node.scene as! Scene).grid.node(atGridPosition: pointing) != nil {
-                entity!.component(ofType: WalkSprite.self)!.animate(pointing)
+            } else if scene.grid.node(atGridPosition: select) != nil {
+                player.animate(select)
             }
         }
     }
@@ -57,7 +63,7 @@ private class _State: GKState {
         node.run(.setTexture(.init(imageNamed: texture)))
     }
     
-    final func pointing(_ tile: vector_int2) -> vector_int2 {
+    final func select(_ tile: vector_int2) -> vector_int2 {
         tile &+ delta
     }
     

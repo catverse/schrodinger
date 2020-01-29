@@ -18,7 +18,7 @@
 		DA24878023D8646B00BA265B /* WalkPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24877F23D8646B00BA265B /* WalkPlayer.swift */; };
 		DA24878223D8682500BA265B /* WalkSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878123D8682500BA265B /* WalkSprite.swift */; };
 		DA24878423D86CE200BA265B /* WalkControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24878323D86CE200BA265B /* WalkControl.swift */; };
-		DA2F75A923D9A080001519C6 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F75A823D9A080001519C6 /* Scene.swift */; };
+		DA2F75A923D9A080001519C6 /* WalkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F75A823D9A080001519C6 /* WalkScene.swift */; };
 		DA39DF2723D9DFB900A304F2 /* House_Bedroom.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA39DF2623D9DFB900A304F2 /* House_Bedroom.sks */; };
 		DA39DF2923D9E09D00A304F2 /* Schrodinger.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */; };
 		DA39DF2B23D9E0CC00A304F2 /* House.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA39DF2A23D9E0CC00A304F2 /* House.xcassets */; };
@@ -47,6 +47,7 @@
 		DAE28BD223DEE58A005B7BB7 /* libSchrodinger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA73DE3F23D1B78E00E48E24 /* libSchrodinger.a */; };
 		DAEB746A23DEDAEF0021951B /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAEB746923DEDAEF0021951B /* PressStart2P-Regular.ttf */; };
 		DAF522F023D464A200BB0EDA /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF522EF23D464A200BB0EDA /* Direction.swift */; };
+		DAFEBFAA23E19A3A00E64093 /* UnboxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEBFA923E19A3A00E64093 /* UnboxState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +79,7 @@
 		DA24877F23D8646B00BA265B /* WalkPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkPlayer.swift; sourceTree = "<group>"; };
 		DA24878123D8682500BA265B /* WalkSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkSprite.swift; sourceTree = "<group>"; };
 		DA24878323D86CE200BA265B /* WalkControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkControl.swift; sourceTree = "<group>"; };
-		DA2F75A823D9A080001519C6 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		DA2F75A823D9A080001519C6 /* WalkScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkScene.swift; sourceTree = "<group>"; };
 		DA39DF2623D9DFB900A304F2 /* House_Bedroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Bedroom.sks; sourceTree = "<group>"; };
 		DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Schrodinger.xcassets; sourceTree = "<group>"; };
 		DA39DF2A23D9E0CC00A304F2 /* House.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = House.xcassets; sourceTree = "<group>"; };
@@ -114,6 +115,7 @@
 		DAE28BD123DEE58A005B7BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAEB746923DEDAEF0021951B /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
 		DAF522EF23D464A200BB0EDA /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		DAFEBFA923E19A3A00E64093 /* UnboxState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnboxState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +153,7 @@
 				DA4AF1C423DB17480041A35D /* House_Corridor.sks */,
 				DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */,
 				DA4AF1C623DB1A340041A35D /* House_Corridor.swift */,
-				DA2F75A823D9A080001519C6 /* Scene.swift */,
+				DA2F75A823D9A080001519C6 /* WalkScene.swift */,
 				DA09803623DF026C007CC607 /* StartScene.swift */,
 			);
 			path = Scene;
@@ -171,6 +173,7 @@
 				DAD7B94523DDCE2400C483EC /* DialogState.swift */,
 				DA09803F23DF1E4C007CC607 /* StartState.swift */,
 				DA4AF1D523DB2B470041A35D /* State.swift */,
+				DAFEBFA923E19A3A00E64093 /* UnboxState.swift */,
 				DA4AF1D323DB2B1A0041A35D /* WaitState.swift */,
 				DA4AF1D723DB2B9C0041A35D /* WalkState.swift */,
 			);
@@ -464,7 +467,8 @@
 				DAD7B94823DDD4BB00C483EC /* DialogNode.swift in Sources */,
 				DA09802D23DEFAEA007CC607 /* SKLabelNode.swift in Sources */,
 				DA09804023DF1E4C007CC607 /* StartState.swift in Sources */,
-				DA2F75A923D9A080001519C6 /* Scene.swift in Sources */,
+				DA2F75A923D9A080001519C6 /* WalkScene.swift in Sources */,
+				DAFEBFAA23E19A3A00E64093 /* UnboxState.swift in Sources */,
 				DAD7B94623DDCE2400C483EC /* DialogState.swift in Sources */,
 				DA24878423D86CE200BA265B /* WalkControl.swift in Sources */,
 				DAD7B94223DDBA7300C483EC /* Action.swift in Sources */,

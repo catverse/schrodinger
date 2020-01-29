@@ -17,7 +17,7 @@ class Game: SKView, SKSceneDelegate {
         showsFPS = true
         showsNodeCount = true
         showsDrawCount = true
-        state = .init(states: [StartState(self), WaitState(self), WalkState(self), DialogState(self)])
+        state = .init(states: [StartState(self), WaitState(self), WalkState(self), DialogState(self), UnboxState(self)])
         memory.game.receive(on: DispatchQueue.main).sink {
             if let game = $0 {
                 if game.location.rawValue != self.scene?.name {
@@ -33,7 +33,7 @@ class Game: SKView, SKSceneDelegate {
         state.enter(WaitState.self)
         time = 0
         player = WalkPlayer(self)
-        let scene = GKScene(fileNamed: location.rawValue)!.rootNode as! Scene
+        let scene = GKScene(fileNamed: location.rawValue)!.rootNode as! WalkScene
         let sprite = player.component(ofType: WalkSprite.self)!
         let camera = SKCameraNode()
         camera.constraints = [.distance(.init(upperLimit: 100), to: sprite.node)]
