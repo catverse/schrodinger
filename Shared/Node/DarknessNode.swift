@@ -10,8 +10,8 @@ final class DarknessNode: SKEffectNode {
 
 private final class Filter: CIFilter {
     @objc dynamic var inputImage: CIImage?
-    private let saturation = CIFilter(name: "CIColorControls", parameters: ["inputSaturation" : 0, "inputBrightness" : -0.3])!
-    private let color = CIFilter(name: "CIColorMonochrome", parameters: ["inputColor" : CIColor(cgColor: .shade()), "inputIntensity" : 1])!
+    private let saturation = CIFilter(name: "CIColorControls", parameters: ["inputSaturation" : 0, "inputBrightness" : -0.3, "inputContrast" : 1.5])!
+    private let color = CIFilter(name: "CIColorMonochrome", parameters: ["inputColor" : CIColor(cgColor: .shade()), "inputIntensity" : 0.75])!
 
     override var outputImage: CIImage? {
         saturation.setValue(inputImage, forKey: "inputImage")
