@@ -9,9 +9,7 @@ final class WalkState: State {
     
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
-        cooldown = 1
         if let location = self.location {
-            game.time = 0
             let scene = GKScene(fileNamed: location.rawValue)!.rootNode as! WalkScene
             scene.player = .init(game)
             controller = scene.player.component(ofType: WalkControl.self)!
@@ -29,7 +27,7 @@ final class WalkState: State {
                 sprite.move(scene.start(game.scene))
             }
             
-            game.presentScene(scene, transition: .fade(withDuration: 2))
+            game.presentScene(scene, transition: .fade(withDuration: 1.5))
             if facing != nil && facing != .down {
                 controller!.control(facing!, .none)
             }

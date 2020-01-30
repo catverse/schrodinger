@@ -4,10 +4,12 @@ final class View: Game {
     override var mouseDownCanMoveWindow: Bool { true }
     
     override func keyDown(with: NSEvent) {
-        if let direction = Direction(rawValue: with.keyCode) {
-            (state.currentState as! State).direction = (direction, direction)
-        } else if let action = Action(rawValue: with.keyCode) {
-            (state.currentState as! State).action = (action, action)
+        if !scene!.isPaused {
+            if let direction = Direction(rawValue: with.keyCode) {
+                (state.currentState as! State).direction = (direction, direction)
+            } else if let action = Action(rawValue: with.keyCode) {
+                (state.currentState as! State).action = (action, action)
+            }
         }
     }
     

@@ -10,7 +10,6 @@ final class MenuState: State {
     
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
-        cooldown = 1
         let scene = MenuScene()
         state = GKStateMachine(states: [Continue(scene), Inventory(scene), Save(scene), Exit(scene)])
         state.enter(Continue.self)

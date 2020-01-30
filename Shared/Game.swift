@@ -5,8 +5,8 @@ import Combine
 let memory = Memory()
 
 class Game: SKView, SKSceneDelegate {
-    var time = TimeInterval()
     private(set) var state: GKStateMachine!
+    private var time = TimeInterval()
     private var subs = Set<AnyCancellable>()
     
     required init?(coder: NSCoder) { nil }
