@@ -18,14 +18,15 @@ extension WalkScene {
     var chests: [vector_int2 : Item] { [:] }
     var unboxed: String { "" }
     var location: Location { Location(rawValue: name!)! }
+    private var _darkness: DarknessNode { childNode(withName: "Darkness") as! DarknessNode }
+    private var _floor: SKTileMapNode { _darkness.childNode(withName: "Floor") as! SKTileMapNode }
+    private var _items: SKTileMapNode { _darkness.childNode(withName: "Items") as! SKTileMapNode }
     
     func configure() {
-        let floor = childNode(withName: "Floor") as! SKTileMapNode
-        let items = childNode(withName: "Items") as! SKTileMapNode
         var nodes = [GKGridGraphNode]()
         (0 ..< grid.gridWidth).forEach { x in
             (0 ..< grid.gridHeight).forEach { y in
-                if floor.tileDefinition(atColumn: x, row: y) == nil || items.tileDefinition(atColumn: x, row: y) != nil {
+                if _floor.tileDefinition(atColumn: x, row: y) == nil || _items.tileDefinition(atColumn: x, row: y) != nil {
                     nodes.append(grid.node(atGridPosition: .init(.init(x), .init(y)))!)
                 }
             }
@@ -40,7 +41,7 @@ extension WalkScene {
     
     func unbox(_ position: vector_int2) {
         let group = SKTileGroup(tileDefinition: .init(texture: .init(imageNamed: unboxed)))
-        (childNode(withName: "Items") as! SKTileMapNode).tileSet.tileGroups.append(group)
-        (childNode(withName: "Items") as! SKTileMapNode).setTileGroup(group, forColumn: .init(position.x), row: .init(position.y))
+        _items.tileSet.tileGroups.append(group)
+        _items.setTileGroup(group, forColumn: .init(position.x), row: .init(position.y))
     }
 }

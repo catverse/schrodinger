@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA03C7CD23E2E39E009A5F90 /* DarknessNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA03C7CC23E2E39E009A5F90 /* DarknessNode.swift */; };
+		DA03C7CF23E2E9B4009A5F90 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA03C7CE23E2E9B4009A5F90 /* Color.swift */; };
 		DA09802B23DEE9AC007CC607 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA09802A23DEE9AC007CC607 /* Entry.swift */; };
 		DA09802D23DEFAEA007CC607 /* SKLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA09802C23DEFAEA007CC607 /* SKLabelNode.swift */; };
 		DA09803723DF026C007CC607 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA09803623DF026C007CC607 /* StartScene.swift */; };
@@ -69,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA03C7CC23E2E39E009A5F90 /* DarknessNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarknessNode.swift; sourceTree = "<group>"; };
+		DA03C7CE23E2E9B4009A5F90 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DA09802A23DEE9AC007CC607 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		DA09802C23DEFAEA007CC607 /* SKLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLabelNode.swift; sourceTree = "<group>"; };
 		DA09803623DF026C007CC607 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 		DA09803423DEFFEA007CC607 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DA03C7CE23E2E9B4009A5F90 /* Color.swift */,
 				DA09802C23DEFAEA007CC607 /* SKLabelNode.swift */,
 				DA09803A23DF064E007CC607 /* String.swift */,
 			);
@@ -242,6 +247,7 @@
 		DA6FFF1423E0648200BF9A79 /* Node */ = {
 			isa = PBXGroup;
 			children = (
+				DA03C7CC23E2E39E009A5F90 /* DarknessNode.swift */,
 				DAD7B94723DDD4BB00C483EC /* DialogNode.swift */,
 			);
 			path = Node;
@@ -471,6 +477,7 @@
 				DAD7B94823DDD4BB00C483EC /* DialogNode.swift in Sources */,
 				DA09802D23DEFAEA007CC607 /* SKLabelNode.swift in Sources */,
 				DA09804023DF1E4C007CC607 /* StartState.swift in Sources */,
+				DA03C7CD23E2E39E009A5F90 /* DarknessNode.swift in Sources */,
 				DA2F75A923D9A080001519C6 /* WalkScene.swift in Sources */,
 				DAFEBFAA23E19A3A00E64093 /* UnboxState.swift in Sources */,
 				DAD7B94623DDCE2400C483EC /* DialogState.swift in Sources */,
@@ -482,6 +489,7 @@
 				DAF522F023D464A200BB0EDA /* Direction.swift in Sources */,
 				DA5D13F223D25D47008E78D1 /* House_Bedroom.swift in Sources */,
 				DA4AF1D223DB1CED0041A35D /* View.swift in Sources */,
+				DA03C7CF23E2E9B4009A5F90 /* Color.swift in Sources */,
 				DA352C0F23E1BF0F006AF887 /* MenuScene.swift in Sources */,
 				DA24878223D8682500BA265B /* WalkSprite.swift in Sources */,
 				DA24878023D8646B00BA265B /* WalkPlayer.swift in Sources */,

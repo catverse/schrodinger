@@ -8,7 +8,7 @@ class State: GKState {
     private var timer = TimeInterval()
     
     override func didEnter(from: GKState?) {
-        timer = 0
+        timer = 0.15
         direction = (.none, .none)
         action = (.none, .none)
     }
