@@ -2,8 +2,6 @@ import Library
 import GameplayKit
 
 final class WalkState: State {
-    var position: vector_int2?
-    var facing: Direction?
     private weak var controller: WalkControl?
     
     override func didEnter(from: GKState?) {
@@ -19,21 +17,13 @@ final class WalkState: State {
             scene.camera = camera
             scene.delegate = game
             scene.addChild(sprite.node)
-            
-            if let position = self.position {
-                sprite.move(position)
-            } else {
-                sprite.move(scene.start(game.scene))
+            if let location = game.scene as? WalkScene,
+                let position = scene.starts[location.location] {
+                memory.game.position = position
             }
-            
+            sprite.move(memory.game.position)
             game.presentScene(scene, transition: .fade(withDuration: 1.5))
-            if facing != nil && facing != .down {
-                controller!.control(facing!, .none)
-            }
         }
-        
-        facing = nil
-        position = nil
     }
     
     override func control() {

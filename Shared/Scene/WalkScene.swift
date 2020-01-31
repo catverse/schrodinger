@@ -1,28 +1,20 @@
 import Library
 import GameplayKit
 
-protocol WalkScene: SKScene {
-    var player: WalkPlayer! { get set }
-    var grid: GKGridGraph<GKGridGraphNode> { get }
-    var doors: [vector_int2 : Location] { get }
-    var items: [vector_int2 : Item] { get }
-    var chests: [vector_int2 : Item] { get }
-    var unboxed: String { get }
-    
-    func start(_ from: SKScene?) -> vector_int2
-}
-
-extension WalkScene {
-    var doors: [vector_int2 : Location] { [:] }
-    var items: [vector_int2 : Item] { [:] }
-    var chests: [vector_int2 : Item] { [:] }
-    var unboxed: String { "" }
+class WalkScene: SKScene {
+    var player: WalkPlayer!
+    var grid: GKGridGraph<GKGridGraphNode>!
+    var doors = [vector_int2 : Location]()
+    var items = [vector_int2 : Item]()
+    var chests = [vector_int2 : Item]()
+    var starts = [Location : vector_int2]()
+    var unboxed = ""
     var location: Location { Location(rawValue: name!)! }
     private var _darkness: DarknessNode { childNode(withName: "Darkness") as! DarknessNode }
     private var _floor: SKTileMapNode { _darkness.childNode(withName: "Floor") as! SKTileMapNode }
     private var _items: SKTileMapNode { _darkness.childNode(withName: "Items") as! SKTileMapNode }
-    
-    func configure() {
+     
+    override func didMove(to: SKView) {
         var nodes = [GKGridGraphNode]()
         (0 ..< grid.gridWidth).forEach { x in
             (0 ..< grid.gridHeight).forEach { y in

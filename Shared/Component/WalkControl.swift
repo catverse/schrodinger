@@ -26,7 +26,12 @@ final class WalkControl: GKComponent {
             Back0(node), Back1(node), Back2(node),
             Left0(node), Left1(node), Left2(node),
             Right0(node), Right1(node), Right2(node)])
-        state.enter(Front0.self)
+        switch memory.game.facing {
+        case .up: state.enter(Back0.self)
+        case .left: state.enter(Left0.self)
+        case .right: state.enter(Right0.self)
+        default: state.enter(Front0.self)
+        }
     }
     
     func control(_ direction: Direction, _ action: Action) {
