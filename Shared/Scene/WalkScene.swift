@@ -9,12 +9,12 @@ class WalkScene: SKScene {
     var chests = [vector_int2 : Item]()
     var starts = [Location : vector_int2]()
     var unboxed = ""
-    var location: Location { Location(rawValue: name!)! }
+    final var location: Location { Location(rawValue: name!)! }
     private var _darkness: DarknessNode { childNode(withName: "Darkness") as! DarknessNode }
     private var _floor: SKTileMapNode { _darkness.childNode(withName: "Floor") as! SKTileMapNode }
     private var _items: SKTileMapNode { _darkness.childNode(withName: "Items") as! SKTileMapNode }
      
-    override func didMove(to: SKView) {
+    final override func didMove(to: SKView) {
         var nodes = [GKGridGraphNode]()
         (0 ..< grid.gridWidth).forEach { x in
             (0 ..< grid.gridHeight).forEach { y in
@@ -31,7 +31,7 @@ class WalkScene: SKScene {
         }
     }
     
-    func unbox(_ position: vector_int2) {
+    final func unbox(_ position: vector_int2) {
         let group = SKTileGroup(tileDefinition: .init(texture: .init(imageNamed: unboxed)))
         _items.tileSet.tileGroups.append(group)
         _items.setTileGroup(group, forColumn: .init(position.x), row: .init(position.y))
