@@ -1,3 +1,4 @@
+import Library
 import GameplayKit
 
 final class WalkControl: GKComponent {
@@ -5,7 +6,7 @@ final class WalkControl: GKComponent {
     private var timer = TimeInterval()
     private var state: GKStateMachine!
     private var current: _State { state.currentState as! _State }
-    private var select: vector_int2 { current.select(player.position) }
+    private var select: vector_int2 { current.select() }
     private var scene: WalkScene { player.node.scene as! WalkScene }
     private var dialog: DialogState { game.state.state(forClass: DialogState.self)! }
     private var unbox: UnboxState { game.state.state(forClass: UnboxState.self)! }
@@ -38,9 +39,6 @@ final class WalkControl: GKComponent {
                 game.state.enter(DialogState.self)
             }
         } else if action == .cancel {
-            menu.facing = current.compare
-            menu.position = player.position
-            menu.location = scene.location
             menu.back = WalkState.self
             game.state.enter(MenuState.self)
         }
@@ -69,11 +67,12 @@ private class _State: GKState {
     }
     
     final override func didEnter(from: GKState?) {
+        memory.game.facing = compare
         node.run(.setTexture(.init(imageNamed: texture)))
     }
     
-    final func select(_ tile: vector_int2) -> vector_int2 {
-        tile &+ delta
+    final func select() -> vector_int2 {
+        memory.game.position &+ delta
     }
     
     final func move(_ direction: Direction) -> Bool {

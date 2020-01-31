@@ -42,6 +42,7 @@
 		DA73DE4223D1B7F700E48E24 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73DE4123D1B7F700E48E24 /* Memory.swift */; };
 		DA73DE4523D1B8BC00E48E24 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA73DE4423D1B8BC00E48E24 /* GameKit.framework */; };
 		DA73DE4723D1B9C400E48E24 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73DE4623D1B9C400E48E24 /* App.swift */; };
+		DAB832EC23E478E600BBC4AD /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF522EF23D464A200BB0EDA /* Direction.swift */; };
 		DAD7B94223DDBA7300C483EC /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94123DDBA7300C483EC /* Action.swift */; };
 		DAD7B94423DDCC3000C483EC /* UI.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD7B94323DDCC3000C483EC /* UI.xcassets */; };
 		DAD7B94623DDCE2400C483EC /* DialogState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94523DDCE2400C483EC /* DialogState.swift */; };
@@ -49,7 +50,6 @@
 		DAE28BD023DEE58A005B7BB7 /* TestMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE28BCF23DEE58A005B7BB7 /* TestMemory.swift */; };
 		DAE28BD223DEE58A005B7BB7 /* libSchrodinger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA73DE3F23D1B78E00E48E24 /* libSchrodinger.a */; };
 		DAEB746A23DEDAEF0021951B /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAEB746923DEDAEF0021951B /* PressStart2P-Regular.ttf */; };
-		DAF522F023D464A200BB0EDA /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF522EF23D464A200BB0EDA /* Direction.swift */; };
 		DAFEBFAA23E19A3A00E64093 /* UnboxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEBFA923E19A3A00E64093 /* UnboxState.swift */; };
 /* End PBXBuildFile section */
 
@@ -218,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				DAD7B94123DDBA7300C483EC /* Action.swift */,
-				DAF522EF23D464A200BB0EDA /* Direction.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -288,6 +287,7 @@
 			children = (
 				DA52310D23E071E4005BAC2B /* Dialog.swift */,
 				DA09802A23DEE9AC007CC607 /* Entry.swift */,
+				DAF522EF23D464A200BB0EDA /* Direction.swift */,
 				DA52310B23E06F59005BAC2B /* Item.swift */,
 				DA0B01BF23E03D3D00D2875E /* Location.swift */,
 				DA73DE4123D1B7F700E48E24 /* Memory.swift */,
@@ -464,6 +464,7 @@
 				DA09802B23DEE9AC007CC607 /* Entry.swift in Sources */,
 				DA0B01C123E03E2600D2875E /* Location.swift in Sources */,
 				DA73DE4223D1B7F700E48E24 /* Memory.swift in Sources */,
+				DAB832EC23E478E600BBC4AD /* Direction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,7 +487,6 @@
 				DA4AF1D623DB2B470041A35D /* State.swift in Sources */,
 				DA24877E23D857CC00BA265B /* Game.swift in Sources */,
 				DA09803723DF026C007CC607 /* StartScene.swift in Sources */,
-				DAF522F023D464A200BB0EDA /* Direction.swift in Sources */,
 				DA5D13F223D25D47008E78D1 /* House_Bedroom.swift in Sources */,
 				DA4AF1D223DB1CED0041A35D /* View.swift in Sources */,
 				DA03C7CF23E2E9B4009A5F90 /* Color.swift in Sources */,

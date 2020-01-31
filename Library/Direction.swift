@@ -1,6 +1,6 @@
 import Foundation
 
-enum Direction: UInt16 {
+public enum Direction: UInt16, Codable {
     case
     none = 999,
     up = 126,

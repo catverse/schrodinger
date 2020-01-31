@@ -2,9 +2,6 @@ import Library
 import GameplayKit
 
 final class MenuState: State {
-    var location: Location?
-    var facing: Direction?
-    var position: vector_int2?
     var back: State.Type!
     fileprivate weak var scene: MenuScene!
     private var state: GKStateMachine!
@@ -42,12 +39,6 @@ final class MenuState: State {
     }
     
     fileprivate func cont() {
-        switch back {
-        case is WalkState.Type:
-            stateMachine!.state(forClass: WalkState.self)!.position = position
-            stateMachine!.state(forClass: WalkState.self)!.facing = facing
-        default: break
-        }
         stateMachine!.enter(back)
     }
     
