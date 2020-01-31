@@ -33,7 +33,7 @@ extension WalkScene {
         }
         grid.remove(nodes)
         chests.keys.forEach {
-            if memory.game.value!.taken[location]?.contains($0) == true {
+            if memory.game.taken[location]?.contains($0) == true {
                 unbox($0)
             }
         }

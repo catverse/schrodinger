@@ -11,6 +11,7 @@ final class MenuScene: SKScene {
     private weak var new: SKLabelNode!
     private weak var cancel: SKLabelNode!
     private weak var confirm: SKLabelNode!
+    private weak var saved: SKLabelNode!
     
     required init?(coder: NSCoder) { nil }
     override init() {
@@ -37,35 +38,9 @@ final class MenuScene: SKScene {
         addChild(title)
         self.title = title
         
-        let place = SKLabelNode(fontNamed: SKLabelNode.font)
-        place.fontColor = .haze()
-        place.fontSize = 12
-        place.verticalAlignmentMode = .center
-        place.horizontalAlignmentMode = .left
-        place.position.x = -140
-        place.position.y = -130
-        place.text = .key("Location.\(memory.game.value!.location.rawValue)")
-        addChild(place)
-        
-        let time = SKLabelNode(fontNamed: SKLabelNode.font)
-        time.fontColor = .haze()
-        time.fontSize = 12
-        time.verticalAlignmentMode = .center
-        time.horizontalAlignmentMode = .left
-        time.position.x = -140
-        time.position.y = -100
-        time.text = formatter.string(from: memory.game.value!.time)
-        addChild(time)
-        
-        let level = SKLabelNode(fontNamed: SKLabelNode.font)
-        level.fontColor = .haze()
-        level.fontSize = 12
-        level.verticalAlignmentMode = .center
-        level.horizontalAlignmentMode = .left
-        level.position.x = -140
-        level.position.y = -70
-        level.text = .key("Menu.level")
-        addChild(level)
+        info(.key("Menu.level"), y: -80)
+        info(formatter.string(from: memory.game.time)!, y: -100)
+        info(.key("Location.\(memory.game.location.rawValue)"), y: -130)
         
         let cat = SKSpriteNode(imageNamed: "menu_cat")
         addChild(cat)
@@ -75,10 +50,11 @@ final class MenuScene: SKScene {
         inventory = label(.key("Menu.inventory"), y: 15)
         save = label(.key("Menu.save"), y: -15)
         exit = label(.key("Menu.exit"), y: -45)
-        overwrite = label(.key("Menu.overwrite"), y: 80)
+        overwrite = label(.key("Menu.overwrite"), y: 30)
         new = label(.key("Menu.new"), y: 0)
-        cancel = label(.key("Menu.cancel"), y: -80)
+        cancel = label(.key("Menu.cancel"), y: -30)
         confirm = label(.key("Menu.confirm"), y: 0)
+        saved = label(.key("Menu.saved"), y: 0)
     }
     
     func showCont() {
@@ -86,6 +62,7 @@ final class MenuScene: SKScene {
         title.text = .key("Menu.title.menu")
         show(cont)
         fade([inventory, save, exit])
+        hide([overwrite, new, cancel, confirm, saved])
     }
     
     func showInventory() {
@@ -93,6 +70,7 @@ final class MenuScene: SKScene {
         title.text = .key("Menu.title.menu")
         show(inventory)
         fade([cont, save, exit])
+        hide([overwrite, new, cancel, confirm, saved])
     }
     
     func showSave() {
@@ -100,6 +78,7 @@ final class MenuScene: SKScene {
         title.text = .key("Menu.title.menu")
         show(save)
         fade([cont, inventory, exit])
+        hide([overwrite, new, cancel, confirm, saved])
     }
     
     func showExit() {
@@ -107,6 +86,66 @@ final class MenuScene: SKScene {
         title.text = .key("Menu.title.menu")
         show(exit)
         fade([cont, inventory, save])
+        hide([overwrite, new, cancel, confirm, saved])
+    }
+    
+    func showOverwrite() {
+        cat.position.y = overwrite.position.y + 2
+        title.text = .key("Menu.title.save")
+        show(overwrite)
+        fade([new, cancel])
+        hide([save, cont, inventory, exit, confirm, saved])
+    }
+    
+    func showNew() {
+        cat.position.y = new.position.y + 2
+        title.text = .key("Menu.title.save")
+        show(new)
+        fade([overwrite, cancel])
+        hide([save, cont, inventory, exit, confirm, saved])
+    }
+    
+    func showCancelSave() {
+        cat.position.y = cancel.position.y + 2
+        title.text = .key("Menu.title.save")
+        show(cancel)
+        fade([overwrite, new])
+        hide([save, cont, inventory, exit, confirm, saved])
+    }
+    
+    func showSaved() {
+        cat.position.y = saved.position.y + 2
+        title.text = .key("Menu.title.save")
+        show(saved)
+        hide([save, cont, inventory, exit, confirm, cancel, overwrite, new])
+    }
+    
+    func showCancelExit() {
+        cat.position.y = cancel.position.y + 2
+        title.text = .key("Menu.title.exit")
+        show(cancel)
+        fade([confirm])
+        hide([save, cont, inventory, exit, overwrite, new, saved])
+    }
+    
+    func showConfirm() {
+        cat.position.y = confirm.position.y + 2
+        title.text = .key("Menu.title.exit")
+        show(confirm)
+        fade([cancel])
+        hide([save, cont, inventory, exit, overwrite, new, saved])
+    }
+    
+    private func info(_ text: String, y: CGFloat) {
+        let node = SKLabelNode(fontNamed: SKLabelNode.font)
+        node.fontColor = .haze()
+        node.fontSize = 12
+        node.verticalAlignmentMode = .center
+        node.horizontalAlignmentMode = .left
+        node.position.x = -140
+        node.position.y = y
+        node.text = text
+        addChild(node)
     }
     
     private func label(_ text: String, y: CGFloat) -> SKLabelNode {

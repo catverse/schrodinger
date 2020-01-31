@@ -46,7 +46,7 @@ final class WalkControl: GKComponent {
         }
         if (state.currentState as! _State).move(direction) {
             if let door = scene.doors[select] {
-                game.state.state(forClass: WalkState.self)!.location = door
+                memory.game.location = door
                 game.state.enter(WalkState.self)
             } else if scene.grid.node(atGridPosition: select) != nil {
                 player.animate(select)

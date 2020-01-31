@@ -4,13 +4,12 @@ import GameplayKit
 final class WalkState: State {
     var position: vector_int2?
     var facing: Direction?
-    var location: Location?
     private weak var controller: WalkControl?
     
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
-        if let location = self.location {
-            let scene = GKScene(fileNamed: location.rawValue)!.rootNode as! WalkScene
+        if game.scene!.name != memory.game.location.rawValue {
+            let scene = GKScene(fileNamed: memory.game.location.rawValue)!.rootNode as! WalkScene
             scene.player = .init(game)
             controller = scene.player.component(ofType: WalkControl.self)!
             let sprite = scene.player.component(ofType: WalkSprite.self)!
@@ -33,7 +32,6 @@ final class WalkState: State {
             }
         }
         
-        location = nil
         facing = nil
         position = nil
     }

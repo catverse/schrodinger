@@ -3,31 +3,32 @@ import Combine
 import simd
 
 public final class Memory {
-    public let game = CurrentValueSubject<Entry?, Never>(nil)
+    public var game: Entry!
+    public var time = TimeInterval()
     public let entries = PassthroughSubject<[Entry], Never>()
     let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Memory")
     private let queue = DispatchQueue(label: "", qos: .background, target: .global(qos: .background))
     
     public init() {
-
+        
     }
     
     public func new() {
-        queue.async {
-            self.game.value = .init()
-            self.save()
-        }
+        game = .init()
+        save()
+    }
+    
+    public func duplicate() {
+        game.id = UUID().uuidString
+        save()
     }
     
     public func save() {
         queue.async {
-            if var game = self.game.value {
-                self.prepare()
-                game.saved = Date().timeIntervalSince1970
-                try! (JSONEncoder().encode(game) as NSData).compressed(using: .lzfse)
-                    .write(to: self.url.appendingPathComponent(game.id), atomically: true)
-                self.load()
-            }
+            self.prepare()
+            self.game.saved = Date().timeIntervalSince1970
+            try! (JSONEncoder().encode(self.game) as NSData).compressed(using: .lzfse).write(to: self.url.appendingPathComponent(self.game.id), atomically: true)
+            self.load()
         }
     }
     
@@ -44,9 +45,9 @@ public final class Memory {
     }
     
     public func take(chest: vector_int2, item: Item) -> Dialog {
-        guard game.value!.taken[game.value!.location]?.contains(chest) != true else { return Dialog.chest(nil) }
-        game.value!.taken[game.value!.location] = [chest] + (game.value!.taken[game.value!.location] ?? [])
-        game.value!.inventory[item] = 1 + (game.value!.inventory[item] ?? 0)
+        guard game.taken[game.location]?.contains(chest) != true else { return Dialog.chest(nil) }
+        game.taken[game.location] = [chest] + (game.taken[game.location] ?? [])
+        game.inventory[item] = 1 + (game.inventory[item] ?? 0)
         return Dialog.chest(item)
     }
     

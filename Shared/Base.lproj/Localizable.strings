@@ -12,6 +12,7 @@ Menu.new="New Save";
 Menu.cancel="Cancel";
 Menu.confirm="Confirm";
 Menu.level="Level:";
+Menu.saved="Saved!";
 Menu.title.menu="Menu";
 Menu.title.save="Save";
 Menu.title.exit="Exit";

@@ -6,7 +6,7 @@ final class TestDialog: XCTestCase {
     
     override func setUp() {
         memory = .init()
-        memory.game.value = .init()
+        memory.game = .init()
     }
     
     func testChest() {

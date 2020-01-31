@@ -14,45 +14,51 @@ final class TestMemory: XCTestCase {
     
     func testSave() {
         let expect = expectation(description: "")
-        memory.game.value = .init()
+        memory.game = .init()
         memory.entries.sink {
             XCTAssertFalse($0.isEmpty)
             XCTAssertGreaterThan($0.first!.saved, 0)
-            XCTAssertFalse(try! Data(contentsOf: self.memory.url.appendingPathComponent(self.memory.game.value!.id)).isEmpty)
+            XCTAssertFalse(try! Data(contentsOf: self.memory.url.appendingPathComponent(self.memory.game.id)).isEmpty)
             expect.fulfill()
         }.store(in: &subs)
         memory.save()
         waitForExpectations(timeout: 1)
     }
     
-    func testNewGame() {
-        let expectGame = expectation(description: "")
-        let expectLoad = expectation(description: "")
-        memory.game.sink {
-            if $0 != nil {
-                expectGame.fulfill()
-            }
+    func testDuplicate() {
+        let expect = expectation(description: "")
+        memory.game = .init()
+        let id = memory.game.id
+        memory.entries.sink { _ in
+            XCTAssertNotEqual(id, self.memory.game.id)
+            expect.fulfill()
         }.store(in: &subs)
+        memory.duplicate()
+        waitForExpectations(timeout: 1)
+    }
+    
+    func testNewGame() {
+        let expect = expectation(description: "")
         memory.entries.sink {
             XCTAssertFalse($0.isEmpty)
-            expectLoad.fulfill()
+            expect.fulfill()
         }.store(in: &subs)
         memory.new()
         waitForExpectations(timeout: 1)
     }
     
     func testTakeChest() {
-        memory.game.value = .init()
+        memory.game = .init()
         _ = memory.take(chest: .init(0, 0), item: .Potion)
-        XCTAssertEqual([.init(0, 0)], memory.game.value!.taken[.House_Bedroom])
-        XCTAssertEqual(1, memory.game.value!.inventory[.Potion])
+        XCTAssertEqual([.init(0, 0)], memory.game.taken[.House_Bedroom])
+        XCTAssertEqual(1, memory.game.inventory[.Potion])
     }
     
     func testTakeChestTaken() {
-        memory.game.value = .init()
-        memory.game.value!.taken[.House_Bedroom] = [.init(0, 0)]
+        memory.game = .init()
+        memory.game.taken[.House_Bedroom] = [.init(0, 0)]
         _ = memory.take(chest: .init(0, 0), item: .Potion)
-        XCTAssertEqual(1, memory.game.value!.taken[.House_Bedroom]!.count)
-        XCTAssertNil(memory.game.value!.inventory[.Potion])
+        XCTAssertEqual(1, memory.game.taken[.House_Bedroom]!.count)
+        XCTAssertNil(memory.game.inventory[.Potion])
     }
 }
