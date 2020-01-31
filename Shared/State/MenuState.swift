@@ -6,12 +6,14 @@ final class MenuState: State {
     var facing: Direction?
     var position: vector_int2?
     var back: State.Type!
+    fileprivate weak var scene: MenuScene!
     private var state: GKStateMachine!
     
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
         let scene = MenuScene()
-        state = GKStateMachine(states: [Continue(scene), Inventory(scene), Save(scene), Exit(scene)])
+        self.scene = scene
+        state = GKStateMachine(states: [Continue(self), Inventory(self), Save(self), Exit(self), CancelSave(self), Overwrite(self), New(self)])
         state.enter(Continue.self)
         scene.delegate = game
         game.presentScene(scene, transition: .fade(withDuration: 0.5))
@@ -26,15 +28,7 @@ final class MenuState: State {
         super.control()
         switch action.0 {
         case .ok: (state.currentState as! _State).ok()
-        case .cancel:
-            switch back {
-            case is WalkState.Type:
-                stateMachine!.state(forClass: WalkState.self)!.position = position
-                stateMachine!.state(forClass: WalkState.self)!.facing = facing
-                stateMachine!.state(forClass: WalkState.self)!.location = location
-            default: break
-            }
-            stateMachine!.enter(back)
+        case .cancel: (state.currentState as! _State).cancel()
         default: break
         }
         
@@ -47,18 +41,33 @@ final class MenuState: State {
         action.0 = .none
         direction.0 = .none
     }
+    
+    fileprivate func cont() {
+        switch back {
+        case is WalkState.Type:
+            stateMachine!.state(forClass: WalkState.self)!.position = position
+            stateMachine!.state(forClass: WalkState.self)!.facing = facing
+            stateMachine!.state(forClass: WalkState.self)!.location = location
+        default: break
+        }
+        stateMachine!.enter(back)
+    }
 }
 
 private class _State: GKState {
-    fileprivate weak var scene: MenuScene!
+    fileprivate weak var menu: MenuState!
     
-    init(_ scene: MenuScene) {
+    init(_ menu: MenuState) {
         super.init()
-        self.scene = scene
+        self.menu = menu
     }
     
     func ok() {
         
+    }
+    
+    func cancel() {
+        menu.cont()
     }
     
     func up() {
@@ -71,17 +80,107 @@ private class _State: GKState {
 }
 
 private final class Continue: _State {
-
+    override func didEnter(from: GKState?) {
+        menu.scene.showCont()
+    }
+    
+    override func ok() {
+        menu.cont()
+    }
+    
+    override func down() {
+        stateMachine!.enter(Inventory.self)
+    }
 }
 
 private final class Inventory: _State {
+    override func didEnter(from: GKState?) {
+        menu.scene.showInventory()
+    }
     
+    override func up() {
+        stateMachine!.enter(Continue.self)
+    }
+    
+    override func down() {
+        stateMachine!.enter(Save.self)
+    }
 }
 
 private final class Save: _State {
+    override func didEnter(from: GKState?) {
+        menu.scene.showSave()
+    }
     
+    override func ok() {
+        
+    }
+    
+    override func up() {
+        stateMachine!.enter(Inventory.self)
+    }
+    
+    override func down() {
+        stateMachine!.enter(Exit.self)
+    }
 }
 
 private final class Exit: _State {
+    override func didEnter(from: GKState?) {
+        menu.scene.showExit()
+    }
     
+    override func up() {
+        stateMachine!.enter(Save.self)
+    }
+}
+
+private final class CancelSave: _State {
+    override func didEnter(from: GKState?) {
+        
+    }
+    
+    override func up() {
+        stateMachine!.enter(Save.self)
+    }
+}
+
+private final class Overwrite: _State {
+    override func didEnter(from: GKState?) {
+        
+    }
+    
+    override func up() {
+        stateMachine!.enter(Save.self)
+    }
+}
+
+private final class New: _State {
+    override func didEnter(from: GKState?) {
+        
+    }
+    
+    override func up() {
+        stateMachine!.enter(Save.self)
+    }
+}
+
+private final class CancelExit: _State {
+    override func didEnter(from: GKState?) {
+        
+    }
+    
+    override func up() {
+        stateMachine!.enter(Save.self)
+    }
+}
+
+private final class Confirm: _State {
+    override func didEnter(from: GKState?) {
+        
+    }
+    
+    override func up() {
+        stateMachine!.enter(Save.self)
+    }
 }

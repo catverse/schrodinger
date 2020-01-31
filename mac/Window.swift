@@ -2,9 +2,9 @@ import AppKit
 
 final class Window: NSWindow {
     init() {
-        super.init(contentRect: .init(x: 0, y: 0, width: 900, height: 600), styleMask: [.borderless, .miniaturizable, .resizable, .closable, .titled, .unifiedTitleAndToolbar, .fullSizeContentView], backing: .buffered, defer: false)
+        super.init(contentRect: .init(x: 0, y: 0, width: 300, height: 300), styleMask: [.borderless, .miniaturizable, .resizable, .closable, .titled, .unifiedTitleAndToolbar, .fullSizeContentView], backing: .buffered, defer: false)
         center()
-        minSize = .init(width: 900, height: 600)
+        minSize = .init(width: 300, height: 300)
         appearance = NSAppearance(named: .darkAqua)
         backgroundColor = .black
         titlebarAppearsTransparent = true

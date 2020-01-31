@@ -13,9 +13,6 @@ class Game: SKView, SKSceneDelegate {
     init() {
         super.init(frame: .zero)
         ignoresSiblingOrder = true
-        showsFPS = true
-        showsNodeCount = true
-        showsDrawCount = true
         state = .init(states: [StartState(self), WalkState(self), DialogState(self), UnboxState(self), MenuState(self)])
         memory.game.receive(on: DispatchQueue.main).sink {
             if let game = $0 {

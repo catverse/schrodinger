@@ -40,7 +40,7 @@ final class StartScene: SKScene {
         new.fontSize = 16
         new.text = .key("Start.new")
         new.verticalAlignmentMode = .center
-        new.position.y = -100
+        new.position.y = -90
         addChild(new)
         self.new = new
         
@@ -49,7 +49,7 @@ final class StartScene: SKScene {
         cont.fontSize = 16
         cont.text = .key("Start.continue")
         cont.verticalAlignmentMode = .center
-        cont.position.y = -150
+        cont.position.y = -120
         addChild(cont)
         self.cont = cont
         
