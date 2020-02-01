@@ -6,19 +6,18 @@ final class StartState: State {
     fileprivate weak var scene: StartScene!
     private var state: GKStateMachine!
     
+    override init(_ game: Game) {
+        super.init(game)
+        state = .init(states: [Press(self), New(self), Continue(self), List(self)])
+    }
+    
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
         let scene = StartScene()
-        self.scene = scene
-        state = GKStateMachine(states: [Press(self), New(self), Continue(self), List(self)])
-        state.enter(Press.self)
         scene.delegate = game
+        self.scene = scene
+        state.enter(Press.self)
         game.presentScene(scene, transition: .fade(withDuration: 3))
-    }
-    
-    override func willExit(to: GKState) {
-        super.willExit(to: to)
-        state = nil
     }
     
     override func control() {
@@ -151,6 +150,7 @@ private final class List: _State {
         if index == -1 {
             stateMachine!.enter(Continue.self)
         } else {
+            sub?.cancel()
             state.load(entries[index])
         }
     }

@@ -34,7 +34,7 @@ final class MenuScene: SKScene {
         title.fontColor = .haze()
         title.fontSize = 10
         title.verticalAlignmentMode = .center
-        title.position.y = 130
+        title.position.y = 140
         addChild(title)
         self.title = title
         

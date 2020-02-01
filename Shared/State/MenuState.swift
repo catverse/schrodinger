@@ -6,19 +6,18 @@ final class MenuState: State {
     fileprivate weak var scene: MenuScene!
     private var state: GKStateMachine!
     
+    override init(_ game: Game) {
+        super.init(game)
+        state = .init(states: [Continue(self), Inventory(self), Save(self), Exit(self), CancelSave(self), Overwrite(self), New(self), Saved(self), CancelExit(self), Confirm(self)])
+    }
+    
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
         let scene = MenuScene()
-        self.scene = scene
-        state = GKStateMachine(states: [Continue(self), Inventory(self), Save(self), Exit(self), CancelSave(self), Overwrite(self), New(self), Saved(self), CancelExit(self), Confirm(self)])
-        state.enter(Continue.self)
         scene.delegate = game
+        self.scene = scene
+        state.enter(Continue.self)
         game.presentScene(scene, transition: .fade(withDuration: 0.5))
-    }
-    
-    override func willExit(to: GKState) {
-        super.willExit(to: to)
-        state = nil
     }
     
     override func control() {

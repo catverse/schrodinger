@@ -6,8 +6,8 @@ final class WalkControl: GKComponent {
     private weak var game: Game!
     private var timer = TimeInterval()
     private var state: GKStateMachine!
-    private var current: _State { state.currentState as! _State }
     private var select: vector_int2 { memory.game.position &+ current.delta }
+    private var current: _State { state.currentState as! _State }
     private var scene: WalkScene { player.node.scene as! WalkScene }
     private var dialog: DialogState { game.state.state(forClass: DialogState.self)! }
     private var unbox: UnboxState { game.state.state(forClass: UnboxState.self)! }
@@ -17,15 +17,15 @@ final class WalkControl: GKComponent {
     required init?(coder: NSCoder) { nil }
     init(_ game: Game) {
         super.init()
-        self.game = game
-    }
-    
-    override func didAddToEntity() {
         state = .init(states: [
             Front0(self), Front1(self), Front2(self),
             Back0(self), Back1(self), Back2(self),
             Left0(self), Left1(self), Left2(self),
             Right0(self), Right1(self), Right2(self)])
+        self.game = game
+    }
+    
+    override func didAddToEntity() {
         enter(memory.game.facing, fallback: Front0.self)
     }
     
