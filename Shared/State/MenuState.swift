@@ -45,14 +45,18 @@ final class MenuState: State {
     fileprivate func exit() {
         stateMachine!.enter(StartState.self)
     }
+    
+    fileprivate func inventory() {
+        stateMachine!.enter(InventoryState.self)
+    }
 }
 
 private class _State: GKState {
-    fileprivate weak var menu: MenuState!
+    fileprivate weak var state: MenuState!
     
-    init(_ menu: MenuState) {
+    init(_ state: MenuState) {
         super.init()
-        self.menu = menu
+        self.state = state
     }
     
     func ok() {
@@ -60,7 +64,7 @@ private class _State: GKState {
     }
     
     func cancel() {
-        menu.cont()
+        state.cont()
     }
     
     func up() {
@@ -74,11 +78,11 @@ private class _State: GKState {
 
 private final class Continue: _State {
     override func didEnter(from: GKState?) {
-        menu.scene.showCont()
+        state.scene.showCont()
     }
     
     override func ok() {
-        menu.cont()
+        state.cont()
     }
     
     override func down() {
@@ -88,7 +92,11 @@ private final class Continue: _State {
 
 private final class Inventory: _State {
     override func didEnter(from: GKState?) {
-        menu.scene.showInventory()
+        state.scene.showInventory()
+    }
+    
+    override func ok() {
+        state.inventory()
     }
     
     override func up() {
@@ -102,7 +110,7 @@ private final class Inventory: _State {
 
 private final class Save: _State {
     override func didEnter(from: GKState?) {
-        menu.scene.showSave()
+        state.scene.showSave()
     }
     
     override func ok() {
@@ -120,7 +128,7 @@ private final class Save: _State {
 
 private final class Exit: _State {
     override func didEnter(from: GKState?) {
-        menu.scene.showExit()
+        state.scene.showExit()
     }
     
     override func ok() {
@@ -134,7 +142,7 @@ private final class Exit: _State {
 
 private final class CancelSave: _State {
     override func didEnter(from: GKState?) {
-        menu.scene.showCancelSave()
+        state.scene.showCancelSave()
     }
     
     override func ok() {
@@ -152,7 +160,7 @@ private final class CancelSave: _State {
 
 private final class Overwrite: _State {
     override func didEnter(from: GKState?) {
-        menu.scene.showOverwrite()
+        state.scene.showOverwrite()
     }
     
     override func ok() {
@@ -171,7 +179,7 @@ private final class Overwrite: _State {
 
 private final class New: _State {
     override func didEnter(from: GKState?) {
-        menu.scene.showNew()
+        state.scene.showNew()
     }
     
     override func ok() {
@@ -194,7 +202,7 @@ private final class New: _State {
 
 private final class CancelExit: _State {
     override func didEnter(from: GKState?) {
-        menu.scene.showCancelExit()
+        state.scene.showCancelExit()
     }
     
     override func ok() {
@@ -212,12 +220,12 @@ private final class CancelExit: _State {
 
 private final class Confirm: _State {
     override func didEnter(from: GKState?) {
-        menu.scene.showConfirm()
+        state.scene.showConfirm()
     }
     
     override func ok() {
         memory.game = nil
-        menu.exit()
+        state.exit()
     }
     
     override func cancel() {
@@ -231,10 +239,10 @@ private final class Confirm: _State {
 
 private final class Saved: _State {
     override func didEnter(from: GKState?) {
-        menu.scene.showSaved()
+        state.scene.showSaved()
     }
     
     override func ok() {
-        menu.cont()
+        state.cont()
     }
 }

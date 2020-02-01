@@ -38,6 +38,8 @@
 		DA52311023E0726D005BAC2B /* TestDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA52310F23E0726D005BAC2B /* TestDialog.swift */; };
 		DA5D13F223D25D47008E78D1 /* House_Bedroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */; };
 		DA628FA523D1BF0500F240AC /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA628FA423D1BF0500F240AC /* Window.swift */; };
+		DA73479723E575B200C70214 /* InventoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73479623E575B200C70214 /* InventoryScene.swift */; };
+		DA73479923E5763400C70214 /* InventoryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73479823E5763400C70214 /* InventoryState.swift */; };
 		DA73DE3823D1B6AE00E48E24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA73DE3123D1B6AE00E48E24 /* Assets.xcassets */; };
 		DA73DE4223D1B7F700E48E24 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73DE4123D1B7F700E48E24 /* Memory.swift */; };
 		DA73DE4523D1B8BC00E48E24 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA73DE4423D1B8BC00E48E24 /* GameKit.framework */; };
@@ -101,6 +103,8 @@
 		DA52310F23E0726D005BAC2B /* TestDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDialog.swift; sourceTree = "<group>"; };
 		DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Bedroom.swift; sourceTree = "<group>"; };
 		DA628FA423D1BF0500F240AC /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		DA73479623E575B200C70214 /* InventoryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryScene.swift; sourceTree = "<group>"; };
+		DA73479823E5763400C70214 /* InventoryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryState.swift; sourceTree = "<group>"; };
 		DA73DE2B23D1B68B00E48E24 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		DA73DE2C23D1B69F00E48E24 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DA73DE2D23D1B69F00E48E24 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				DA4AF1C423DB17480041A35D /* House_Corridor.sks */,
 				DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */,
 				DA4AF1C623DB1A340041A35D /* House_Corridor.swift */,
+				DA73479623E575B200C70214 /* InventoryScene.swift */,
 				DA352C0E23E1BF0F006AF887 /* MenuScene.swift */,
 				DA09803623DF026C007CC607 /* StartScene.swift */,
 				DA2F75A823D9A080001519C6 /* WalkScene.swift */,
@@ -178,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD7B94523DDCE2400C483EC /* DialogState.swift */,
+				DA73479823E5763400C70214 /* InventoryState.swift */,
 				DA352C1023E1C1CE006AF887 /* MenuState.swift */,
 				DA09803F23DF1E4C007CC607 /* StartState.swift */,
 				DA4AF1D523DB2B470041A35D /* State.swift */,
@@ -475,6 +481,8 @@
 				DA352C1123E1C1CE006AF887 /* MenuState.swift in Sources */,
 				DA73DE4723D1B9C400E48E24 /* App.swift in Sources */,
 				DA4AF1C723DB1A340041A35D /* House_Corridor.swift in Sources */,
+				DA73479723E575B200C70214 /* InventoryScene.swift in Sources */,
+				DA73479923E5763400C70214 /* InventoryState.swift in Sources */,
 				DAD7B94823DDD4BB00C483EC /* DialogNode.swift in Sources */,
 				DA09802D23DEFAEA007CC607 /* SKLabelNode.swift in Sources */,
 				DA09804023DF1E4C007CC607 /* StartState.swift in Sources */,

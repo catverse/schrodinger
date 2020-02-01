@@ -50,11 +50,11 @@ final class StartState: State {
 }
 
 private class _State: GKState {
-    fileprivate weak var start: StartState!
+    fileprivate weak var state: StartState!
     
-    init(_ start: StartState) {
+    init(_ state: StartState) {
         super.init()
-        self.start = start
+        self.state = state
     }
     
     func next() {
@@ -76,7 +76,7 @@ private class _State: GKState {
 
 private final class Press: _State {
     override func didEnter(from: GKState?) {
-        start.scene.showPress()
+        state.scene.showPress()
     }
     
     override func next() {
@@ -86,11 +86,11 @@ private final class Press: _State {
 
 private final class New: _State {
     override func didEnter(from: GKState?) {
-        start.scene.showNew()
+        state.scene.showNew()
     }
     
     override func next() {
-        start.new()
+        state.new()
     }
     
     override func previous() {
@@ -108,7 +108,7 @@ private final class New: _State {
 
 private final class Continue: _State {
     override func didEnter(from: GKState?) {
-        start.scene.showCont()
+        state.scene.showCont()
     }
     
     override func next() {
@@ -134,10 +134,10 @@ private final class List: _State {
     private var index = Int()
     
     override func didEnter(from: GKState?) {
-        start.scene.showList()
+        state.scene.showList()
         index = -1
         sub = memory.entries.receive(on: DispatchQueue.main).sink { [weak self] in
-            self?.start.scene.list($0)
+            self?.state.scene.list($0)
             self?.entries = $0
         }
         memory.load()
@@ -151,7 +151,7 @@ private final class List: _State {
         if index == -1 {
             stateMachine!.enter(Continue.self)
         } else {
-            start.load(entries[index])
+            state.load(entries[index])
         }
     }
     
@@ -162,14 +162,14 @@ private final class List: _State {
     override func up() {
         if !entries.isEmpty && index > -1 {
             index -= 1
-            start.scene.scrollUp()
+            state.scene.scrollUp()
         }
     }
     
     override func down() {
         if index < entries.count - 1 {
             index += 1
-            start.scene.scrollDown()
+            state.scene.scrollDown()
         }
     }
 }
