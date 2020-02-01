@@ -20,6 +20,11 @@ final class MenuScene: SKScene {
         anchorPoint = .init(x: 0.5, y: 0.5)
         scaleMode = .resizeFill
         
+        let cat = SKSpriteNode(imageNamed: "menu_cat")
+        cat.alpha = 0
+        addChild(cat)
+        self.cat = cat
+        
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .full
         formatter.allowedUnits = [.day, .hour, .minute]
@@ -42,10 +47,6 @@ final class MenuScene: SKScene {
         info(formatter.string(from: memory.game.time)!, y: -100)
         info(.key("Location.\(memory.game.location.rawValue)"), y: -130)
         
-        let cat = SKSpriteNode(imageNamed: "menu_cat")
-        addChild(cat)
-        self.cat = cat
-        
         cont = label(.key("Menu.continue"), y: 45)
         inventory = label(.key("Menu.inventory"), y: 15)
         save = label(.key("Menu.save"), y: -15)
@@ -60,7 +61,7 @@ final class MenuScene: SKScene {
     func showCont() {
         cat.position.y = cont.position.y + 2
         title.text = .key("Menu.title.menu")
-        show(cont)
+        show([cont, cat])
         fade([inventory, save, exit])
         hide([overwrite, new, cancel, confirm, saved])
     }
@@ -68,7 +69,7 @@ final class MenuScene: SKScene {
     func showInventory() {
         cat.position.y = inventory.position.y + 2
         title.text = .key("Menu.title.menu")
-        show(inventory)
+        show([inventory, cat])
         fade([cont, save, exit])
         hide([overwrite, new, cancel, confirm, saved])
     }
@@ -76,7 +77,7 @@ final class MenuScene: SKScene {
     func showSave() {
         cat.position.y = save.position.y + 2
         title.text = .key("Menu.title.menu")
-        show(save)
+        show([save, cat])
         fade([cont, inventory, exit])
         hide([overwrite, new, cancel, confirm, saved])
     }
@@ -84,7 +85,7 @@ final class MenuScene: SKScene {
     func showExit() {
         cat.position.y = exit.position.y + 2
         title.text = .key("Menu.title.menu")
-        show(exit)
+        show([exit, cat])
         fade([cont, inventory, save])
         hide([overwrite, new, cancel, confirm, saved])
     }
@@ -92,7 +93,7 @@ final class MenuScene: SKScene {
     func showOverwrite() {
         cat.position.y = overwrite.position.y + 2
         title.text = .key("Menu.title.save")
-        show(overwrite)
+        show([overwrite, cat])
         fade([new, cancel])
         hide([save, cont, inventory, exit, confirm, saved])
     }
@@ -100,7 +101,7 @@ final class MenuScene: SKScene {
     func showNew() {
         cat.position.y = new.position.y + 2
         title.text = .key("Menu.title.save")
-        show(new)
+        show([new, cat])
         fade([overwrite, cancel])
         hide([save, cont, inventory, exit, confirm, saved])
     }
@@ -108,7 +109,7 @@ final class MenuScene: SKScene {
     func showCancelSave() {
         cat.position.y = cancel.position.y + 2
         title.text = .key("Menu.title.save")
-        show(cancel)
+        show([cancel, cat])
         fade([overwrite, new])
         hide([save, cont, inventory, exit, confirm, saved])
     }
@@ -116,14 +117,14 @@ final class MenuScene: SKScene {
     func showSaved() {
         cat.position.y = saved.position.y + 2
         title.text = .key("Menu.title.save")
-        show(saved)
+        show([saved, cat])
         hide([save, cont, inventory, exit, confirm, cancel, overwrite, new])
     }
     
     func showCancelExit() {
         cat.position.y = cancel.position.y + 2
         title.text = .key("Menu.title.exit")
-        show(cancel)
+        show([cancel, cat])
         fade([confirm])
         hide([save, cont, inventory, exit, overwrite, new, saved])
     }
@@ -131,7 +132,7 @@ final class MenuScene: SKScene {
     func showConfirm() {
         cat.position.y = confirm.position.y + 2
         title.text = .key("Menu.title.exit")
-        show(confirm)
+        show([confirm, cat])
         fade([cancel])
         hide([save, cont, inventory, exit, overwrite, new, saved])
     }
@@ -162,18 +163,20 @@ final class MenuScene: SKScene {
         return node
     }
     
-    private func show(_ label: SKLabelNode) {
-        label.run(.fadeAlpha(to: 1, duration: 0.5))
+    private func show(_ nodes: [SKNode]) {
+        nodes.forEach {
+            $0.run(.fadeAlpha(to: 1, duration: 0.5))
+        }
     }
     
-    private func hide(_ labels: [SKLabelNode]) {
-        labels.forEach {
+    private func hide(_ nodes: [SKNode]) {
+        nodes.forEach {
             $0.run(.fadeAlpha(to: 0, duration: 0.5))
         }
     }
     
-    private func fade(_ labels: [SKLabelNode]) {
-        labels.forEach {
+    private func fade(_ nodes: [SKNode]) {
+        nodes.forEach {
             $0.run(.fadeAlpha(to: 0.4, duration: 0.5))
         }
     }

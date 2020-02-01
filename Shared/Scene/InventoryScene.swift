@@ -1,6 +1,7 @@
 import SpriteKit
 
 final class InventoryScene: SKScene {
+    private weak var cat: SKSpriteNode!
     private weak var back: SKLabelNode!
     private weak var items: SKLabelNode!
     private weak var key: SKLabelNode!
@@ -28,23 +29,30 @@ final class InventoryScene: SKScene {
         addChild(list)
         self.list = list
         
+        let cat = SKSpriteNode(imageNamed: "menu_cat")
+        list.addChild(cat)
+        self.cat = cat
+        
         back = menu(.key("Inventory.back"), x: -121)
         items = menu(.key("Inventory.items"), x: 0)
         key = menu(.key("Inventory.key"), x: 126)
     }
     
     func showBack() {
+        list.children.filter { $0 !== cat }.forEach { $0.removeFromParent() }
         show([back])
         fade([items, key])
         hide([list])
     }
     
     func showItems() {
+        list.children.filter { $0 !== cat }.forEach { $0.removeFromParent() }
         show([items, list])
         fade([back, key])
     }
     
     func showKey() {
+        list.children.filter { $0 !== cat }.forEach { $0.removeFromParent() }
         show([key, list])
         fade([back, items])
     }
