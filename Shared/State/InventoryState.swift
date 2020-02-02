@@ -6,7 +6,7 @@ final class InventoryState: State {
     
     override init(_ game: Game) {
         super.init(game)
-        state = .init(states: [Back(self), Items(self), Key(self)])
+        state = .init(states: [Back(self), Items(self), Key(self), ItemsEmpty(self), KeyEmpty(self)])
     }
     
     override func didEnter(from: GKState?) {
@@ -14,7 +14,7 @@ final class InventoryState: State {
         let scene = InventoryScene()
         scene.delegate = game
         self.scene = scene
-        state.enter(Items.self)
+        items()
         game.presentScene(scene, transition: .fade(withDuration: 0.5))
     }
     
@@ -39,6 +39,17 @@ final class InventoryState: State {
     
     fileprivate func back() {
         stateMachine!.enter(MenuState.self)
+    }
+    
+    fileprivate func items() {
+//        state.enter(memory.game.inventory.isEmpty ? ItemsEmpty.self : Items.self)
+        state.enter(Items.self)
+        scene.list(["a", "b", "hello", "world", "lorem", "ipsum"])
+        
+    }
+    
+    fileprivate func key() {
+        state.enter(KeyEmpty.self)
     }
 }
 
@@ -85,7 +96,7 @@ private final class Back: _State {
     }
     
     override func right() {
-        stateMachine!.enter(Items.self)
+        state.items()
     }
 }
 
@@ -99,7 +110,21 @@ private final class Items: _State {
     }
     
     override func right() {
-        stateMachine!.enter(Key.self)
+        state.key()
+    }
+}
+
+private final class ItemsEmpty: _State {
+    override func didEnter(from: GKState?) {
+        state.scene.showItemsEmpty()
+    }
+    
+    override func left() {
+        stateMachine!.enter(Back.self)
+    }
+    
+    override func right() {
+        state.key()
     }
 }
 
@@ -109,6 +134,16 @@ private final class Key: _State {
     }
     
     override func left() {
-        stateMachine!.enter(Items.self)
+        state.items()
+    }
+}
+
+private final class KeyEmpty: _State {
+    override func didEnter(from: GKState?) {
+        state.scene.showKeyEmpty()
+    }
+    
+    override func left() {
+        state.items()
     }
 }

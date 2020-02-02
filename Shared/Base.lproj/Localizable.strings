@@ -20,6 +20,7 @@ Inventory.title="Inventory";
 Inventory.back="Back";
 Inventory.items="Items";
 Inventory.key="Key";
+Inventory.empty="No items";
 Dialog.Chest.Found="Found a chest...";
 Dialog.Chest.Empty="it's empty.";
 Dialog.Chest.Obtained="Obtained";

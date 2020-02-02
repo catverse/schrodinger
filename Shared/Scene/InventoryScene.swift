@@ -5,7 +5,10 @@ final class InventoryScene: SKScene {
     private weak var back: SKLabelNode!
     private weak var items: SKLabelNode!
     private weak var key: SKLabelNode!
-    private weak var list: SKShapeNode!
+    private weak var empty: SKLabelNode!
+    private weak var list: SKNode!
+    private weak var crop: SKCropNode!
+    var _items: [SKNode] { list.children.filter { $0 !== cat } }
     
     required init?(coder: NSCoder) { nil }
     override init() {
@@ -22,14 +25,37 @@ final class InventoryScene: SKScene {
         title.text = .key("Inventory.title")
         addChild(title)
         
-        let list = SKShapeNode(rect: .init(origin: .init(x: -145, y: -145), size: .init(width: 290, height: 225)))
-        list.alpha = 0
-        list.strokeColor = .white
-        list.lineWidth = 2
-        addChild(list)
+        let crop = SKCropNode()
+        crop.alpha = 0
+        addChild(crop)
+        self.crop = crop
+        
+        let mask = SKShapeNode(rect: .init(origin: .init(x: -145, y: -145), size: .init(width: 290, height: 225)))
+        mask.fillColor = .white
+        crop.maskNode = mask
+        
+        let square = SKShapeNode(rect: .init(origin: .init(x: -145, y: -145), size: .init(width: 290, height: 225)))
+        square.strokeColor = .white
+        square.lineWidth = 3
+        crop.addChild(square)
+        
+        let list = SKNode()
+        crop.addChild(list)
         self.list = list
         
+        let empty = SKLabelNode(fontNamed: SKLabelNode.font)
+        empty.alpha = 0
+        empty.fontColor = .white
+        empty.fontSize = 12
+        empty.position.y = -20
+        empty.verticalAlignmentMode = .center
+        empty.text = .key("Inventory.empty")
+        addChild(empty)
+        self.empty = empty
+        
         let cat = SKSpriteNode(imageNamed: "menu_cat")
+        cat.alpha = 0
+        cat.position.x = -110
         list.addChild(cat)
         self.cat = cat
         
@@ -39,22 +65,52 @@ final class InventoryScene: SKScene {
     }
     
     func showBack() {
-        list.children.filter { $0 !== cat }.forEach { $0.removeFromParent() }
+        _items.forEach { $0.removeFromParent() }
         show([back])
         fade([items, key])
-        hide([list])
+        hide([crop, empty])
     }
     
     func showItems() {
-        list.children.filter { $0 !== cat }.forEach { $0.removeFromParent() }
-        show([items, list])
+        _items.forEach { $0.removeFromParent() }
+        show([items, crop, cat])
         fade([back, key])
+        hide([empty])
+    }
+    
+    func showItemsEmpty() {
+        _items.forEach { $0.removeFromParent() }
+        show([items, crop])
+        fade([back, key, empty])
+        hide([cat])
     }
     
     func showKey() {
-        list.children.filter { $0 !== cat }.forEach { $0.removeFromParent() }
-        show([key, list])
+        _items.forEach { $0.removeFromParent() }
+        show([key, crop, cat])
         fade([back, items])
+        hide([empty])
+    }
+    
+    func showKeyEmpty() {
+        _items.forEach { $0.removeFromParent() }
+        show([key, crop])
+        fade([back, items, empty])
+        hide([cat])
+    }
+    
+    func list(_ items: [String]) {
+        items.enumerated().forEach {
+            let node = SKLabelNode(fontNamed: SKLabelNode.font)
+            node.fontColor = .white
+            node.fontSize = 12
+            node.verticalAlignmentMode = .top
+            node.horizontalAlignmentMode = .left
+            node.position.x = -70
+            node.position.y = 60 - (.init($0.0) * 45)
+            node.text = $0.1
+            list.addChild(node)
+        }
     }
     
     private func menu(_ text: String, x: CGFloat) -> SKLabelNode {
