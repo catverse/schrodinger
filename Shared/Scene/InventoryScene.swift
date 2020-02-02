@@ -1,7 +1,7 @@
 import SpriteKit
 
 final class InventoryScene: SKScene {
-    private weak var cat: SKSpriteNode!
+    private(set) weak var cat: SKSpriteNode!
     private weak var back: SKLabelNode!
     private weak var items: SKLabelNode!
     private weak var key: SKLabelNode!
@@ -107,10 +107,23 @@ final class InventoryScene: SKScene {
             node.verticalAlignmentMode = .top
             node.horizontalAlignmentMode = .left
             node.position.x = -70
-            node.position.y = 60 - (.init($0.0) * 45)
+            node.position.y = 50 - (.init($0.0) * 45)
             node.text = $0.1
             list.addChild(node)
         }
+        cat(0)
+    }
+    
+    func cat(_ index: Int) {
+        cat.position.y = 50 - (.init(index) * 45)
+    }
+    
+    func scrollUp() {
+        list.run(.moveBy(x: 0, y: -180, duration: 0.5))
+    }
+    
+    func scrollDown() {
+        list.run(.moveBy(x: 0, y: 180, duration: 0.5))
     }
     
     private func menu(_ text: String, x: CGFloat) -> SKLabelNode {

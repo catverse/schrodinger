@@ -2,6 +2,7 @@ import GameplayKit
 
 final class InventoryState: State {
     fileprivate weak var scene: InventoryScene!
+    private var index = 0
     private var state: GKStateMachine!
     
     override init(_ game: Game) {
@@ -42,14 +43,37 @@ final class InventoryState: State {
     }
     
     fileprivate func items() {
-//        state.enter(memory.game.inventory.isEmpty ? ItemsEmpty.self : Items.self)
-        state.enter(Items.self)
-        scene.list(["a", "b", "hello", "world", "lorem", "ipsum"])
-        
+        if memory.game.inventory.isEmpty {
+            state.enter(ItemsEmpty.self)
+        } else {
+            state.enter(Items.self)
+            index = 0
+            scene.list(memory.game.inventory.map { .key("Item.\($0.0.rawValue)") + " x\($0.1)" })
+        }
     }
     
     fileprivate func key() {
         state.enter(KeyEmpty.self)
+    }
+    
+    fileprivate func up() {
+        if index > 0 {
+            index -= 1
+            scene.cat(index)
+            if scene.convert(.zero, from: scene.cat).y > 50 {
+                scene.scrollUp()
+            }
+        }
+    }
+    
+    fileprivate func down() {
+        if scene._items.count - 1 > index {
+            index += 1
+            scene.cat(index)
+            if scene.convert(.zero, from: scene.cat).y < -85 {
+                scene.scrollDown()
+            }
+        }
     }
 }
 
@@ -112,6 +136,14 @@ private final class Items: _State {
     override func right() {
         state.key()
     }
+    
+    override func up() {
+        state.up()
+    }
+    
+    override func down() {
+        state.down()
+    }
 }
 
 private final class ItemsEmpty: _State {
@@ -135,6 +167,14 @@ private final class Key: _State {
     
     override func left() {
         state.items()
+    }
+    
+    override func up() {
+        state.up()
+    }
+    
+    override func down() {
+        state.down()
     }
 }
 
