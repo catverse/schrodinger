@@ -9,6 +9,6 @@ public struct Entry: Codable {
     public internal(set) var id = UUID().uuidString
     public internal(set) var saved = TimeInterval()
     public internal(set) var taken = [Location : [vector_int2]]()
-    public internal(set) var inventory = [Item : Int]()
+    public internal(set) var inventory = [ItemId : Int]()
     public let created = Date().timeIntervalSince1970
 }

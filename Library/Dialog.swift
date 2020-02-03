@@ -8,7 +8,7 @@ public final class Dialog {
         npc(name: String)
     }
     
-    static func chest(_ item: Item?) -> Dialog {
+    static func chest(_ item: ItemId?) -> Dialog {
         .init(.none, [["Dialog.Chest.Found"], item == nil
             ? ["Dialog.Chest.Empty"]
             : ["Dialog.Chest.Obtained", "Item.\(item!.rawValue)", "Dialog.Chest.Ex"]])

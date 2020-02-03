@@ -5,8 +5,8 @@ class WalkScene: SKScene {
     var player: WalkPlayer!
     var grid: GKGridGraph<GKGridGraphNode>!
     var doors = [vector_int2 : Location]()
-    var items = [vector_int2 : Item]()
-    var chests = [vector_int2 : Item]()
+    var items = [vector_int2 : ItemId]()
+    var chests = [vector_int2 : ItemId]()
     var starts = [Location : vector_int2]()
     var unboxed = ""
     final var location: Location { Location(rawValue: name!)! }

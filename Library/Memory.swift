@@ -44,7 +44,7 @@ public final class Memory {
         }
     }
     
-    public func take(chest: vector_int2, item: Item) -> Dialog {
+    public func take(chest: vector_int2, item: ItemId) -> Dialog {
         guard game.taken[game.location]?.contains(chest) != true else { return Dialog.chest(nil) }
         game.taken[game.location] = [chest] + (game.taken[game.location] ?? [])
         game.inventory[item] = 1 + (game.inventory[item] ?? 0)
