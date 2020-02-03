@@ -1,7 +1,9 @@
+import Library
 import GameplayKit
 
 final class InventoryState: State {
     fileprivate weak var scene: InventoryScene!
+    private var list = [ItemId : (Int, Item)]()
     private var index = 0
     private var state: GKStateMachine!
     
@@ -43,17 +45,29 @@ final class InventoryState: State {
     }
     
     fileprivate func items() {
-        if memory.game.inventory.isEmpty {
+        list = memory.game.inventory
+            .reduce(into: [:]) { $0[$1.0] = ($1.1, ItemFactory.make($1.0)) }
+            .filter { !($0.1.1 is KeyItem) }
+        index = 0
+        if list.isEmpty {
             state.enter(ItemsEmpty.self)
         } else {
             state.enter(Items.self)
-            index = 0
-            scene.list(memory.game.inventory.map { .key("Item.\($0.0.rawValue)") + " x\($0.1)" })
+            scene.list(list.map { .key("Item.\($0.0.rawValue)") + " x\($0.1.0)" })
         }
     }
     
     fileprivate func key() {
-        state.enter(KeyEmpty.self)
+        list = memory.game.inventory
+            .reduce(into: [:]) { $0[$1.0] = ($1.1, ItemFactory.make($1.0)) }
+            .filter { $0.1.1 is KeyItem }
+        index = 0
+        if list.isEmpty {
+            state.enter(KeyEmpty.self)
+        } else {
+            state.enter(Key.self)
+            scene.list(list.map { .key("Item.\($0.0.rawValue)") })
+        }
     }
     
     fileprivate func up() {
@@ -67,7 +81,7 @@ final class InventoryState: State {
     }
     
     fileprivate func down() {
-        if scene._items.count - 1 > index {
+        if list.count - 1 > index {
             index += 1
             scene.cat(index)
             if scene.convert(.zero, from: scene.cat).y < -85 {

@@ -8,7 +8,7 @@ final class InventoryScene: SKScene {
     private weak var empty: SKLabelNode!
     private weak var list: SKNode!
     private weak var crop: SKCropNode!
-    var _items: [SKNode] { list.children.filter { $0 !== cat } }
+    private var _items: [SKNode] { list.children.filter { $0 !== cat } }
     
     required init?(coder: NSCoder) { nil }
     override init() {

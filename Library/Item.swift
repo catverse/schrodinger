@@ -4,6 +4,18 @@ public protocol Item {
     
 }
 
+public protocol KeyItem {
+    
+}
+
+public protocol BattleItem {
+    
+}
+
+public protocol WalkingItem {
+    
+}
+
 public protocol HealingItem {
     var hp: Int { get }
 }
@@ -16,6 +28,6 @@ public final class ItemFactory {
     }
 }
 
-private struct Potion: Item, HealingItem {
+private struct Potion: Item, BattleItem, WalkingItem, HealingItem {
     let hp = 20
 }
