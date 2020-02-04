@@ -2,14 +2,14 @@ import SpriteKit
 
 final class InventoryScene: SKScene {
     private(set) weak var cat: SKSpriteNode!
+    private(set) weak var info: SKLabelNode!
+    private(set) weak var icon: SKSpriteNode!
     private weak var back: SKLabelNode!
     private weak var items: SKLabelNode!
     private weak var key: SKLabelNode!
     private weak var empty: SKLabelNode!
-    private weak var info: SKLabelNode!
     private weak var cancel: SKLabelNode!
     private weak var use: SKLabelNode!
-    private weak var icon: SKSpriteNode!
     private weak var list: SKNode!
     private weak var crop: SKCropNode!
     private var _items: [SKNode] { list.children.filter { $0 !== cat } }
@@ -123,15 +123,18 @@ final class InventoryScene: SKScene {
     }
     
     func hideInfo() {
-        
+        show([crop, cat])
+        hide([info, cancel, icon, use])
     }
     
     func hideUse() {
-        
+        show([crop, cat])
+        hide([info, cancel, icon, use])
     }
     
     func hideCancel() {
-        
+        show([crop, cat])
+        hide([info, cancel, icon, use])
     }
     
     func list(_ items: [String]) {
