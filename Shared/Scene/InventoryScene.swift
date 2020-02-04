@@ -6,6 +6,10 @@ final class InventoryScene: SKScene {
     private weak var items: SKLabelNode!
     private weak var key: SKLabelNode!
     private weak var empty: SKLabelNode!
+    private weak var info: SKLabelNode!
+    private weak var cancel: SKLabelNode!
+    private weak var use: SKLabelNode!
+    private weak var icon: SKSpriteNode!
     private weak var list: SKNode!
     private weak var crop: SKCropNode!
     private var _items: [SKNode] { list.children.filter { $0 !== cat } }
@@ -43,15 +47,17 @@ final class InventoryScene: SKScene {
         crop.addChild(list)
         self.list = list
         
-        let empty = SKLabelNode(fontNamed: SKLabelNode.font)
-        empty.alpha = 0
-        empty.fontColor = .white
-        empty.fontSize = 12
-        empty.position.y = -20
-        empty.verticalAlignmentMode = .center
+        empty = text()
         empty.text = .key("Inventory.empty")
-        addChild(empty)
-        self.empty = empty
+        
+        let icon = SKSpriteNode()
+        icon.alpha = 0
+        addChild(icon)
+        self.icon = icon
+        
+        info = text()
+        cancel = submenu(.key("Inventory.cancel"), y: -50)
+        use = submenu(.key("Inventory.use"), y: 0)
         
         let cat = SKSpriteNode(imageNamed: "menu_cat")
         cat.alpha = 0
@@ -68,35 +74,64 @@ final class InventoryScene: SKScene {
         _items.forEach { $0.removeFromParent() }
         show([back])
         fade([items, key])
-        hide([crop, empty])
+        hide([crop, empty, use, info, cancel, icon])
     }
     
     func showItems() {
         _items.forEach { $0.removeFromParent() }
         show([items, crop, cat])
         fade([back, key])
-        hide([empty])
+        hide([empty, use, info, cancel, icon])
     }
     
     func showItemsEmpty() {
         _items.forEach { $0.removeFromParent() }
         show([items, crop])
         fade([back, key, empty])
-        hide([cat])
+        hide([cat, use, info, cancel, icon])
     }
     
     func showKey() {
         _items.forEach { $0.removeFromParent() }
         show([key, crop, cat])
         fade([back, items])
-        hide([empty])
+        hide([empty, use, info, cancel, icon])
     }
     
     func showKeyEmpty() {
         _items.forEach { $0.removeFromParent() }
         show([key, crop])
         fade([back, items, empty])
-        hide([cat])
+        hide([cat, use, info, cancel, icon])
+    }
+    
+    func showInfo() {
+        show([info, cancel, icon])
+        hide([crop, cat, use])
+    }
+    
+    func showUse() {
+        show([info, use, icon])
+        fade([cancel])
+        hide([crop, cat])
+    }
+    
+    func showCancel() {
+        show([info, cancel, icon])
+        fade([use])
+        hide([crop, cat])
+    }
+    
+    func hideInfo() {
+        
+    }
+    
+    func hideUse() {
+        
+    }
+    
+    func hideCancel() {
+        
     }
     
     func list(_ items: [String]) {
@@ -135,6 +170,29 @@ final class InventoryScene: SKScene {
         node.position.x = x
         node.position.y = 120
         node.text = text
+        addChild(node)
+        return node
+    }
+    
+    private func submenu(_ text: String, y: CGFloat) -> SKLabelNode {
+        let node = SKLabelNode(fontNamed: SKLabelNode.font)
+        node.alpha = 0
+        node.fontColor = .haze()
+        node.fontSize = 12
+        node.position.y = y
+        node.text = text
+        addChild(node)
+        return node
+    }
+    
+    private func text() -> SKLabelNode {
+        let node = SKLabelNode(fontNamed: SKLabelNode.font)
+        node.alpha = 0
+        node.fontColor = .white
+        node.fontSize = 12
+        node.position.y = -20
+        node.numberOfLines = 2
+        node.verticalAlignmentMode = .center
         addChild(node)
         return node
     }

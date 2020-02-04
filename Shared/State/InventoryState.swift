@@ -9,7 +9,7 @@ final class InventoryState: State {
     
     override init(_ game: Game) {
         super.init(game)
-        state = .init(states: [Back(self), Items(self), Key(self), ItemsEmpty(self), KeyEmpty(self)])
+        state = .init(states: [Back(self), Items(self), Key(self), ItemsEmpty(self), KeyEmpty(self), Info(self), Use(self), Cancel(self)])
     }
     
     override func didEnter(from: GKState?) {
@@ -199,5 +199,55 @@ private final class KeyEmpty: _State {
     
     override func left() {
         state.items()
+    }
+}
+
+private final class Info: _State {
+    override func didEnter(from: GKState?) {
+        state.scene.showInfo()
+    }
+    
+    override func cancel() {
+        state.scene.hideInfo()
+    }
+    
+    override func ok() {
+        state.scene.hideInfo()
+    }
+}
+
+private final class Use: _State {
+    override func didEnter(from: GKState?) {
+        state.scene.showUse()
+    }
+    
+    override func cancel() {
+        state.scene.hideUse()
+    }
+    
+    override func ok() {
+        
+    }
+    
+    override func down() {
+        state.scene.showCancel()
+    }
+}
+
+private final class Cancel: _State {
+    override func didEnter(from: GKState?) {
+        state.scene.showCancel()
+    }
+    
+    override func cancel() {
+        state.scene.hideCancel()
+    }
+    
+    override func ok() {
+        state.scene.hideCancel()
+    }
+    
+    override func up() {
+        state.scene.showUse()
     }
 }
