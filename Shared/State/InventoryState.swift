@@ -3,7 +3,7 @@ import GameplayKit
 
 final class InventoryState: State {
     fileprivate weak var scene: InventoryScene!
-    private var list = [ItemId : (Int, Item)]()
+    private var list = [(ItemId, Int, Item)]()
     private var index = 0
     private var state: GKStateMachine!
     
@@ -45,22 +45,18 @@ final class InventoryState: State {
     }
     
     fileprivate func items() {
-        list = memory.game.inventory
-            .reduce(into: [:]) { $0[$1.0] = ($1.1, ItemFactory.make($1.0)) }
-            .filter { !($0.1.1 is KeyItem) }
+        list = memory.game.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0)) }.filter { !($0.2 is KeyItem) }
         index = 0
         if list.isEmpty {
             state.enter(ItemsEmpty.self)
         } else {
             state.enter(Items.self)
-            scene.list(list.map { .key("Item.\($0.0.rawValue)") + " x\($0.1.0)" })
+            scene.list(list.map { .key("Item.\($0.0.rawValue)") + " x\($0.1)" })
         }
     }
     
     fileprivate func key() {
-        list = memory.game.inventory
-            .reduce(into: [:]) { $0[$1.0] = ($1.1, ItemFactory.make($1.0)) }
-            .filter { $0.1.1 is KeyItem }
+        list = memory.game.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0)) }.filter { $0.2 is KeyItem }
         index = 0
         if list.isEmpty {
             state.enter(KeyEmpty.self)
@@ -88,6 +84,10 @@ final class InventoryState: State {
                 scene.scrollDown()
             }
         }
+    }
+    
+    fileprivate func select() {
+        
     }
 }
 
