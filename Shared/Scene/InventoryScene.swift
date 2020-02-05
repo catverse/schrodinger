@@ -52,6 +52,7 @@ final class InventoryScene: SKScene {
         
         let icon = SKSpriteNode()
         icon.alpha = 0
+        icon.size = .init(width: 32, height: 32)
         addChild(icon)
         self.icon = icon
         

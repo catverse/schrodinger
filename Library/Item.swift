@@ -23,7 +23,7 @@ public protocol HealingItem {
 public final class ItemFactory {
     public class func make(_ id: ItemId) -> Item {
         switch id {
-        case .Potion: return Potion()
+        case .potion: return Potion()
         }
     }
 }

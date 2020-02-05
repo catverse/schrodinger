@@ -27,6 +27,6 @@ Dialog.Chest.Found="Found a chest...";
 Dialog.Chest.Empty="it's empty.";
 Dialog.Chest.Obtained="Obtained";
 Dialog.Chest.Ex="!";
-Item.Potion="Potion";
+Item.potion="Potion";
 Location.House_Bedroom="House: Bedroom";
 Location.House_Corridor="House: Corridor";

@@ -3,7 +3,7 @@ import GameplayKit
 
 final class InventoryState: State {
     fileprivate weak var scene: InventoryScene!
-    private var list = [(ItemId, Int, Item)]()
+    private var list = [(ItemId, Int, Item, String)]()
     private var index = 0
     private var state: GKStateMachine!
     
@@ -45,24 +45,24 @@ final class InventoryState: State {
     }
     
     fileprivate func items() {
-        list = memory.game.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0)) }.filter { !($0.2 is KeyItem) }
+        list = memory.game.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0), .key("Item.\($0.0.rawValue)") + " x\($0.1)") }.filter { !($0.2 is KeyItem) }
         index = 0
         if list.isEmpty {
             state.enter(ItemsEmpty.self)
         } else {
             state.enter(Items.self)
-            scene.list(list.map { .key("Item.\($0.0.rawValue)") + " x\($0.1)" })
+            scene.list(list.map { $0.3 })
         }
     }
     
     fileprivate func key() {
-        list = memory.game.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0)) }.filter { $0.2 is KeyItem }
+        list = memory.game.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0), .key("Item.\($0.0.rawValue)")) }.filter { $0.2 is KeyItem }
         index = 0
         if list.isEmpty {
             state.enter(KeyEmpty.self)
         } else {
             state.enter(Key.self)
-            scene.list(list.map { .key("Item.\($0.0.rawValue)") })
+            scene.list(list.map { $0.3 })
         }
     }
     
@@ -87,7 +87,13 @@ final class InventoryState: State {
     }
     
     fileprivate func select() {
-        
+        scene.info.text = list[index].3
+        scene.icon.texture = .init(imageNamed: list[index].0.rawValue)
+        if list[index].2 is WalkingItem {
+            state.enter(Use.self)
+        } else {
+            state.enter(Info.self)
+        }
     }
 }
 
@@ -143,6 +149,10 @@ private final class Items: _State {
         state.scene.showItems()
     }
     
+    override func ok() {
+        state.select()
+    }
+    
     override func left() {
         stateMachine!.enter(Back.self)
     }
@@ -177,6 +187,10 @@ private final class ItemsEmpty: _State {
 private final class Key: _State {
     override func didEnter(from: GKState?) {
         state.scene.showKey()
+    }
+    
+    override func ok() {
+        state.select()
     }
     
     override func left() {
