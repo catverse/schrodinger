@@ -107,34 +107,19 @@ final class InventoryScene: SKScene {
     
     func showInfo() {
         show([info, cancel, icon])
-        hide([crop, cat, use])
+        hide([crop, cat, use, back, items, key])
     }
     
     func showUse() {
         show([info, use, icon])
         fade([cancel])
-        hide([crop, cat])
+        hide([crop, cat, back, items, key])
     }
     
     func showCancel() {
         show([info, cancel, icon])
         fade([use])
-        hide([crop, cat])
-    }
-    
-    func hideInfo() {
-        show([crop, cat])
-        hide([info, cancel, icon, use])
-    }
-    
-    func hideUse() {
-        show([crop, cat])
-        hide([info, cancel, icon, use])
-    }
-    
-    func hideCancel() {
-        show([crop, cat])
-        hide([info, cancel, icon, use])
+        hide([crop, cat, back, items, key])
     }
     
     func list(_ items: [String]) {
