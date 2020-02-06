@@ -3,10 +3,11 @@ import GameplayKit
 
 final class InventoryState: State {
     fileprivate weak var scene: InventoryScene!
+    fileprivate private(set) var previous: _State.Type!
     private var list = [(ItemId, Int, Item, String)]()
     private var index = 0
     private var state: GKStateMachine!
-    
+
     override init(_ game: Game) {
         super.init(game)
         state = .init(states: [Back(self), Items(self), Key(self), ItemsEmpty(self), KeyEmpty(self), Info(self), Use(self), Cancel(self)])
@@ -48,22 +49,24 @@ final class InventoryState: State {
         list = memory.game.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0), .key("Item.\($0.0.rawValue)") + " x\($0.1)") }.filter { !($0.2 is KeyItem) }
         index = 0
         if list.isEmpty {
-            state.enter(ItemsEmpty.self)
+            previous = ItemsEmpty.self
         } else {
-            state.enter(Items.self)
+            previous = Items.self
             scene.list(list.map { $0.3 })
         }
+        state.enter(previous)
     }
     
     fileprivate func key() {
         list = memory.game.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0), .key("Item.\($0.0.rawValue)")) }.filter { $0.2 is KeyItem }
         index = 0
         if list.isEmpty {
-            state.enter(KeyEmpty.self)
+            previous = KeyEmpty.self
         } else {
-            state.enter(Key.self)
+            previous = Key.self
             scene.list(list.map { $0.3 })
         }
+        state.enter(previous)
     }
     
     fileprivate func up() {
@@ -222,11 +225,11 @@ private final class Info: _State {
     }
     
     override func cancel() {
-        state.scene.hideInfo()
+        stateMachine!.enter(state.previous)
     }
     
     override func ok() {
-        state.scene.hideInfo()
+        stateMachine!.enter(state.previous)
     }
 }
 
@@ -236,7 +239,7 @@ private final class Use: _State {
     }
     
     override func cancel() {
-        state.scene.hideUse()
+        stateMachine!.enter(state.previous)
     }
     
     override func ok() {
@@ -244,7 +247,7 @@ private final class Use: _State {
     }
     
     override func down() {
-        state.scene.showCancel()
+        stateMachine!.enter(Cancel.self)
     }
 }
 
@@ -254,14 +257,14 @@ private final class Cancel: _State {
     }
     
     override func cancel() {
-        state.scene.hideCancel()
+        stateMachine!.enter(state.previous)
     }
     
     override func ok() {
-        state.scene.hideCancel()
+        stateMachine!.enter(state.previous)
     }
     
     override func up() {
-        state.scene.showUse()
+        stateMachine!.enter(Use.self)
     }
 }

@@ -48,17 +48,19 @@ final class InventoryScene: SKScene {
         self.list = list
         
         empty = text()
+        empty.position.y = -20
         empty.text = .key("Inventory.empty")
         
         let icon = SKSpriteNode()
         icon.alpha = 0
+        icon.position.y = 40
         icon.size = .init(width: 32, height: 32)
         addChild(icon)
         self.icon = icon
         
         info = text()
-        cancel = submenu(.key("Inventory.cancel"), y: -50)
-        use = submenu(.key("Inventory.use"), y: 0)
+        cancel = submenu(.key("Inventory.cancel"), y: -90)
+        use = submenu(.key("Inventory.use"), y: -60)
         
         let cat = SKSpriteNode(imageNamed: "menu_cat")
         cat.alpha = 0
@@ -72,14 +74,12 @@ final class InventoryScene: SKScene {
     }
     
     func showBack() {
-        _items.forEach { $0.removeFromParent() }
         show([back])
         fade([items, key])
         hide([crop, empty, use, info, cancel, icon])
     }
     
     func showItems() {
-        _items.forEach { $0.removeFromParent() }
         show([items, crop, cat])
         fade([back, key])
         hide([empty, use, info, cancel, icon])
@@ -93,7 +93,6 @@ final class InventoryScene: SKScene {
     }
     
     func showKey() {
-        _items.forEach { $0.removeFromParent() }
         show([key, crop, cat])
         fade([back, items])
         hide([empty, use, info, cancel, icon])
@@ -139,6 +138,7 @@ final class InventoryScene: SKScene {
     }
     
     func list(_ items: [String]) {
+        _items.forEach { $0.removeFromParent() }
         items.enumerated().forEach {
             let node = SKLabelNode(fontNamed: SKLabelNode.font)
             node.fontColor = .white
@@ -194,7 +194,6 @@ final class InventoryScene: SKScene {
         node.alpha = 0
         node.fontColor = .white
         node.fontSize = 12
-        node.position.y = -20
         node.numberOfLines = 2
         node.verticalAlignmentMode = .center
         addChild(node)
