@@ -49,16 +49,16 @@ final class TestMemory: XCTestCase {
     
     func testTakeChest() {
         memory.game = .init()
-        _ = memory.take(chest: .init(0, 0), item: .Potion)
+        _ = memory.take(chest: .init(0, 0), item: .potion)
         XCTAssertEqual([.init(0, 0)], memory.game.taken[.House_Bedroom])
-        XCTAssertEqual(1, memory.game.inventory[.Potion])
+        XCTAssertEqual(1, memory.game.inventory[.potion])
     }
     
     func testTakeChestTaken() {
         memory.game = .init()
         memory.game.taken[.House_Bedroom] = [.init(0, 0)]
-        _ = memory.take(chest: .init(0, 0), item: .Potion)
+        _ = memory.take(chest: .init(0, 0), item: .potion)
         XCTAssertEqual(1, memory.game.taken[.House_Bedroom]!.count)
-        XCTAssertNil(memory.game.inventory[.Potion])
+        XCTAssertNil(memory.game.inventory[.potion])
     }
 }

@@ -10,5 +10,17 @@ public struct Entry: Codable {
     public internal(set) var saved = TimeInterval()
     public internal(set) var taken = [Location : [vector_int2]]()
     public internal(set) var inventory = [ItemId : Int]()
+    public internal(set) var player = Player()
     public let created = Date().timeIntervalSince1970
+    
+    public struct Player: Codable {
+        public internal(set) var level = 1
+        public internal(set) var hp = Gauge()
+        public internal(set) var mp = Gauge()
+    }
+    
+    public struct Gauge: Codable {
+        public internal(set) var current = 0
+        public internal(set) var max = 0
+    }
 }
