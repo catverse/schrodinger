@@ -13,7 +13,7 @@ final class TestDialog: XCTestCase {
         let dialog = Dialog.chest(.potion)
         XCTAssertEqual("Dialog.Chest.Found", dialog.message[0][0])
         XCTAssertEqual("Dialog.Chest.Obtained", dialog.message[1][0])
-        XCTAssertEqual("Item.Potion", dialog.message[1][1])
+        XCTAssertEqual("Item.potion", dialog.message[1][1])
     }
     
     func testChestPicked() {
