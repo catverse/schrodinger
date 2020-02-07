@@ -32,7 +32,7 @@ final class MenuScene: SKScene {
         let sprite = SKSpriteNode(imageNamed: "front")
         sprite.size = .init(width: 64, height: 64)
         sprite.position.x = -95
-        sprite.position.y = 40
+        sprite.position.y = 80
         addChild(sprite)
         
         let title = SKLabelNode(fontNamed: SKLabelNode.font)
@@ -43,7 +43,7 @@ final class MenuScene: SKScene {
         addChild(title)
         self.title = title
         
-        info(.key("Menu.level"), y: -80)
+        info(.key("Menu.level") + " \(memory.game.player.level)", y: -80)
         info(formatter.string(from: memory.game.time.played)!, y: -100)
         info(.key("Location.\(memory.game.location.id.rawValue)"), y: -130)
         
@@ -161,6 +161,18 @@ final class MenuScene: SKScene {
         node.text = text
         addChild(node)
         return node
+    }
+    
+    private func gauge(_ text: String, value: Int, total: Int, y: CGFloat) {
+        let title = SKLabelNode(fontNamed: SKLabelNode.font)
+        title.fontColor = .haze()
+        title.fontSize = 12
+        title.verticalAlignmentMode = .center
+        title.horizontalAlignmentMode = .left
+        title.position.x = -140
+        title.position.y = y
+        title.text = text + " \(value) /\(total)"
+        addChild(title)
     }
     
     private func show(_ nodes: [SKNode]) {
