@@ -6,8 +6,8 @@ final class WalkState: State {
     
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
-        if game.scene!.name != memory.game.location.rawValue {
-            let scene = GKScene(fileNamed: memory.game.location.rawValue)!.rootNode as! WalkScene
+        if game.scene!.name != memory.game.location.id.rawValue {
+            let scene = GKScene(fileNamed: memory.game.location.id.rawValue)!.rootNode as! WalkScene
             scene.player = .init(game)
             controller = scene.player.component(ofType: WalkControl.self)!
             let sprite = scene.player.component(ofType: WalkSprite.self)!
@@ -19,9 +19,9 @@ final class WalkState: State {
             scene.addChild(sprite.node)
             if let location = game.scene as? WalkScene,
                 let position = scene.starts[location.location] {
-                memory.game.position = position
+                memory.game.location.position = position
             }
-            sprite.move(memory.game.position)
+            sprite.move(memory.game.location.position)
             game.presentScene(scene, transition: .fade(withDuration: 1.5))
         }
     }

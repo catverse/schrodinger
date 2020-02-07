@@ -4,12 +4,12 @@ import GameplayKit
 class WalkScene: SKScene {
     var player: WalkPlayer!
     var grid: GKGridGraph<GKGridGraphNode>!
-    var doors = [vector_int2 : Location]()
+    var doors = [vector_int2 : LocationId]()
     var items = [vector_int2 : ItemId]()
     var chests = [vector_int2 : ItemId]()
-    var starts = [Location : vector_int2]()
+    var starts = [LocationId : vector_int2]()
     var unboxed = ""
-    final var location: Location { Location(rawValue: name!)! }
+    final var location: LocationId { LocationId(rawValue: name!)! }
     private var _darkness: DarknessNode { childNode(withName: "Darkness") as! DarknessNode }
     private var _floor: SKTileMapNode { _darkness.childNode(withName: "Floor") as! SKTileMapNode }
     private var _items: SKTileMapNode { _darkness.childNode(withName: "Items") as! SKTileMapNode }
@@ -25,7 +25,7 @@ class WalkScene: SKScene {
         }
         grid.remove(nodes)
         chests.keys.forEach {
-            if memory.game.taken[location]?.contains($0) == true {
+            if memory.game.items.taken[location]?.contains($0) == true {
                 unbox($0)
             }
         }

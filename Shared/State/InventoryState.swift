@@ -46,7 +46,7 @@ final class InventoryState: State {
     }
     
     fileprivate func items() {
-        list = memory.game.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0), .key("Item.\($0.0.rawValue)") + " x\($0.1)") }.filter { !($0.2 is KeyItem) }
+        list = memory.game.items.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0), .key("Item.\($0.0.rawValue)") + " x\($0.1)") }.filter { !($0.2 is KeyItem) }
         index = 0
         if list.isEmpty {
             previous = ItemsEmpty.self
@@ -58,7 +58,7 @@ final class InventoryState: State {
     }
     
     fileprivate func key() {
-        list = memory.game.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0), .key("Item.\($0.0.rawValue)")) }.filter { $0.2 is KeyItem }
+        list = memory.game.items.inventory.map { ($0.0, $0.1, ItemFactory.make($0.0), .key("Item.\($0.0.rawValue)")) }.filter { $0.2 is KeyItem }
         index = 0
         if list.isEmpty {
             previous = KeyEmpty.self

@@ -17,7 +17,7 @@ final class TestMemory: XCTestCase {
         memory.game = .init()
         memory.entries.sink {
             XCTAssertFalse($0.isEmpty)
-            XCTAssertGreaterThan($0.first!.saved, 0)
+            XCTAssertGreaterThan($0.first!.time.saved, 0)
             XCTAssertFalse(try! Data(contentsOf: self.memory.url.appendingPathComponent(self.memory.game.id)).isEmpty)
             expect.fulfill()
         }.store(in: &subs)
@@ -50,15 +50,15 @@ final class TestMemory: XCTestCase {
     func testTakeChest() {
         memory.game = .init()
         _ = memory.take(chest: .init(0, 0), item: .potion)
-        XCTAssertEqual([.init(0, 0)], memory.game.taken[.House_Bedroom])
-        XCTAssertEqual(1, memory.game.inventory[.potion])
+        XCTAssertEqual([.init(0, 0)], memory.game.items.taken[.House_Bedroom])
+        XCTAssertEqual(1, memory.game.items.inventory[.potion])
     }
     
     func testTakeChestTaken() {
         memory.game = .init()
-        memory.game.taken[.House_Bedroom] = [.init(0, 0)]
+        memory.game.items.taken[.House_Bedroom] = [.init(0, 0)]
         _ = memory.take(chest: .init(0, 0), item: .potion)
-        XCTAssertEqual(1, memory.game.taken[.House_Bedroom]!.count)
-        XCTAssertNil(memory.game.inventory[.potion])
+        XCTAssertEqual(1, memory.game.items.taken[.House_Bedroom]!.count)
+        XCTAssertNil(memory.game.items.inventory[.potion])
     }
 }

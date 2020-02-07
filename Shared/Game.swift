@@ -18,7 +18,7 @@ class Game: SKView, SKSceneDelegate {
     func update(_ time: TimeInterval, for: SKScene) {
         let delta = self.time == 0 ? 0 : time - self.time
         state.update(deltaTime: delta)
-        memory.game?.time += delta
+        memory.game?.time.played += delta
         self.time = time
     }
 }

@@ -6,7 +6,7 @@ final class WalkControl: GKComponent {
     private weak var game: Game!
     private var timer = TimeInterval()
     private var state: GKStateMachine!
-    private var select: vector_int2 { memory.game.position &+ current.delta }
+    private var select: vector_int2 { memory.game.location.position &+ current.delta }
     private var current: _State { state.currentState as! _State }
     private var scene: WalkScene { player.node.scene as! WalkScene }
     private var dialog: DialogState { game.state.state(forClass: DialogState.self)! }
@@ -26,7 +26,7 @@ final class WalkControl: GKComponent {
     }
     
     override func didAddToEntity() {
-        enter(memory.game.facing, fallback: Front0.self)
+        enter(memory.game.location.facing, fallback: Front0.self)
     }
     
     func control(_ direction: Direction, _ action: Action) {
@@ -46,7 +46,7 @@ final class WalkControl: GKComponent {
         }
         if current.compare == direction {
             if let door = scene.doors[select] {
-                memory.game.location = door
+                memory.game.location.id = door
                 game.state.enter(WalkState.self)
             } else if scene.grid.node(atGridPosition: select) != nil {
                 player.animate(select)
@@ -83,7 +83,7 @@ private class _State: GKState {
     }
     
     final override func didEnter(from: GKState?) {
-        memory.game.facing = compare
+        memory.game.location.facing = compare
         state.node.run(.setTexture(.init(imageNamed: texture)))
     }
 }

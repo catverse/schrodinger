@@ -129,7 +129,7 @@ final class StartScene: SKScene {
                 let location = SKLabelNode(fontNamed: SKLabelNode.font)
                 location.fontColor = .white
                 location.fontSize = 12
-                location.text = .key("Location.\($0.1.location.rawValue)")
+                location.text = .key("Location.\($0.1.location.id.rawValue)")
                 location.verticalAlignmentMode = .center
                 location.horizontalAlignmentMode = .left
                 location.position = .init(x: -45, y: ($0.0 * -80) - 70)
@@ -138,7 +138,7 @@ final class StartScene: SKScene {
                 let time = SKLabelNode(fontNamed: SKLabelNode.font)
                 time.fontColor = .white
                 time.fontSize = 12
-                time.text = formatter.string(from: $0.1.time)
+                time.text = formatter.string(from: $0.1.time.played)
                 time.verticalAlignmentMode = .center
                 time.horizontalAlignmentMode = .left
                 time.position = .init(x: -45, y: ($0.0 * -80) - 90)

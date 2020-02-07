@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Location: String, Codable {
+public enum LocationId: String, Codable {
     case
     House_Bedroom,
     House_Corridor

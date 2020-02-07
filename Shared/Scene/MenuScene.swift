@@ -44,8 +44,8 @@ final class MenuScene: SKScene {
         self.title = title
         
         info(.key("Menu.level"), y: -80)
-        info(formatter.string(from: memory.game.time)!, y: -100)
-        info(.key("Location.\(memory.game.location.rawValue)"), y: -130)
+        info(formatter.string(from: memory.game.time.played)!, y: -100)
+        info(.key("Location.\(memory.game.location.id.rawValue)"), y: -130)
         
         cont = label(.key("Menu.continue"), y: 45)
         inventory = label(.key("Menu.inventory"), y: 15)

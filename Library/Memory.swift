@@ -26,7 +26,7 @@ public final class Memory {
     public func save() {
         queue.async {
             self.prepare()
-            self.game.saved = Date().timeIntervalSince1970
+            self.game.time.saved = Date().timeIntervalSince1970
             try! (JSONEncoder().encode(self.game) as NSData).compressed(using: .lzfse).write(to: self.url.appendingPathComponent(self.game.id), atomically: true)
             self.load()
         }
@@ -40,14 +40,14 @@ public final class Memory {
                     entries.append(entry)
                 }
             }
-            self.entries.send(entries.sorted { $0.saved > $1.saved })
+            self.entries.send(entries.sorted { $0.time.saved > $1.time.saved })
         }
     }
     
     public func take(chest: vector_int2, item: ItemId) -> Dialog {
-        guard game.taken[game.location]?.contains(chest) != true else { return Dialog.chest(nil) }
-        game.taken[game.location] = [chest] + (game.taken[game.location] ?? [])
-        game.inventory[item] = 1 + (game.inventory[item] ?? 0)
+        guard game.items.taken[game.location.id]?.contains(chest) != true else { return Dialog.chest(nil) }
+        game.items.taken[game.location.id] = [chest] + (game.items.taken[game.location.id] ?? [])
+        game.items.inventory[item] = 1 + (game.items.inventory[item] ?? 0)
         return Dialog.chest(item)
     }
     
