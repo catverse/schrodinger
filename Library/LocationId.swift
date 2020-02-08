@@ -3,5 +3,6 @@ import Foundation
 public enum LocationId: String, Codable {
     case
     House_Bedroom,
-    House_Corridor
+    House_Corridor,
+    House_Drawingroom
 }

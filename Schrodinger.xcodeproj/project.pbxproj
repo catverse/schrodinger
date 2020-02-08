@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE28283923EEFC87001769E8 /* Npc.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE28283823EEFC87001769E8 /* Npc.xcassets */; };
+		CE28283B23EF00BB001769E8 /* House_Drawingroom.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */; };
+		CE28283D23EF00CB001769E8 /* House_Drawingroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */; };
 		DA0057E023E80738008B0CA0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0057DF23E80738008B0CA0 /* Item.swift */; };
 		DA03C7CD23E2E39E009A5F90 /* DarknessNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA03C7CC23E2E39E009A5F90 /* DarknessNode.swift */; };
 		DA03C7CF23E2E9B4009A5F90 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA03C7CE23E2E9B4009A5F90 /* Color.swift */; };
@@ -76,6 +78,8 @@
 
 /* Begin PBXFileReference section */
 		CE28283823EEFC87001769E8 /* Npc.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Npc.xcassets; sourceTree = "<group>"; };
+		CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Drawingroom.sks; sourceTree = "<group>"; };
+		CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Drawingroom.swift; sourceTree = "<group>"; };
 		DA0057DF23E80738008B0CA0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DA03C7CC23E2E39E009A5F90 /* DarknessNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarknessNode.swift; sourceTree = "<group>"; };
 		DA03C7CE23E2E9B4009A5F90 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -165,8 +169,10 @@
 			children = (
 				DA39DF2623D9DFB900A304F2 /* House_Bedroom.sks */,
 				DA4AF1C423DB17480041A35D /* House_Corridor.sks */,
+				CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */,
 				DA5D13F123D25D47008E78D1 /* House_Bedroom.swift */,
 				DA4AF1C623DB1A340041A35D /* House_Corridor.swift */,
+				CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */,
 				DA73479623E575B200C70214 /* InventoryScene.swift */,
 				DA352C0E23E1BF0F006AF887 /* MenuScene.swift */,
 				DA09803623DF026C007CC607 /* StartScene.swift */,
@@ -451,6 +457,7 @@
 				DAD7B94423DDCC3000C483EC /* UI.xcassets in Resources */,
 				DA09803E23DF068E007CC607 /* Localizable.strings in Resources */,
 				CE28283923EEFC87001769E8 /* Npc.xcassets in Resources */,
+				CE28283B23EF00BB001769E8 /* House_Drawingroom.sks in Resources */,
 				DA39DF2D23D9E86A00A304F2 /* Tiles_House.sks in Resources */,
 				DA39DF2923D9E09D00A304F2 /* Schrodinger.xcassets in Resources */,
 				DA39DF2B23D9E0CC00A304F2 /* House.xcassets in Resources */,
@@ -491,6 +498,7 @@
 				DA4AF1C723DB1A340041A35D /* House_Corridor.swift in Sources */,
 				DA73479723E575B200C70214 /* InventoryScene.swift in Sources */,
 				DA73479923E5763400C70214 /* InventoryState.swift in Sources */,
+				CE28283D23EF00CB001769E8 /* House_Drawingroom.swift in Sources */,
 				DAD7B94823DDD4BB00C483EC /* DialogNode.swift in Sources */,
 				DA09802D23DEFAEA007CC607 /* SKLabelNode.swift in Sources */,
 				DA09804023DF1E4C007CC607 /* StartState.swift in Sources */,

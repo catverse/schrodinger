@@ -32,3 +32,4 @@ Dialog.Chest.Ex="!";
 Item.potion="Potion";
 Location.House_Bedroom="House: Bedroom";
 Location.House_Corridor="House: Corridor";
+Location.House_Drawingroom="House: Drawing Room";
