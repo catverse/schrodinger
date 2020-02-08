@@ -31,8 +31,8 @@ final class MenuScene: SKScene {
         
         let sprite = SKSpriteNode(imageNamed: "front")
         sprite.size = .init(width: 64, height: 64)
-        sprite.position.x = -95
-        sprite.position.y = 80
+        sprite.position.x = -75
+        sprite.position.y = 90
         addChild(sprite)
         
         let title = SKLabelNode(fontNamed: SKLabelNode.font)
@@ -42,6 +42,9 @@ final class MenuScene: SKScene {
         title.position.y = 140
         addChild(title)
         self.title = title
+        
+        gauge(.key("Menu.hp"), value: memory.game.player.hp.current, total: memory.game.player.hp.max, y: 15)
+        gauge(.key("Menu.mp"), value: memory.game.player.mp.current, total: memory.game.player.mp.max, y: -30)
         
         info(.key("Menu.level") + " \(memory.game.player.level)", y: -80)
         info(formatter.string(from: memory.game.time.played)!, y: -100)
@@ -166,13 +169,24 @@ final class MenuScene: SKScene {
     private func gauge(_ text: String, value: Int, total: Int, y: CGFloat) {
         let title = SKLabelNode(fontNamed: SKLabelNode.font)
         title.fontColor = .haze()
-        title.fontSize = 12
+        title.fontSize = 10
         title.verticalAlignmentMode = .center
         title.horizontalAlignmentMode = .left
         title.position.x = -140
         title.position.y = y
-        title.text = text + " \(value) /\(total)"
+        title.numberOfLines = 2
+        title.text = text + "\n\(value)/\(total)"
         addChild(title)
+        
+        let bar = SKShapeNode(rect: .init(x: -138, y: y - 20, width: 100, height: 5))
+        bar.strokeColor = .haze()
+        bar.lineWidth = 2
+        addChild(bar)
+        
+        let fill = SKShapeNode(rect: .init(x: -137, y: y - 19, width: CGFloat(value) / .init(total) * 98, height: 3))
+        fill.lineWidth = 0
+        fill.fillColor = .haze()
+        addChild(fill)
     }
     
     private func show(_ nodes: [SKNode]) {
