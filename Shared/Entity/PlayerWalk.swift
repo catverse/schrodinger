@@ -5,6 +5,7 @@ final class PlayerWalk: GKEntity {
     init(_ game: Game) {
         super.init()
         addComponent(SpriteWalk())
+        addComponent(FacingWalk())
         addComponent(ControlWalk(game))
     }
 }
