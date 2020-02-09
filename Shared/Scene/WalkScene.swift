@@ -2,13 +2,14 @@ import Library
 import GameplayKit
 
 class WalkScene: SKScene {
-    var player: WalkPlayer!
+    var player: PlayerWalk!
     var grid: GKGridGraph<GKGridGraphNode>!
     var doors = [vector_int2 : LocationId]()
     var items = [vector_int2 : ItemId]()
     var chests = [vector_int2 : ItemId]()
     var starts = [LocationId : vector_int2]()
     var unboxed = ""
+    var npc = [NpcWalk]()
     final var location: LocationId { LocationId(rawValue: name!)! }
     private var _darkness: DarknessNode { childNode(withName: "Darkness") as! DarknessNode }
     private var _floor: SKTileMapNode { _darkness.childNode(withName: "Floor") as! SKTileMapNode }

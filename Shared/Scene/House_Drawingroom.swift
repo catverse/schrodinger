@@ -8,4 +8,8 @@ final class House_Drawingroom: WalkScene {
         doors = [.init(21, 30) : .House_Corridor]
         starts = [.House_Corridor : .init(21, 28)]
     }
+    
+    override func sceneDidLoad() {
+        npc.append(.init())
+    }
 }

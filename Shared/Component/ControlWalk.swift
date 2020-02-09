@@ -1,8 +1,8 @@
 import Library
 import GameplayKit
 
-final class WalkControl: GKComponent {
-    fileprivate var node: SKSpriteNode { entity!.component(ofType: WalkSprite.self)!.node }
+final class ControlWalk: GKComponent {
+    fileprivate var node: SKSpriteNode { entity!.component(ofType: SpriteWalk.self)!.node }
     private weak var game: Game!
     private var timer = TimeInterval()
     private var state: GKStateMachine!
@@ -12,7 +12,7 @@ final class WalkControl: GKComponent {
     private var dialog: DialogState { game.state.state(forClass: DialogState.self)! }
     private var unbox: UnboxState { game.state.state(forClass: UnboxState.self)! }
     private var menu: MenuState { game.state.state(forClass: MenuState.self)! }
-    private var player: WalkSprite { entity!.component(ofType: WalkSprite.self)! }
+    private var player: SpriteWalk { entity!.component(ofType: SpriteWalk.self)! }
     
     required init?(coder: NSCoder) { nil }
     init(_ game: Game) {
@@ -75,9 +75,9 @@ private class _State: GKState {
     var texture: String! { nil }
     var delta: vector_int2! { nil }
     var isFallback: Bool { false }
-    private weak var state: WalkControl!
+    private weak var state: ControlWalk!
     
-    init(_ state: WalkControl) {
+    init(_ state: ControlWalk) {
         super.init()
         self.state = state
     }

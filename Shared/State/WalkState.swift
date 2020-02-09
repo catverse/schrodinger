@@ -2,15 +2,15 @@ import Library
 import GameplayKit
 
 final class WalkState: State {
-    private weak var controller: WalkControl?
+    private weak var controller: ControlWalk?
     
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
         if game.scene!.name != memory.game.location.id.rawValue {
             let scene = GKScene(fileNamed: memory.game.location.id.rawValue)!.rootNode as! WalkScene
             scene.player = .init(game)
-            controller = scene.player.component(ofType: WalkControl.self)!
-            let sprite = scene.player.component(ofType: WalkSprite.self)!
+            controller = scene.player.component(ofType: ControlWalk.self)!
+            let sprite = scene.player.component(ofType: SpriteWalk.self)!
             let camera = SKCameraNode()
             camera.constraints = [.distance(.init(upperLimit: 100), to: sprite.node)]
             scene.addChild(camera)

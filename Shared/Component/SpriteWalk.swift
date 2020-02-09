@@ -1,13 +1,13 @@
 import GameplayKit
 
-final class WalkSprite: GKComponent {
+final class SpriteWalk: GKComponent {
     private static let size = CGFloat(32)
     
     private var point: CGPoint {
-        .init(x: .init(memory.game.location.position.x) * WalkSprite.size, y: .init(memory.game.location.position.y) * WalkSprite.size)
+        .init(x: .init(memory.game.location.position.x) * SpriteWalk.size, y: .init(memory.game.location.position.y) * SpriteWalk.size)
     }
     
-    let node = SKSpriteNode(texture: nil, size: .init(width: WalkSprite.size, height: WalkSprite.size))
+    let node = SKSpriteNode(texture: nil, size: .init(width: SpriteWalk.size, height: SpriteWalk.size))
     
     func animate(_ position: vector_int2) {
         memory.game.location.position = position
