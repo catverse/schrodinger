@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE18CD6123F013EE00A2317C /* Items.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE18CD6023F013EE00A2317C /* Items.xcassets */; };
 		CE28283923EEFC87001769E8 /* Npc.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE28283823EEFC87001769E8 /* Npc.xcassets */; };
 		CE28283B23EF00BB001769E8 /* House_Drawingroom.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */; };
 		CE28283D23EF00CB001769E8 /* House_Drawingroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE18CD6023F013EE00A2317C /* Items.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Items.xcassets; sourceTree = "<group>"; };
 		CE28283823EEFC87001769E8 /* Npc.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Npc.xcassets; sourceTree = "<group>"; };
 		CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Drawingroom.sks; sourceTree = "<group>"; };
 		CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Drawingroom.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			children = (
 				DA24877D23D857CC00BA265B /* Game.swift */,
 				DA39DF2A23D9E0CC00A304F2 /* House.xcassets */,
+				CE18CD6023F013EE00A2317C /* Items.xcassets */,
 				CE28283823EEFC87001769E8 /* Npc.xcassets */,
 				DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */,
 				DAD7B94323DDCC3000C483EC /* UI.xcassets */,
@@ -455,6 +458,7 @@
 				DA4AF1C523DB17480041A35D /* House_Corridor.sks in Resources */,
 				DA73DE3823D1B6AE00E48E24 /* Assets.xcassets in Resources */,
 				DAD7B94423DDCC3000C483EC /* UI.xcassets in Resources */,
+				CE18CD6123F013EE00A2317C /* Items.xcassets in Resources */,
 				DA09803E23DF068E007CC607 /* Localizable.strings in Resources */,
 				CE28283923EEFC87001769E8 /* Npc.xcassets in Resources */,
 				CE28283B23EF00BB001769E8 /* House_Drawingroom.sks in Resources */,

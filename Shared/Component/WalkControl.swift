@@ -84,7 +84,7 @@ private class _State: GKState {
     
     final override func didEnter(from: GKState?) {
         memory.game.location.facing = compare
-        state.node.run(.setTexture(.init(imageNamed: texture)))
+        state.node.run(.setTexture(.init(imageNamed: "sh_normal_" + texture)))
     }
 }
 

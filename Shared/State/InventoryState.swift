@@ -91,7 +91,7 @@ final class InventoryState: State {
     
     fileprivate func select() {
         scene.info.text = list[index].3
-        scene.icon.texture = .init(imageNamed: list[index].0.rawValue)
+        scene.icon.texture = .init(imageNamed: "item_" + list[index].0.rawValue)
         if list[index].2 is WalkingItem {
             state.enter(Use.self)
         } else {

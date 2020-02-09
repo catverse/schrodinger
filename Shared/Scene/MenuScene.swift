@@ -29,7 +29,7 @@ final class MenuScene: SKScene {
         formatter.unitsStyle = .full
         formatter.allowedUnits = [.day, .hour, .minute]
         
-        let sprite = SKSpriteNode(imageNamed: "front")
+        let sprite = SKSpriteNode(imageNamed: "sh_normal_front")
         sprite.size = .init(width: 64, height: 64)
         sprite.position.x = -75
         sprite.position.y = 90
