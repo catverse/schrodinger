@@ -2,15 +2,14 @@ import Library
 import GameplayKit
 
 class WalkScene: SKScene {
-    var player: PlayerWalk!
     var grid: GKGridGraph<GKGridGraphNode>!
     var doors = [vector_int2 : LocationId]()
     var items = [vector_int2 : ItemId]()
     var chests = [vector_int2 : (ItemId, String)]()
     var starts = [LocationId : vector_int2]()
     var npc = [(NpcId, vector_int2)]()
+    var entities = [GKEntity]()
     final var location: LocationId { LocationId(rawValue: name!)! }
-    private(set) var entities = [GKEntity]()
     private var _darkness: DarknessNode { childNode(withName: "Darkness") as! DarknessNode }
     private var _floor: SKTileMapNode { _darkness.childNode(withName: "Floor") as! SKTileMapNode }
     private var _items: SKTileMapNode { _darkness.childNode(withName: "Items") as! SKTileMapNode }
@@ -26,6 +25,7 @@ class WalkScene: SKScene {
         }
         npc.enumerated().forEach {
             let npc = NpcWalk($0.1.0, tag: $0.0)
+            entities.append(npc)
             npc.component(ofType: SpriteWalk.self)!.move($0.1.1)
             addChild(npc.component(ofType: SpriteWalk.self)!.node)
             nodes.append(grid.node(atGridPosition: .init(.init($0.1.1.x), .init($0.1.1.y)))!)

@@ -13,6 +13,7 @@
 		CE18CD6723F02B8C00A2317C /* SkinComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6623F02B8C00A2317C /* SkinComponent.swift */; };
 		CE18CD6923F031FB00A2317C /* NpcId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6823F031FB00A2317C /* NpcId.swift */; };
 		CE18CD6B23F0320A00A2317C /* PlayerId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6A23F0320A00A2317C /* PlayerId.swift */; };
+		CE18CD6D23F0510500A2317C /* StandingWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6C23F0510500A2317C /* StandingWalk.swift */; };
 		CE28283923EEFC87001769E8 /* Npc.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE28283823EEFC87001769E8 /* Npc.xcassets */; };
 		CE28283B23EF00BB001769E8 /* House_Drawingroom.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */; };
 		CE28283D23EF00CB001769E8 /* House_Drawingroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */; };
@@ -89,6 +90,7 @@
 		CE18CD6623F02B8C00A2317C /* SkinComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinComponent.swift; sourceTree = "<group>"; };
 		CE18CD6823F031FB00A2317C /* NpcId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NpcId.swift; sourceTree = "<group>"; };
 		CE18CD6A23F0320A00A2317C /* PlayerId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerId.swift; sourceTree = "<group>"; };
+		CE18CD6C23F0510500A2317C /* StandingWalk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingWalk.swift; sourceTree = "<group>"; };
 		CE28283823EEFC87001769E8 /* Npc.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Npc.xcassets; sourceTree = "<group>"; };
 		CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Drawingroom.sks; sourceTree = "<group>"; };
 		CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Drawingroom.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				DA24878323D86CE200BA265B /* FacingWalk.swift */,
 				CE18CD6623F02B8C00A2317C /* SkinComponent.swift */,
 				DA24878123D8682500BA265B /* SpriteWalk.swift */,
+				CE18CD6C23F0510500A2317C /* StandingWalk.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				DA09804023DF1E4C007CC607 /* StartState.swift in Sources */,
 				CE18CD6723F02B8C00A2317C /* SkinComponent.swift in Sources */,
 				DA03C7CD23E2E39E009A5F90 /* DarknessNode.swift in Sources */,
+				CE18CD6D23F0510500A2317C /* StandingWalk.swift in Sources */,
 				DA2F75A923D9A080001519C6 /* WalkScene.swift in Sources */,
 				DAFEBFAA23E19A3A00E64093 /* UnboxState.swift in Sources */,
 				DAD7B94623DDCE2400C483EC /* DialogState.swift in Sources */,

@@ -4,11 +4,11 @@ import GameplayKit
 final class ControlWalk: GKComponent {
     private weak var game: Game!
     private var facing: FacingWalk { entity!.component(ofType: FacingWalk.self)! }
-    private var scene: WalkScene { player.node.scene as! WalkScene }
+    private var scene: WalkScene { sprite.node.scene as! WalkScene }
     private var dialog: DialogState { game.state.state(forClass: DialogState.self)! }
     private var unbox: UnboxState { game.state.state(forClass: UnboxState.self)! }
     private var menu: MenuState { game.state.state(forClass: MenuState.self)! }
-    private var player: SpriteWalk { entity!.component(ofType: SpriteWalk.self)! }
+    private var sprite: SpriteWalk { entity!.component(ofType: SpriteWalk.self)! }
     private var select: vector_int2 { memory.game.location.position &+ facing.delta }
     
     required init?(coder: NSCoder) { nil }
@@ -38,7 +38,7 @@ final class ControlWalk: GKComponent {
                 game.state.enter(WalkState.self)
             } else if scene.grid.node(atGridPosition: select) != nil {
                 memory.game.location.position = select
-                player.animate(memory.game.location.position)
+                sprite.animate(memory.game.location.position)
             }
             facing.next()
         } else {

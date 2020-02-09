@@ -12,5 +12,6 @@ final class NpcWalk: GKEntity {
         addComponent(SkinComponent(id.rawValue))
         addComponent(SpriteWalk())
         addComponent(FacingWalk())
+        addComponent(StandingWalk())
     }
 }
