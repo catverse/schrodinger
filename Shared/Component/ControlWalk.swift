@@ -23,7 +23,7 @@ final class ControlWalk: GKComponent {
             if let item = scene.chests[select] {
                 unbox.next = WalkState.self
                 unbox.position = select
-                dialog.dialog = memory.take(chest: select, item: item)
+                dialog.dialog = memory.take(chest: select, item: item.0)
                 dialog.finish = UnboxState.self
                 game.state.enter(DialogState.self)
             }
@@ -37,7 +37,8 @@ final class ControlWalk: GKComponent {
                 memory.game.location.id = door
                 game.state.enter(WalkState.self)
             } else if scene.grid.node(atGridPosition: select) != nil {
-                player.animate(select)
+                memory.game.location.position = select
+                player.animate(memory.game.location.position)
             }
             facing.next()
         } else {

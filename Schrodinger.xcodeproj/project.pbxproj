@@ -10,6 +10,9 @@
 		CE18CD6123F013EE00A2317C /* Items.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE18CD6023F013EE00A2317C /* Items.xcassets */; };
 		CE18CD6323F01A3900A2317C /* NpcWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6223F01A3900A2317C /* NpcWalk.swift */; };
 		CE18CD6523F021D300A2317C /* ControlWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6423F021D300A2317C /* ControlWalk.swift */; };
+		CE18CD6723F02B8C00A2317C /* SkinComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6623F02B8C00A2317C /* SkinComponent.swift */; };
+		CE18CD6923F031FB00A2317C /* NpcId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6823F031FB00A2317C /* NpcId.swift */; };
+		CE18CD6B23F0320A00A2317C /* PlayerId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6A23F0320A00A2317C /* PlayerId.swift */; };
 		CE28283923EEFC87001769E8 /* Npc.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE28283823EEFC87001769E8 /* Npc.xcassets */; };
 		CE28283B23EF00BB001769E8 /* House_Drawingroom.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */; };
 		CE28283D23EF00CB001769E8 /* House_Drawingroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */; };
@@ -83,6 +86,9 @@
 		CE18CD6023F013EE00A2317C /* Items.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Items.xcassets; sourceTree = "<group>"; };
 		CE18CD6223F01A3900A2317C /* NpcWalk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NpcWalk.swift; sourceTree = "<group>"; };
 		CE18CD6423F021D300A2317C /* ControlWalk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlWalk.swift; sourceTree = "<group>"; };
+		CE18CD6623F02B8C00A2317C /* SkinComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinComponent.swift; sourceTree = "<group>"; };
+		CE18CD6823F031FB00A2317C /* NpcId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NpcId.swift; sourceTree = "<group>"; };
+		CE18CD6A23F0320A00A2317C /* PlayerId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerId.swift; sourceTree = "<group>"; };
 		CE28283823EEFC87001769E8 /* Npc.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Npc.xcassets; sourceTree = "<group>"; };
 		CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Drawingroom.sks; sourceTree = "<group>"; };
 		CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Drawingroom.swift; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 			children = (
 				CE18CD6423F021D300A2317C /* ControlWalk.swift */,
 				DA24878323D86CE200BA265B /* FacingWalk.swift */,
+				CE18CD6623F02B8C00A2317C /* SkinComponent.swift */,
 				DA24878123D8682500BA265B /* SpriteWalk.swift */,
 			);
 			path = Component;
@@ -238,28 +245,30 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		DA09803523DF0005007CC607 /* Control */ = {
+		DA09803523DF0005007CC607 /* Definitions */ = {
 			isa = PBXGroup;
 			children = (
 				DAD7B94123DDBA7300C483EC /* Action.swift */,
+				CE18CD6823F031FB00A2317C /* NpcId.swift */,
+				CE18CD6A23F0320A00A2317C /* PlayerId.swift */,
 			);
-			path = Control;
+			path = Definitions;
 			sourceTree = "<group>";
 		};
 		DA39DF2323D9DBAC00A304F2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				DA24877D23D857CC00BA265B /* Game.swift */,
+				DAEB746923DEDAEF0021951B /* PressStart2P-Regular.ttf */,
 				DA39DF2A23D9E0CC00A304F2 /* House.xcassets */,
 				CE18CD6023F013EE00A2317C /* Items.xcassets */,
 				CE28283823EEFC87001769E8 /* Npc.xcassets */,
 				DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */,
 				DAD7B94323DDCC3000C483EC /* UI.xcassets */,
 				DA09803123DEFF6B007CC607 /* Component */,
-				DA09803523DF0005007CC607 /* Control */,
+				DA09803523DF0005007CC607 /* Definitions */,
 				DA09803223DEFF81007CC607 /* Entity */,
 				DA09803423DEFFEA007CC607 /* Extension */,
-				DAEB746823DEDAEF0021951B /* Font */,
 				DA09803C23DF068E007CC607 /* Localizable.strings */,
 				DA6FFF1423E0648200BF9A79 /* Node */,
 				DA09802E23DEFEAD007CC607 /* Scene */,
@@ -338,14 +347,6 @@
 				DAE28BCF23DEE58A005B7BB7 /* TestMemory.swift */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		DAEB746823DEDAEF0021951B /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				DAEB746923DEDAEF0021951B /* PressStart2P-Regular.ttf */,
-			);
-			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -513,6 +514,7 @@
 				DAD7B94823DDD4BB00C483EC /* DialogNode.swift in Sources */,
 				DA09802D23DEFAEA007CC607 /* SKLabelNode.swift in Sources */,
 				DA09804023DF1E4C007CC607 /* StartState.swift in Sources */,
+				CE18CD6723F02B8C00A2317C /* SkinComponent.swift in Sources */,
 				DA03C7CD23E2E39E009A5F90 /* DarknessNode.swift in Sources */,
 				DA2F75A923D9A080001519C6 /* WalkScene.swift in Sources */,
 				DAFEBFAA23E19A3A00E64093 /* UnboxState.swift in Sources */,
@@ -526,10 +528,12 @@
 				DA4AF1D223DB1CED0041A35D /* View.swift in Sources */,
 				CE18CD6323F01A3900A2317C /* NpcWalk.swift in Sources */,
 				DA03C7CF23E2E9B4009A5F90 /* Color.swift in Sources */,
+				CE18CD6923F031FB00A2317C /* NpcId.swift in Sources */,
 				DA352C0F23E1BF0F006AF887 /* MenuScene.swift in Sources */,
 				DA24878223D8682500BA265B /* SpriteWalk.swift in Sources */,
 				DA24878023D8646B00BA265B /* PlayerWalk.swift in Sources */,
 				DA09803B23DF064E007CC607 /* String.swift in Sources */,
+				CE18CD6B23F0320A00A2317C /* PlayerId.swift in Sources */,
 				DA628FA523D1BF0500F240AC /* Window.swift in Sources */,
 				DA4AF1D823DB2B9C0041A35D /* WalkState.swift in Sources */,
 			);

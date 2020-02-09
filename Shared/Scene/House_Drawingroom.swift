@@ -7,9 +7,6 @@ final class House_Drawingroom: WalkScene {
         grid = .init(fromGridStartingAt: .zero, width: 40, height: 32, diagonalsAllowed: false)
         doors = [.init(21, 30) : .House_Corridor]
         starts = [.House_Corridor : .init(21, 28)]
-    }
-    
-    override func sceneDidLoad() {
-        npc.append(.init())
+        npc = [(.jung, .init(21, 20))]
     }
 }

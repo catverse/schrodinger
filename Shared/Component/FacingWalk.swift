@@ -5,6 +5,7 @@ final class FacingWalk: GKComponent {
     var delta: vector_int2 { current.delta }
     var compare: Direction { current.compare }
     fileprivate var node: SKSpriteNode { entity!.component(ofType: SpriteWalk.self)!.node }
+    fileprivate var skin: String { entity!.component(ofType: SkinComponent.self)!.name }
     private var state: GKStateMachine!
     private var current: _State! { state.currentState as? _State }
 
@@ -51,7 +52,7 @@ private class _State: GKState {
     
     final override func didEnter(from: GKState?) {
         memory.game.location.facing = compare
-        state.node.run(.setTexture(.init(imageNamed: "sh_normal_" + texture)))
+        state.node.run(.setTexture(.init(imageNamed: state.skin + "_" + texture)))
     }
 }
 
