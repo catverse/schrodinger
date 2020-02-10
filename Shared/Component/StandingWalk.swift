@@ -2,6 +2,7 @@ import Library
 import GameplayKit
 
 final class StandingWalk: GKComponent {
+    fileprivate var facing: FacingWalk { entity!.component(ofType: FacingWalk.self)! }
     private var state: GKStateMachine!
     
     required init?(coder: NSCoder) { nil }
@@ -13,6 +14,16 @@ final class StandingWalk: GKComponent {
     
     override func update(deltaTime: TimeInterval) {
         state.update(deltaTime: deltaTime)
+    }
+    
+    func conversation(_ direction: Direction) {
+        state.enter(Conversation.self)
+        switch direction {
+        case .down: facing.enter(.up)
+        case .left: facing.enter(.right)
+        case .right: facing.enter(.left)
+        default: facing.enter(.down)
+        }
     }
 }
 
@@ -26,7 +37,6 @@ private class _State: GKState {
 }
 
 private class Waiting: _State {
-    private var facing: FacingWalk { state.entity!.component(ofType: FacingWalk.self)! }
     private var timeout = TimeInterval()
     
     override func update(deltaTime: TimeInterval) {
@@ -36,7 +46,7 @@ private class Waiting: _State {
             if Int.random(in: 0 ... 9) == 0 {
                 var direction = Direction.none
                 if Int.random(in: 0 ... 1) == 0 {
-                    switch facing.compare {
+                    switch state.facing.compare {
                     case .down: direction = .right
                     case .right: direction = .up
                     case .up: direction = .left
@@ -44,7 +54,7 @@ private class Waiting: _State {
                     default: break
                     }
                 } else {
-                    switch facing.compare {
+                    switch state.facing.compare {
                     case .down: direction = .left
                     case .left: direction = .up
                     case .up: direction = .right
@@ -52,7 +62,7 @@ private class Waiting: _State {
                     default: break
                     }
                 }
-                facing.enter(direction)
+                state.facing.enter(direction)
             }
         }
     }

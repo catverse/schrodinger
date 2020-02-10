@@ -26,6 +26,8 @@ final class ControlWalk: GKComponent {
                 dialog.dialog = memory.take(chest: select, item: item.0)
                 dialog.finish = UnboxState.self
                 game.state.enter(DialogState.self)
+            } else if let npc = scene.npc.enumerated().first(where: { $0.1.1 == select }) {
+                scene.entities.compactMap { $0 as? NpcWalk }.first { $0.tag == npc.0 }!.component(ofType: StandingWalk.self)!.conversation(facing.compare)
             }
         case .cancel:
             menu.back = WalkState.self
