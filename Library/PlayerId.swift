@@ -1,6 +1,6 @@
 import Foundation
 
-enum PlayerId: String {
+public enum PlayerId: String {
     case
     sh_normal
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-enum NpcId: String {
+public enum NpcId: String {
     case
     jung
 }

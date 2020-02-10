@@ -9,6 +9,7 @@ class WalkScene: SKScene {
     var starts = [LocationId : vector_int2]()
     var npc = [(NpcId, vector_int2)]()
     var entities = [GKEntity]()
+    var dialogs = [Int : Dialog]()
     final var location: LocationId { LocationId(rawValue: name!)! }
     private var _darkness: DarknessNode { childNode(withName: "Darkness") as! DarknessNode }
     private var _floor: SKTileMapNode { _darkness.childNode(withName: "Floor") as! SKTileMapNode }

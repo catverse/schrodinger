@@ -11,12 +11,14 @@
 		CE18CD6323F01A3900A2317C /* NpcWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6223F01A3900A2317C /* NpcWalk.swift */; };
 		CE18CD6523F021D300A2317C /* ControlWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6423F021D300A2317C /* ControlWalk.swift */; };
 		CE18CD6723F02B8C00A2317C /* SkinComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6623F02B8C00A2317C /* SkinComponent.swift */; };
-		CE18CD6923F031FB00A2317C /* NpcId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6823F031FB00A2317C /* NpcId.swift */; };
-		CE18CD6B23F0320A00A2317C /* PlayerId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6A23F0320A00A2317C /* PlayerId.swift */; };
 		CE18CD6D23F0510500A2317C /* StandingWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6C23F0510500A2317C /* StandingWalk.swift */; };
 		CE28283923EEFC87001769E8 /* Npc.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE28283823EEFC87001769E8 /* Npc.xcassets */; };
 		CE28283B23EF00BB001769E8 /* House_Drawingroom.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */; };
 		CE28283D23EF00CB001769E8 /* House_Drawingroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */; };
+		CEFCE67A23F1371F00B98594 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94123DDBA7300C483EC /* Action.swift */; };
+		CEFCE67B23F1371F00B98594 /* PlayerId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6A23F0320A00A2317C /* PlayerId.swift */; };
+		CEFCE67C23F1371F00B98594 /* NpcId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6823F031FB00A2317C /* NpcId.swift */; };
+		CEFCE68023F13D6800B98594 /* TestDialogProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFCE67F23F13D6800B98594 /* TestDialogProto.swift */; };
 		DA0057E023E80738008B0CA0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0057DF23E80738008B0CA0 /* Item.swift */; };
 		DA03C7CD23E2E39E009A5F90 /* DarknessNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA03C7CC23E2E39E009A5F90 /* DarknessNode.swift */; };
 		DA03C7CF23E2E9B4009A5F90 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA03C7CE23E2E9B4009A5F90 /* Color.swift */; };
@@ -56,7 +58,6 @@
 		DA73DE4523D1B8BC00E48E24 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA73DE4423D1B8BC00E48E24 /* GameKit.framework */; };
 		DA73DE4723D1B9C400E48E24 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73DE4623D1B9C400E48E24 /* App.swift */; };
 		DAB832EC23E478E600BBC4AD /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF522EF23D464A200BB0EDA /* Direction.swift */; };
-		DAD7B94223DDBA7300C483EC /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94123DDBA7300C483EC /* Action.swift */; };
 		DAD7B94423DDCC3000C483EC /* UI.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD7B94323DDCC3000C483EC /* UI.xcassets */; };
 		DAD7B94623DDCE2400C483EC /* DialogState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94523DDCE2400C483EC /* DialogState.swift */; };
 		DAD7B94823DDD4BB00C483EC /* DialogNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94723DDD4BB00C483EC /* DialogNode.swift */; };
@@ -94,6 +95,7 @@
 		CE28283823EEFC87001769E8 /* Npc.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Npc.xcassets; sourceTree = "<group>"; };
 		CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Drawingroom.sks; sourceTree = "<group>"; };
 		CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Drawingroom.swift; sourceTree = "<group>"; };
+		CEFCE67F23F13D6800B98594 /* TestDialogProto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDialogProto.swift; sourceTree = "<group>"; };
 		DA0057DF23E80738008B0CA0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DA03C7CC23E2E39E009A5F90 /* DarknessNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarknessNode.swift; sourceTree = "<group>"; };
 		DA03C7CE23E2E9B4009A5F90 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -248,16 +250,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		DA09803523DF0005007CC607 /* Definitions */ = {
-			isa = PBXGroup;
-			children = (
-				DAD7B94123DDBA7300C483EC /* Action.swift */,
-				CE18CD6823F031FB00A2317C /* NpcId.swift */,
-				CE18CD6A23F0320A00A2317C /* PlayerId.swift */,
-			);
-			path = Definitions;
-			sourceTree = "<group>";
-		};
 		DA39DF2323D9DBAC00A304F2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,7 +261,6 @@
 				DA39DF2823D9E09D00A304F2 /* Schrodinger.xcassets */,
 				DAD7B94323DDCC3000C483EC /* UI.xcassets */,
 				DA09803123DEFF6B007CC607 /* Component */,
-				DA09803523DF0005007CC607 /* Definitions */,
 				DA09803223DEFF81007CC607 /* Entity */,
 				DA09803423DEFFEA007CC607 /* Extension */,
 				DA09803C23DF068E007CC607 /* Localizable.strings */,
@@ -323,6 +314,7 @@
 		DA73DE4023D1B7C000E48E24 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				DAD7B94123DDBA7300C483EC /* Action.swift */,
 				DA52310D23E071E4005BAC2B /* Dialog.swift */,
 				DAF522EF23D464A200BB0EDA /* Direction.swift */,
 				DA09802A23DEE9AC007CC607 /* Entry.swift */,
@@ -330,6 +322,8 @@
 				DA52310B23E06F59005BAC2B /* ItemId.swift */,
 				DA0B01BF23E03D3D00D2875E /* LocationId.swift */,
 				DA73DE4123D1B7F700E48E24 /* Memory.swift */,
+				CE18CD6823F031FB00A2317C /* NpcId.swift */,
+				CE18CD6A23F0320A00A2317C /* PlayerId.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -347,6 +341,7 @@
 			children = (
 				DAE28BD123DEE58A005B7BB7 /* Info.plist */,
 				DA52310F23E0726D005BAC2B /* TestDialog.swift */,
+				CEFCE67F23F13D6800B98594 /* TestDialogProto.swift */,
 				DAE28BCF23DEE58A005B7BB7 /* TestMemory.swift */,
 			);
 			path = Tests;
@@ -493,11 +488,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFCE67C23F1371F00B98594 /* NpcId.swift in Sources */,
 				DA52310C23E06F59005BAC2B /* ItemId.swift in Sources */,
+				CEFCE67B23F1371F00B98594 /* PlayerId.swift in Sources */,
 				DA52310E23E071E4005BAC2B /* Dialog.swift in Sources */,
 				DA09802B23DEE9AC007CC607 /* Entry.swift in Sources */,
 				DA0B01C123E03E2600D2875E /* LocationId.swift in Sources */,
 				DA0057E023E80738008B0CA0 /* Item.swift in Sources */,
+				CEFCE67A23F1371F00B98594 /* Action.swift in Sources */,
 				DA73DE4223D1B7F700E48E24 /* Memory.swift in Sources */,
 				DAB832EC23E478E600BBC4AD /* Direction.swift in Sources */,
 			);
@@ -524,7 +522,6 @@
 				DAFEBFAA23E19A3A00E64093 /* UnboxState.swift in Sources */,
 				DAD7B94623DDCE2400C483EC /* DialogState.swift in Sources */,
 				DA24878423D86CE200BA265B /* FacingWalk.swift in Sources */,
-				DAD7B94223DDBA7300C483EC /* Action.swift in Sources */,
 				DA4AF1D623DB2B470041A35D /* State.swift in Sources */,
 				DA24877E23D857CC00BA265B /* Game.swift in Sources */,
 				DA09803723DF026C007CC607 /* StartScene.swift in Sources */,
@@ -532,12 +529,10 @@
 				DA4AF1D223DB1CED0041A35D /* View.swift in Sources */,
 				CE18CD6323F01A3900A2317C /* NpcWalk.swift in Sources */,
 				DA03C7CF23E2E9B4009A5F90 /* Color.swift in Sources */,
-				CE18CD6923F031FB00A2317C /* NpcId.swift in Sources */,
 				DA352C0F23E1BF0F006AF887 /* MenuScene.swift in Sources */,
 				DA24878223D8682500BA265B /* SpriteWalk.swift in Sources */,
 				DA24878023D8646B00BA265B /* PlayerWalk.swift in Sources */,
 				DA09803B23DF064E007CC607 /* String.swift in Sources */,
-				CE18CD6B23F0320A00A2317C /* PlayerId.swift in Sources */,
 				DA628FA523D1BF0500F240AC /* Window.swift in Sources */,
 				DA4AF1D823DB2B9C0041A35D /* WalkState.swift in Sources */,
 			);
@@ -547,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFCE68023F13D6800B98594 /* TestDialogProto.swift in Sources */,
 				DAE28BD023DEE58A005B7BB7 /* TestMemory.swift in Sources */,
 				DA52311023E0726D005BAC2B /* TestDialog.swift in Sources */,
 			);

@@ -1,14 +1,25 @@
 import Foundation
+import simd
 
 public final class Dialog {
     public enum Owner {
         case
         none,
         player,
-        npc(name: String)
+        npc(id: NpcId)
     }
     
-    static func chest(_ item: ItemId?) -> Dialog {
+    public struct Proto {
+        let step: Int
+        let position: vector_int2
+        let messages: [(NpcId, [[String]])]
+    }
+    
+    public class func npc(_ id: NpcId) {
+        
+    }
+    
+    class func chest(_ item: ItemId?) -> Dialog {
         .init(.none, [["Dialog.Chest.Found"], item == nil
             ? ["Dialog.Chest.Empty"]
             : ["Dialog.Chest.Obtained", "Item.\(item!.rawValue)", "Dialog.Chest.Ex"]])

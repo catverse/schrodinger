@@ -1,6 +1,6 @@
 import Foundation
 
-enum Action: UInt16 {
+public enum Action: UInt16 {
     case
     none = 999,
     ok = 0,

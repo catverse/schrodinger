@@ -11,6 +11,7 @@ public struct Entry: Codable {
     public struct Time: Codable {
         public var played = TimeInterval()
         public internal(set) var saved = TimeInterval()
+        public internal(set) var step = 0
         public let created = Date().timeIntervalSince1970
     }
     

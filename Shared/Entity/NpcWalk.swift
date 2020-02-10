@@ -1,3 +1,4 @@
+import Library
 import GameplayKit
 
 final class NpcWalk: GKEntity {
