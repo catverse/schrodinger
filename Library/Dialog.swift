@@ -16,21 +16,25 @@ public final class Dialog {
     }
     
     public class func prototypes(_ prototypes: [Prototype]) -> Dialog {
-        let first = prototypes.first!
-        return .init(first.messages.first!.0, first.messages.first!.1)
+        var messages = prototypes.first!.messages
+        var dialog: Dialog?
+        while let message = messages.popLast() {
+            dialog = .init(message.0, message.1, dialog)
+        }
+        return dialog!
     }
     
     class func chest(_ item: ItemId?) -> Dialog {
         .init(.none, [["Dialog.Chest.Found"], item == nil
             ? ["Dialog.Chest.Empty"]
-            : ["Dialog.Chest.Obtained", "Item.\(item!.rawValue)", "Dialog.Chest.Ex"]])
+            : ["Dialog.Chest.Obtained", "Item.\(item!.rawValue)", "Dialog.Chest.Ex"]], nil)
     }
     
     public let owner: Owner
     public let message: [[String]]
     public let next: Dialog?
     
-    private init(_ owner: Owner, _ message: [[String]], _ next: Dialog? = nil) {
+    private init(_ owner: Owner, _ message: [[String]], _ next: Dialog?) {
         self.owner = owner
         self.message = message
         self.next = next
