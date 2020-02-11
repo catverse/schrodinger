@@ -18,7 +18,7 @@
 		CEFCE67A23F1371F00B98594 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94123DDBA7300C483EC /* Action.swift */; };
 		CEFCE67B23F1371F00B98594 /* PlayerId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6A23F0320A00A2317C /* PlayerId.swift */; };
 		CEFCE67C23F1371F00B98594 /* NpcId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6823F031FB00A2317C /* NpcId.swift */; };
-		CEFCE68023F13D6800B98594 /* TestDialogProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFCE67F23F13D6800B98594 /* TestDialogProto.swift */; };
+		CEFCE68023F13D6800B98594 /* TestDialogPrototype.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFCE67F23F13D6800B98594 /* TestDialogPrototype.swift */; };
 		DA0057E023E80738008B0CA0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0057DF23E80738008B0CA0 /* Item.swift */; };
 		DA03C7CD23E2E39E009A5F90 /* DarknessNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA03C7CC23E2E39E009A5F90 /* DarknessNode.swift */; };
 		DA03C7CF23E2E9B4009A5F90 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA03C7CE23E2E9B4009A5F90 /* Color.swift */; };
@@ -95,7 +95,7 @@
 		CE28283823EEFC87001769E8 /* Npc.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Npc.xcassets; sourceTree = "<group>"; };
 		CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Drawingroom.sks; sourceTree = "<group>"; };
 		CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Drawingroom.swift; sourceTree = "<group>"; };
-		CEFCE67F23F13D6800B98594 /* TestDialogProto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDialogProto.swift; sourceTree = "<group>"; };
+		CEFCE67F23F13D6800B98594 /* TestDialogPrototype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDialogPrototype.swift; sourceTree = "<group>"; };
 		DA0057DF23E80738008B0CA0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DA03C7CC23E2E39E009A5F90 /* DarknessNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarknessNode.swift; sourceTree = "<group>"; };
 		DA03C7CE23E2E9B4009A5F90 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -341,7 +341,7 @@
 			children = (
 				DAE28BD123DEE58A005B7BB7 /* Info.plist */,
 				DA52310F23E0726D005BAC2B /* TestDialog.swift */,
-				CEFCE67F23F13D6800B98594 /* TestDialogProto.swift */,
+				CEFCE67F23F13D6800B98594 /* TestDialogPrototype.swift */,
 				DAE28BCF23DEE58A005B7BB7 /* TestMemory.swift */,
 			);
 			path = Tests;
@@ -542,7 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEFCE68023F13D6800B98594 /* TestDialogProto.swift in Sources */,
+				CEFCE68023F13D6800B98594 /* TestDialogPrototype.swift in Sources */,
 				DAE28BD023DEE58A005B7BB7 /* TestMemory.swift in Sources */,
 				DA52311023E0726D005BAC2B /* TestDialog.swift in Sources */,
 			);

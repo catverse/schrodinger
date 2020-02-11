@@ -2,21 +2,22 @@ import Foundation
 import simd
 
 public final class Dialog {
-    public enum Owner {
+    public enum Owner: Equatable {
         case
         none,
         player,
         npc(id: NpcId)
     }
     
-    public struct Proto {
+    public struct Prototype {
         let step: Int
         let position: vector_int2
-        let messages: [(NpcId, [[String]])]
+        let messages: [(Owner, [[String]])]
     }
     
-    public class func npc(_ id: NpcId) {
-        
+    public class func prototypes(_ prototypes: [Prototype]) -> Dialog {
+        let first = prototypes.first!
+        return .init(first.messages.first!.0, first.messages.first!.1)
     }
     
     class func chest(_ item: ItemId?) -> Dialog {
