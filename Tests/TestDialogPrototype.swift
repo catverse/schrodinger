@@ -38,4 +38,28 @@ final class TestDialogPrototype: XCTestCase {
         XCTAssertEqual([["lorem ipsum"]], dialog.next?.next?.message)
         XCTAssertNil(dialog.next?.next?.next)
     }
+    
+    func testMultipleSteps() {
+        let dialog = Dialog.prototypes([.init(step: 0, position: .init(0, 0), messages: [(.player, [["hello world"]])]),
+                                        .init(step: 1, position: .init(0, 0), messages: [(.none, [["lorem ipsum"]])])])
+        XCTAssertEqual(.player, dialog.owner)
+        XCTAssertEqual([["hello world"]], dialog.message)
+        XCTAssertNil(dialog.next)
+    }
+    
+    func testMultipleStepsUnsorted() {
+        let dialog = Dialog.prototypes([.init(step: 1, position: .init(0, 0), messages: [(.none, [["lorem ipsum"]])]),
+                                        .init(step: 0, position: .init(0, 0), messages: [(.player, [["hello world"]])])])
+        XCTAssertEqual(.player, dialog.owner)
+        XCTAssertEqual([["hello world"]], dialog.message)
+        XCTAssertNil(dialog.next)
+    }
+    
+    func testMultipleStepsSameValue() {
+        let dialog = Dialog.prototypes([.init(step: 0, position: .init(0, 0), messages: [(.player, [["hello world"]])]),
+                                        .init(step: 0, position: .init(0, 0), messages: [(.none, [["lorem ipsum"]])])])
+        XCTAssertEqual(.player, dialog.owner)
+        XCTAssertEqual([["hello world"]], dialog.message)
+        XCTAssertNil(dialog.next)
+    }
 }
