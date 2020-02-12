@@ -15,8 +15,8 @@ public final class Dialog {
         let messages: [(Owner, [[String]])]
     }
     
-    public class func prototypes(_ prototypes: [Prototype]) -> Dialog {
-        var messages = prototypes.sorted { $0.step < $1.step }.first!.messages
+    public class func prototypes(_ prototypes: [Prototype], step: Int) -> Dialog {
+        var messages = prototypes.filter { $0.step <= step }.sorted { $0.step < $1.step }.last!.messages
         var dialog: Dialog?
         while let message = messages.popLast() {
             dialog = .init(message.0, message.1, dialog)
