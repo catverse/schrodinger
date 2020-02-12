@@ -11,17 +11,18 @@ public final class Dialog {
     
     public struct Prototype {
         let step: Int
-        let tag: Int
         let messages: [(Owner, [[String]])]
     }
     
-    public class func prototypes(_ prototypes: [Prototype], step: Int) -> [Dialog] {
-        var messages = prototypes.filter { $0.step <= step }.sorted { $0.step < $1.step }.last!.messages
-        var dialog: Dialog?
-        while let message = messages.popLast() {
-            dialog = .init(message.0, message.1, dialog)
+    public class func prototypes(_ prototypes: [[Prototype]], step: Int) -> [Dialog] {
+        prototypes.map {
+            var messages = $0.filter { $0.step <= step }.sorted { $0.step < $1.step }.last!.messages
+            var dialog: Dialog?
+            while let message = messages.popLast() {
+                dialog = .init(message.0, message.1, dialog)
+            }
+            return dialog!
         }
-        return [dialog!]
     }
     
     class func chest(_ item: ItemId?) -> Dialog {
