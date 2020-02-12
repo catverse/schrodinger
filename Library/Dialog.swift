@@ -12,6 +12,11 @@ public final class Dialog {
     public struct Prototype {
         let step: Int
         let messages: [(Owner, [[String]])]
+        
+        public init(_ messages: [(Owner, [[String]])], step: Int) {
+            self.messages = messages
+            self.step = step
+        }
     }
     
     public class func prototypes(_ prototypes: [[Prototype]], step: Int) -> [Dialog] {

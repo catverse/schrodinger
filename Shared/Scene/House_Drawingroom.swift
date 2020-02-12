@@ -8,6 +8,8 @@ final class House_Drawingroom: WalkScene {
         doors = [.init(21, 30) : .House_Corridor]
         starts = [.House_Corridor : .init(21, 28)]
         npc = [(.jung, .init(21, 20))]
-//        dialogs = [0 : .ini]
+        dialogs = [
+            [.init([(.npc(id: .jung), [["hello world"]])], step: 0)]
+        ]
     }
 }
