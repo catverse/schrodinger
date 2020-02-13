@@ -11,7 +11,7 @@ class Game: SKView, SKSceneDelegate {
     init() {
         super.init(frame: .zero)
         ignoresSiblingOrder = true
-        state = .init(states: [StartState(self), WalkState(self), DialogState(self), UnboxState(self), MenuState(self), InventoryState(self)])
+        state = .init(states: [StartState(self), WalkState(self), DialogState(self), UnboxState(self), MenuState(self), InventoryState(self), DialogFinishState(self)])
         state.enter(StartState.self)
     }
     

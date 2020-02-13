@@ -6,6 +6,7 @@ final class ControlWalk: GKComponent {
     private var facing: FacingWalk { entity!.component(ofType: FacingWalk.self)! }
     private var scene: WalkScene { sprite.node.scene as! WalkScene }
     private var dialog: DialogState { game.state.state(forClass: DialogState.self)! }
+    private var dialogFinish: DialogFinishState { game.state.state(forClass: DialogFinishState.self)! }
     private var unbox: UnboxState { game.state.state(forClass: UnboxState.self)! }
     private var menu: MenuState { game.state.state(forClass: MenuState.self)! }
     private var sprite: SpriteWalk { entity!.component(ofType: SpriteWalk.self)! }
@@ -27,7 +28,12 @@ final class ControlWalk: GKComponent {
                 dialog.finish = UnboxState.self
                 game.state.enter(DialogState.self)
             } else if let npc = scene.npc.enumerated().first(where: { $0.1.1 == select }) {
-                scene.entities.compactMap { $0 as? NpcWalk }.first { $0.tag == npc.0 }!.component(ofType: StandingWalk.self)!.conversation(facing.compare)
+                dialogFinish.next = WalkState.self
+                dialogFinish.npc = scene.entities.compactMap { $0 as? NpcWalk }.first { $0.tag == npc.0 }!
+                dialogFinish.npc.component(ofType: StandingWalk.self)!.conversation(facing.compare)
+                dialog.dialog = scene.dialogs[npc.0]
+                dialog.finish = DialogFinishState.self
+                game.state.enter(DialogState.self)
             }
         case .cancel:
             menu.back = WalkState.self

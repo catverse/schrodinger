@@ -9,7 +9,7 @@ final class StandingWalk: GKComponent {
     override init() {
         super.init()
         state = .init(states: [Waiting(self), Conversation(self)])
-        state.enter(Waiting.self)
+        waiting()
     }
     
     override func update(deltaTime: TimeInterval) {
@@ -24,6 +24,10 @@ final class StandingWalk: GKComponent {
         case .right: facing.enter(.left)
         default: facing.enter(.down)
         }
+    }
+    
+    func waiting() {
+        state.enter(Waiting.self)
     }
 }
 
