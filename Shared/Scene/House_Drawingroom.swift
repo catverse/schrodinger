@@ -9,7 +9,11 @@ final class House_Drawingroom: WalkScene {
         starts = [.House_Corridor : .init(21, 28)]
         npc = [(.jung, .init(21, 20))]
         dialogs = Dialog.prototypes([
-            [.init([(.npc(id: .jung), [["hello world"]])], step: 0)]
+            [.init([
+                (.npc(id: .jung), [["Dialog.jung.0.goodEvening"]]),
+                (.player, [["Dialog.jung.0.whoAreYou"]]),
+                (.npc(id: .jung), [["Dialog.jung.0.professor"], ["Dialog.jung.0.dontKnow"]])
+            ], step: 0)]
         ], step: memory.game.time.step)
     }
 }
