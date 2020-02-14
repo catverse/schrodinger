@@ -21,9 +21,9 @@ public final class Dialog {
         }
     }
     
-    public class func prototypes(_ prototypes: [[Prototype]], entry: Entry) -> [Dialog] {
-        prototypes.map {
-            var messages = $0.filter { $0.step <= entry.time.step }.sorted { $0.step < $1.step }.last!.messages
+    public class func prototypes(_ prototypes: [[Prototype]]) -> [[Dialog]] {
+        prototypes.map { $0.sorted { $0.step < $1.step } }.map {
+            var messages = $0.messages
             var dialog: Dialog?
             while let message = messages.popLast() {
                 dialog = .init(message.0, message.1, dialog)

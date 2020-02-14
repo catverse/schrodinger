@@ -4,6 +4,7 @@ import simd
 public struct Entry: Codable {
     public var location = Location()
     public var time = Time()
+    public var log = [LocationId : [Int : Int]]()
     public internal(set) var id = UUID().uuidString
     public internal(set) var player = Player()
     public internal(set) var items = Items()
@@ -11,7 +12,6 @@ public struct Entry: Codable {
     public struct Time: Codable {
         public var played = TimeInterval()
         public internal(set) var saved = TimeInterval()
-        public internal(set) var step = 0
         public let created = Date().timeIntervalSince1970
     }
     
