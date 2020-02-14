@@ -12,16 +12,18 @@ public final class Dialog {
     public struct Prototype {
         let step: Int
         let messages: [(Owner, [[String]])]
+        let increases: Bool
         
-        public init(_ messages: [(Owner, [[String]])], step: Int) {
+        public init(_ messages: [(Owner, [[String]])], step: Int, increases: Bool = false) {
             self.messages = messages
             self.step = step
+            self.increases = increases
         }
     }
     
-    public class func prototypes(_ prototypes: [[Prototype]], step: Int) -> [Dialog] {
+    public class func prototypes(_ prototypes: [[Prototype]], entry: Entry) -> [Dialog] {
         prototypes.map {
-            var messages = $0.filter { $0.step <= step }.sorted { $0.step < $1.step }.last!.messages
+            var messages = $0.filter { $0.step <= entry.time.step }.sorted { $0.step < $1.step }.last!.messages
             var dialog: Dialog?
             while let message = messages.popLast() {
                 dialog = .init(message.0, message.1, dialog)

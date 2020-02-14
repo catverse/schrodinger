@@ -4,22 +4,25 @@ import GameplayKit
 final class DialogState: State {
     var dialog: Dialog?
     var finish: State.Type!
+    private weak var node: DialogNode!
     private var message = [[String]]()
     private var timer = TimeInterval()
-    private let wait = TimeInterval(0.3)
+    private let wait = TimeInterval(0.2)
     
     override func didEnter(from: GKState?) {
         super.didEnter(from: from)
-        game.scene!.camera!.children.first { $0 is DialogNode }?.removeFromParent()
-        game.scene!.camera!.addChild(DialogNode(game.bounds))
-        game.scene!.camera!.children.compactMap { $0 as? DialogNode }.first!.label.text = ""
+        node?.removeFromParent()
+        let node = DialogNode(game.bounds)
+        game.scene!.camera!.addChild(node)
+        self.node = node
+        
         timer = wait + wait
         next()
     }
     
     override func willExit(to: GKState) {
         super.willExit(to: to)
-        game.scene!.camera!.children.first { $0 is DialogNode }!.run(.sequence([.fadeOut(withDuration: 0.4), .removeFromParent()]))
+        node.run(.sequence([.fadeOut(withDuration: 0.4), .removeFromParent()]))
     }
     
     override func update(deltaTime: TimeInterval) {
@@ -44,11 +47,11 @@ final class DialogState: State {
                         if dialog == nil {
                             stateMachine!.enter(finish)
                         } else {
-                            game.scene!.camera!.children.compactMap { $0 as? DialogNode }.first!.label!.text = ""
+                            node.label!.text = ""
                             next()
                         }
                     } else {
-                        game.scene!.camera!.children.compactMap { $0 as? DialogNode }.first!.label!.text = ""
+                        node.label!.text = ""
                     }
                 } else {
                     while !message[0].isEmpty {
@@ -62,14 +65,27 @@ final class DialogState: State {
     
     private func next() {
         message = dialog!.message.map { $0.flatMap { String.key($0).components(separatedBy: " ") } }
+        switch dialog!.owner {
+        case .none:
+            node.title.isHidden = true
+            node.left.text = ""
+            node.right.text = ""
+        case .player:
+            node.title.isHidden = false
+            node.left.text = .key("Player.name")
+            node.right.text = ""
+        case .npc(let id):
+            node.title.isHidden = false
+            node.left.text = ""
+            node.right.text = .key("Npc.\(id.rawValue)")
+        }
         dialog = dialog!.next
     }
     
     private func write() {
-        let label = game.scene!.camera!.children.compactMap { $0 as? DialogNode }.first!.label!
-        if !label.text!.isEmpty {
-            label.text! += " "
+        if !node.label.text!.isEmpty {
+            node.label.text! += " "
         }
-        label.text! += message[0].removeFirst()
+        node.label.text! += message[0].removeFirst()
     }
 }

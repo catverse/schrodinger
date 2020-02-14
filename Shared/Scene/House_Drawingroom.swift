@@ -12,8 +12,8 @@ final class House_Drawingroom: WalkScene {
             [.init([
                 (.npc(id: .jung), [["Dialog.jung.0.goodEvening"]]),
                 (.player, [["Dialog.jung.0.whoAreYou"]]),
-                (.npc(id: .jung), [["Dialog.jung.0.professor"], ["Dialog.jung.0.dontKnow"]])
+                (.npc(id: .jung), [["Dialog.jung.0.professor"], ["Dialog.jung.0.willTry"]])
             ], step: 0)]
-        ], step: memory.game.time.step)
+        ], entry: memory.game)
     }
 }

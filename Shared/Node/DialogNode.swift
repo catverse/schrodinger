@@ -2,10 +2,10 @@ import SpriteKit
 
 final class DialogNode: SKNode {
     private(set) weak var label: SKLabelNode!
-    private weak var title: SKSpriteNode!
+    private(set) weak var left: SKLabelNode!
+    private(set) weak var right: SKLabelNode!
+    private(set) weak var title: SKSpriteNode!
     private weak var text: SKSpriteNode!
-    private weak var left: SKLabelNode!
-    private weak var right: SKLabelNode!
     
     required init?(coder aDecoder: NSCoder) { nil }
     init(_ bounds: CGRect) {
@@ -20,16 +20,17 @@ final class DialogNode: SKNode {
         
         let title = SKSpriteNode(imageNamed: "dialog_title")
         title.zPosition = 1
-        title.isHidden = true
         addChild(title)
         self.title = title
         
         let label = SKLabelNode(fontNamed: SKLabelNode.font)
+        label.text = ""
         label.zPosition = 2
         label.fontColor = .white
         label.fontSize = 16
         label.verticalAlignmentMode = .top
         label.numberOfLines = 3
+        label.lineBreakMode = .byWordWrapping
         label.horizontalAlignmentMode = .left
         addChild(label)
         self.label = label
@@ -57,7 +58,7 @@ final class DialogNode: SKNode {
     func bound(_ bounds: CGRect) {
         text.position.y = (bounds.height - 100) / -2
         title.position.y = text.position.y + 73
-        label.position.y = text.position.y + 35
+        label.position.y = text.position.y + 25
         label.position.x = (bounds.width - 50) / -2
         left.position.y = title.position.y - 10
         left.position.x = label.position.x
@@ -65,5 +66,6 @@ final class DialogNode: SKNode {
         right.position.x = -label.position.x
         text.size.width = bounds.width
         title.size.width = bounds.width
+        label.preferredMaxLayoutWidth = bounds.width - 100
     }
 }
