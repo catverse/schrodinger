@@ -64,8 +64,8 @@ final class DialogState: State {
     }
     
     private func next() {
-        message = dialog!.message.map { $0.flatMap { String.key($0).components(separatedBy: " ") } }
-        switch dialog!.owner {
+        message = dialog!.message.messages.map { $0.flatMap { String.key($0).components(separatedBy: " ") } }
+        switch dialog!.message.owner {
         case .none:
             node.title.isHidden = true
             node.left.text = ""

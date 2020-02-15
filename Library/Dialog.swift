@@ -9,41 +9,47 @@ public final class Dialog {
         npc(id: NpcId)
     }
     
-    public struct Prototype {
-        let step: Int
-        let messages: [(Owner, [[String]])]
-        let increases: Bool
+    public struct Message {
+        public let owner: Owner
+        public let messages: [[String]]
         
-        public init(_ messages: [(Owner, [[String]])], step: Int, increases: Bool = false) {
+        public init(_ owner: Owner, _ messages: [[String]]) {
+            self.owner = owner
             self.messages = messages
-            self.step = step
-            self.increases = increases
         }
     }
     
-    public class func prototypes(_ prototypes: [[Prototype]]) -> [[Dialog]] {
-        prototypes.map { $0.sorted { $0.step < $1.step } }.map {
-            var messages = $0.messages
-            var dialog: Dialog?
-            while let message = messages.popLast() {
-                dialog = .init(message.0, message.1, dialog)
+    public struct Npc {
+        let messages: [Message]
+        
+        public init(_ messages: [Message]) {
+            self.messages = messages
+        }
+    }
+    
+    public class func npc(_ npc: [[Npc]]) -> [[Dialog]] {
+        npc.map {
+            $0.map {
+                var messages = $0.messages
+                var dialog: Dialog?
+                while let message = messages.popLast() {
+                    dialog = .init(message, dialog)
+                }
+                return dialog!
             }
-            return dialog!
         }
     }
     
     class func chest(_ item: ItemId?) -> Dialog {
-        .init(.none, [["Dialog.Chest.Found"], item == nil
+        .init(.init(.none, [["Dialog.Chest.Found"], item == nil
             ? ["Dialog.Chest.Empty"]
-            : ["Dialog.Chest.Obtained", "Item.\(item!.rawValue)", "Dialog.Chest.Ex"]], nil)
+            : ["Dialog.Chest.Obtained", "Item.\(item!.rawValue)", "Dialog.Chest.Ex"]]), nil)
     }
     
-    public let owner: Owner
-    public let message: [[String]]
+    public let message: Message
     public let next: Dialog?
     
-    private init(_ owner: Owner, _ message: [[String]], _ next: Dialog?) {
-        self.owner = owner
+    private init(_ message: Message, _ next: Dialog?) {
         self.message = message
         self.next = next
     }
