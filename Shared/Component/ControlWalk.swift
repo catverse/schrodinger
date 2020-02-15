@@ -6,8 +6,6 @@ final class ControlWalk: GKComponent {
     private var facing: FacingWalk { entity!.component(ofType: FacingWalk.self)! }
     private var scene: WalkScene { sprite.node.scene as! WalkScene }
     private var dialog: DialogState { game.state.state(forClass: DialogState.self)! }
-    private var dialogFinish: DialogFinishState { game.state.state(forClass: DialogFinishState.self)! }
-    private var unbox: UnboxState { game.state.state(forClass: UnboxState.self)! }
     private var menu: MenuState { game.state.state(forClass: MenuState.self)! }
     private var sprite: SpriteWalk { entity!.component(ofType: SpriteWalk.self)! }
     private var select: vector_int2 { memory.game.location.position &+ facing.delta }
@@ -22,18 +20,14 @@ final class ControlWalk: GKComponent {
         switch action {
         case .ok:
             if let item = scene.chests[select] {
-                unbox.next = WalkState.self
-                unbox.position = select
+                dialog.unbox = select
                 dialog.dialog = memory.take(chest: select, item: item.0)
-                dialog.finish = UnboxState.self
                 game.state.enter(DialogState.self)
             } else if let npc = scene.npc.enumerated().first(where: { $0.1.1 == select }) {
-//                dialogFinish.next = WalkState.self
-//                dialogFinish.npc = scene.entities.compactMap { $0 as? NpcWalk }.first { $0.tag == npc.0 }!
-//                dialogFinish.npc.component(ofType: StandingWalk.self)!.conversation(facing.compare)
-//                dialog.dialog = scene.dialogs[npc.0]
-//                dialog.finish = DialogFinishState.self
-//                game.state.enter(DialogState.self)
+                dialog.restore = scene.entities.compactMap { $0 as? NpcWalk }.first { $0.tag == npc.0 }
+                dialog.restore!.component(ofType: StandingWalk.self)!.conversation(facing.compare)
+                dialog.dialog = scene.dialog(npc.0)
+                game.state.enter(DialogState.self)
             }
         case .cancel:
             menu.back = WalkState.self

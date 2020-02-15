@@ -9,12 +9,15 @@ class WalkScene: SKScene {
     var starts = [LocationId : vector_int2]()
     var npc = [(NpcId, vector_int2)]()
     var entities = [GKEntity]()
-    var dialogs = [[Dialog]]()
     final var location: LocationId { LocationId(rawValue: name!)! }
     private var _darkness: DarknessNode { childNode(withName: "Darkness") as! DarknessNode }
     private var _floor: SKTileMapNode { _darkness.childNode(withName: "Floor") as! SKTileMapNode }
     private var _items: SKTileMapNode { _darkness.childNode(withName: "Items") as! SKTileMapNode }
      
+    func dialog(_ tag: Int) -> Dialog? {
+        nil
+    }
+    
     final override func didMove(to: SKView) {
         var nodes = [GKGridGraphNode]()
         (0 ..< grid.gridWidth).forEach { x in

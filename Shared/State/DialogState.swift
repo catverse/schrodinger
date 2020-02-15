@@ -3,7 +3,8 @@ import GameplayKit
 
 final class DialogState: State {
     var dialog: Dialog?
-    var finish: State.Type!
+    var unbox: vector_int2?
+    var restore: NpcWalk?
     private weak var node: DialogNode!
     private var message = [[String]]()
     private var timer = TimeInterval()
@@ -23,6 +24,10 @@ final class DialogState: State {
     override func willExit(to: GKState) {
         super.willExit(to: to)
         node.run(.sequence([.fadeOut(withDuration: 0.4), .removeFromParent()]))
+        unbox.map { (game.scene as! WalkScene).unbox($0) }
+        restore.map { $0.component(ofType: StandingWalk.self)!.waiting() }
+        unbox = nil
+        restore = nil
     }
     
     override func update(deltaTime: TimeInterval) {
@@ -45,7 +50,7 @@ final class DialogState: State {
                     message.removeFirst()
                     if message.isEmpty {
                         if dialog == nil {
-                            stateMachine!.enter(finish)
+                            stateMachine!.enter(WalkState.self)
                         } else {
                             node.label!.text = ""
                             next()

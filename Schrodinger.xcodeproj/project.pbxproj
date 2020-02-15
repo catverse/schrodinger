@@ -15,7 +15,6 @@
 		CE28283923EEFC87001769E8 /* Npc.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE28283823EEFC87001769E8 /* Npc.xcassets */; };
 		CE28283B23EF00BB001769E8 /* House_Drawingroom.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */; };
 		CE28283D23EF00CB001769E8 /* House_Drawingroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */; };
-		CEF54F6D23F529EC0042EB47 /* DialogFinishState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF54F6C23F529EC0042EB47 /* DialogFinishState.swift */; };
 		CEFCE67A23F1371F00B98594 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7B94123DDBA7300C483EC /* Action.swift */; };
 		CEFCE67B23F1371F00B98594 /* PlayerId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6A23F0320A00A2317C /* PlayerId.swift */; };
 		CEFCE67C23F1371F00B98594 /* NpcId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18CD6823F031FB00A2317C /* NpcId.swift */; };
@@ -65,7 +64,6 @@
 		DAE28BD023DEE58A005B7BB7 /* TestMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE28BCF23DEE58A005B7BB7 /* TestMemory.swift */; };
 		DAE28BD223DEE58A005B7BB7 /* libSchrodinger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA73DE3F23D1B78E00E48E24 /* libSchrodinger.a */; };
 		DAEB746A23DEDAEF0021951B /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAEB746923DEDAEF0021951B /* PressStart2P-Regular.ttf */; };
-		DAFEBFAA23E19A3A00E64093 /* UnboxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEBFA923E19A3A00E64093 /* UnboxState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +94,6 @@
 		CE28283823EEFC87001769E8 /* Npc.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Npc.xcassets; sourceTree = "<group>"; };
 		CE28283A23EF00BB001769E8 /* House_Drawingroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = House_Drawingroom.sks; sourceTree = "<group>"; };
 		CE28283C23EF00CB001769E8 /* House_Drawingroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_Drawingroom.swift; sourceTree = "<group>"; };
-		CEF54F6C23F529EC0042EB47 /* DialogFinishState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogFinishState.swift; sourceTree = "<group>"; };
 		CEFCE67F23F13D6800B98594 /* TestDialogPrototype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDialogPrototype.swift; sourceTree = "<group>"; };
 		DA0057DF23E80738008B0CA0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DA03C7CC23E2E39E009A5F90 /* DarknessNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarknessNode.swift; sourceTree = "<group>"; };
@@ -151,7 +148,6 @@
 		DAE28BD123DEE58A005B7BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAEB746923DEDAEF0021951B /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
 		DAF522EF23D464A200BB0EDA /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
-		DAFEBFA923E19A3A00E64093 /* UnboxState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnboxState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,13 +206,11 @@
 		DA09803023DEFF0B007CC607 /* State */ = {
 			isa = PBXGroup;
 			children = (
-				CEF54F6C23F529EC0042EB47 /* DialogFinishState.swift */,
 				DAD7B94523DDCE2400C483EC /* DialogState.swift */,
 				DA73479823E5763400C70214 /* InventoryState.swift */,
 				DA352C1023E1C1CE006AF887 /* MenuState.swift */,
 				DA09803F23DF1E4C007CC607 /* StartState.swift */,
 				DA4AF1D523DB2B470041A35D /* State.swift */,
-				DAFEBFA923E19A3A00E64093 /* UnboxState.swift */,
 				DA4AF1D723DB2B9C0041A35D /* WalkState.swift */,
 			);
 			path = State;
@@ -520,10 +514,8 @@
 				DA09804023DF1E4C007CC607 /* StartState.swift in Sources */,
 				CE18CD6723F02B8C00A2317C /* SkinComponent.swift in Sources */,
 				DA03C7CD23E2E39E009A5F90 /* DarknessNode.swift in Sources */,
-				CEF54F6D23F529EC0042EB47 /* DialogFinishState.swift in Sources */,
 				CE18CD6D23F0510500A2317C /* StandingWalk.swift in Sources */,
 				DA2F75A923D9A080001519C6 /* WalkScene.swift in Sources */,
-				DAFEBFAA23E19A3A00E64093 /* UnboxState.swift in Sources */,
 				DAD7B94623DDCE2400C483EC /* DialogState.swift in Sources */,
 				DA24878423D86CE200BA265B /* FacingWalk.swift in Sources */,
 				DA4AF1D623DB2B470041A35D /* State.swift in Sources */,
